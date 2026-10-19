@@ -1,0 +1,5 @@
+.claude
+.claude/ 
+#ignorado por si lo usan no cree una memoria para todos
+*\bin/
+*\obj/
