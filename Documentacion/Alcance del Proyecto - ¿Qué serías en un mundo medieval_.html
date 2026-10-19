@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alcance del Proyecto - ¿Qué serías en un mundo medieval?</title>
+<style>
+:root{
+  --navy:#0b2b4a; --navy2:#1a4b6d; --gold:#f5b042; --ink:#1e293b;
+  --muted:#64748b; --bg:#f4f7fc; --line:#e2e8f0; --soft:#f8fafc;
+  --blue:#eff6ff; --green:#ecfdf5; --amber:#fffbeb; --red:#fef2f2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;padding:18px}
+main{max-width:1180px;margin:auto;background:#fff;border-radius:20px;box-shadow:0 16px 46px rgba(15,23,42,.09);overflow:hidden;padding:0 28px 38px}
+header{background:linear-gradient(145deg,var(--navy),var(--navy2));color:#fff;padding:27px 30px 21px;margin:0 -28px 20px;border-bottom:4px solid var(--gold)}
+.top{display:flex;justify-content:space-between;gap:12px 24px;align-items:center;flex-wrap:wrap}
+.inst strong{color:var(--gold)}
+.carrera{font-size:.92rem;background:rgba(255,255,255,.12);padding:5px 14px;border-radius:30px}
+header h1{font-size:2.05rem;line-height:1.2;margin-top:12px}
+header h1 small{display:block;font-size:1rem;font-weight:400;opacity:.86;margin-top:6px}
+.badge{display:inline-block;margin-top:10px;background:var(--gold);color:var(--navy);font-weight:800;font-size:.74rem;padding:4px 12px;border-radius:30px;text-transform:uppercase;letter-spacing:.4px}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.meta div{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:.9rem}
+.meta strong{display:block;color:var(--navy);font-size:.78rem;text-transform:uppercase;letter-spacing:.3px}
+.toolbar{display:flex;justify-content:flex-end;margin-bottom:10px}
+.print{border:0;background:var(--navy);color:#fff;padding:8px 14px;border-radius:24px;font-weight:650;cursor:pointer}
+nav{display:flex;flex-wrap:wrap;gap:6px;border-bottom:2px solid #e9eef3;padding:6px 0 8px;margin-bottom:10px;position:sticky;top:0;background:#fff;z-index:5}
+nav a{color:#52687d;font-weight:650;padding:6px 12px;border-radius:24px;text-decoration:none;font-size:.92rem}
+nav a:hover{background:var(--navy);color:#fff}
+section{scroll-margin-top:64px}
+h2{color:var(--navy);font-size:1.6rem;margin:30px 0 10px;padding-top:6px;border-top:1px solid #eef2f6}
+h3{color:var(--navy2);font-size:1.16rem;margin:20px 0 8px}
+p{margin:0 0 13px}ul,ol{margin:8px 0 15px 24px}li{margin-bottom:5px}
+code{font-family:Consolas,"Courier New",monospace;font-size:.92em}
+.code{background:#0f1a2b;color:#e2e8f0;padding:18px 20px;border-radius:12px;margin:14px 0 18px;overflow:auto;font:.86rem/1.6 Consolas,"Courier New",monospace;white-space:pre}
+.info,.tip,.warn,.danger{padding:14px 16px;border-radius:10px;margin:15px 0;border-left:5px solid}
+.info{background:var(--blue);border-color:#3b82f6}
+.tip{background:var(--green);border-color:#10b981}
+.warn{background:var(--amber);border-color:#f59e0b}
+.danger{background:var(--red);border-color:#ef4444}
+.tree{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:14px 0 18px;font-family:Consolas,"Courier New",monospace;white-space:pre;overflow:auto;font-size:.9rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
+.card h3{margin-top:0}
+.card ul{margin-bottom:0}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px;margin:14px 0 20px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{background:#f1f5f9;color:var(--navy);text-align:left;padding:10px 12px;border-bottom:2px solid #dce3ec}
+td{padding:9px 12px;border-bottom:1px solid #e9eef3;vertical-align:top}
+.now{display:inline-block;background:#dcfce7;color:#166534;border:1px solid #a7f3d0;border-radius:20px;padding:1px 8px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.future{display:inline-block;background:#fff1c7;color:#7a5300;border:1px solid #f6d879;border-radius:20px;padding:1px 8px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.tbd{display:inline-block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca;border-radius:20px;padding:1px 8px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.chips span{display:inline-block;background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:3px 11px;margin:3px 4px 3px 0;font-size:.88rem}
+.footer{margin-top:36px;padding-top:20px;border-top:2px solid #e9eef3;text-align:center;color:var(--muted);font-size:.86rem}
+@media(max-width:760px){body{padding:8px}main{padding:0 16px 28px}header{margin:0 -16px 18px;padding:20px 17px}.top{flex-direction:column;align-items:flex-start}nav{position:static}.grid2,.grid3,.meta{grid-template-columns:1fr}.code{font-size:.78rem;padding:15px 12px}}
+@media print{body{background:#fff;padding:0}main{max-width:none;box-shadow:none;border-radius:0;padding:0 12mm}.toolbar,nav{display:none!important}.code{white-space:pre-wrap;background:#f6f6f6;color:#111;border:1px solid #ddd}.card,.info,.tip,.warn,.danger,.tree,.table-wrap{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div class="top">
+    <span class="inst"><strong>Instituto Argentino de la Empresa</strong></span>
+    <span class="carrera">Analista de Sistemas de Información · 2º año · Algoritmos II</span>
+  </div>
+  <h1>¿Qué serías en un mundo medieval de fantasía?
+    <small>Documento de alcance · Trabajo Práctico Final 2026</small>
+  </h1>
+  <span class="badge">Propuesta alternativa aprobada por la cátedra</span>
+</header>
+
+<div class="meta">
+  <div><strong>Docente</strong>Lic. Adrián Aroca</div>
+  <div><strong>Grupo</strong>N.º 1</div>
+  <div><strong>Versión</strong>0.1 · borrador</div>
+  <div><strong>Fecha</strong>16/10/2026</div>
+</div>
+
+<div class="toolbar"><button class="print" onclick="window.print()">Imprimir / Guardar PDF</button></div>
+
+<nav>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#idea">Idea</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#alcance">Alcance</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#tecnologias">Tecnologías</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#bdd">Base de datos</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#poo">POO</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#winforms">Windows Forms</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#errores">Errores</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#json">JSON</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#matriz">Cumplimiento</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#etapas">Etapas</a>
+  <a href="file:///C:/Users/Diego/Downloads/Alcance_Proyecto_Quiz_Medieval.html#pendientes">Pendientes</a>
+</nav>
+
+<!-- ============================================================ -->
+<section id="idea">
+<h2>1. Idea del proyecto</h2>
+
+<p>Aplicación de escritorio en C# con Windows Forms que presenta un <strong>test tipo quiz</strong> ambientado en un mundo medieval de fantasía. A partir de las respuestas del usuario, el sistema determina qué <strong>raza</strong> y qué <strong>clase</strong> sería, y le asigna un resultado combinado (por ejemplo: <em>mayormente elfo y en segundo lugar orco → Elfo oscuro</em>).</p>
+
+<div class="info"><strong>Cambio de dominio:</strong> la cátedra autorizó reemplazar el sistema de coworking por otro tipo de sistema, siempre que se cumplan los puntos de la consigna. Este documento muestra cómo se cubre cada uno.</div>
+
+<h3>Mecánica</h3>
+<ul>
+<li>El usuario ingresa su nombre y elige el modo de juego.</li>
+<li>Cada pregunta tiene aproximadamente <strong>6 respuestas posibles</strong>, presentadas como imágenes clickeables.</li>
+<li>Cada respuesta suma una cantidad de puntos predefinida a una o más <strong>variables</strong> (razas o clases).</li>
+<li>Al finalizar, se determinan la raza principal, la raza secundaria y la clase dominante, y se asigna el resultado final.</li>
+<li>Se guardan en MySQL el nombre del jugador, el puntaje final de cada variable y el resultado asignado.</li>
+</ul>
+
+<div class="code"><code>Pregunta: En una guerra, ¿rematarías a tu enemigo o perdonarías su vida?
+
+  [imagen] Lo perdono                       → +puntos Humano
+  [imagen] Lo remato con piedad             → +puntos Elfo
+  [imagen] Lo devoro                        → +puntos Orco
+  [imagen] Le doy un martillazo en la cabeza → +puntos Enano
+  ...</code></div>
+
+<h3>Modos de juego</h3>
+<div class="grid2">
+<div class="card">
+<h3>Modo clásico</h3>
+<p>Las preguntas se presentan una tras otra, sin contexto adicional.</p>
+</div>
+<div class="card">
+<h3>Modo narrativo</h3>
+<p>Antes de cada pregunta se muestra un fragmento de una historia que avanza con el test y busca influir en las respuestas del usuario.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="alcance">
+<h2>2. Alcance</h2>
+
+<div class="grid2">
+<div class="card">
+<h3>Incluido</h3>
+<ul>
+<li>Test en modo clásico y modo narrativo.</li>
+<li>Preguntas de raza y de clase, con puntajes predefinidos.</li>
+<li>Cálculo del resultado combinado (raza principal + secundaria).</li>
+<li>Registro de jugadores y partidas en MySQL.</li>
+<li>Historial de partidas con filtros.</li>
+<li>Estadísticas de resultados.</li>
+<li>Modificación de jugadores y anulación de partidas.</li>
+<li>Interfaz con imágenes clickeables y pseudo-animación al hacer click.</li>
+<li>Manejo de errores de MySQL y de la aplicación.</li>
+<li>Respaldo automático del historial en JSON.</li>
+</ul>
+</div>
+<div class="card">
+<h3>Fuera de alcance</h3>
+<ul>
+<li><strong>Preguntas en la base de datos:</strong> son contenido fijo del juego, por lo que se definen en el código. La base guarda los resultados.</li>
+<li>Editor de preguntas desde la interfaz.</li>
+<li>Usuarios con contraseña o roles.</li>
+<li>Modo multijugador.</li>
+<li>Animaciones gráficas complejas (Windows Forms no es un motor de juegos).</li>
+</ul>
+</div>
+</div>
+
+<div class="tip"><strong>Justificación del diseño:</strong> se trata de una demo académica. Mantener las preguntas en el código simplifica la arquitectura sin afectar los requisitos, ya que la persistencia se concentra en los resultados, que son los datos que efectivamente cambian.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="tecnologias">
+<h2>3. Tecnologías</h2>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tecnología</th><th>Uso en el proyecto</th><th>Requisito que cubre</th></tr></thead>
+<tbody>
+<tr><td><strong>C#</strong></td><td>Lenguaje de la aplicación, clases del dominio y lógica del test.</td><td>POO</td></tr>
+<tr><td><strong>Windows Forms</strong></td><td>Interfaz gráfica de escritorio.</td><td>Aplicación Windows Forms</td></tr>
+<tr><td><strong>Visual Studio</strong></td><td>Desarrollo y entrega de la solución completa.</td><td>Entregables</td></tr>
+<tr><td><strong>MySQL 8</strong></td><td>Persistencia de jugadores, partidas y puntajes.</td><td>Base de datos</td></tr>
+<tr><td><strong>MySQL Workbench</strong></td><td>Diseño del modelo, script de creación y pruebas de los objetos de la base.</td><td>Base de datos · diagrama del modelo</td></tr>
+<tr><td><strong>MySql.Data</strong> (Connector/NET)</td><td>Conexión desde C#, ejecución de procedimientos, vistas y función. Captura de <code>MySqlException</code>.</td><td>Integración C# + MySQL · errores</td></tr>
+<tr><td><strong>System.Windows.Forms.Timer</strong></td><td>Pseudo-animación de las imágenes al hacer click, sin congelar la ventana.</td><td>Windows Forms</td></tr>
+<tr><td><strong>Serializador JSON</strong> (el que se vea en clase)</td><td>Exportación automática del historial de partidas.</td><td>JSON <span class="future">Durante la cursada</span></td></tr>
+<tr><td><strong>App.config</strong></td><td>Datos de conexión fuera del código fuente.</td><td>Configuración externa <span class="future">Durante la cursada</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="bdd">
+<h2>4. Base de datos MySQL</h2>
+
+<p>La base almacena los resultados del test. Los puntajes se guardan como filas (una por variable) y no como columnas por raza, para evitar información duplicada y permitir vistas y funciones sobre ellos.</p>
+
+<h3>Modelo propuesto</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tabla</th><th>Campos principales</th><th>Propósito</th></tr></thead>
+<tbody>
+<tr><td><strong>variables</strong></td><td>id_variable (PK), nombre, tipo <code>ENUM('RAZA','CLASE')</code></td><td>Catálogo de razas y clases evaluadas.</td></tr>
+<tr><td><strong>jugadores</strong></td><td>id_jugador (PK), nombre (UNIQUE), fecha_alta</td><td>Personas que realizaron el test.</td></tr>
+<tr><td><strong>resultados</strong></td><td>id_resultado (PK), id_raza_principal (FK), id_raza_secundaria (FK), nombre, descripcion · UNIQUE(principal, secundaria)</td><td>Catálogo de combinaciones: Elfo + Orco → Elfo oscuro.</td></tr>
+<tr><td><strong>partidas</strong></td><td>id_partida (PK), id_jugador (FK), fecha, modo <code>ENUM('CLASICO','NARRATIVO')</code>, id_resultado (FK), id_clase (FK), estado <code>ENUM('VALIDA','ANULADA')</code></td><td>Cada vez que alguien completa el test.</td></tr>
+<tr><td><strong>partida_puntajes</strong></td><td>id_partida (FK), id_variable (FK), puntos · PK compuesta</td><td>Puntaje final de cada variable en la partida.</td></tr>
+<tr><td><strong>auditoria_partidas</strong></td><td>id_auditoria (PK), id_partida, accion, fecha, detalle</td><td>Registro generado por el trigger.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Restricciones de integridad</h3>
+<ul>
+<li>Claves primarias y foráneas en todas las relaciones.</li>
+<li><code>CHECK (puntos &gt;= 0)</code> en los puntajes.</li>
+<li><code>CHECK (id_raza_principal &lt;&gt; id_raza_secundaria)</code> en los resultados.</li>
+<li>Nombre de jugador único y no vacío.</li>
+<li>No se elimina información: las partidas se anulan (baja lógica).</li>
+</ul>
+
+<h3>Procedimientos almacenados</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Procedimiento</th><th>Operación</th><th>Equivalente en la consigna</th></tr></thead>
+<tbody>
+<tr><td><code>sp_registrar_jugador</code></td><td>Alta del jugador, o reutiliza el existente si ya jugó antes. Devuelve su id.</td><td>Alta de cliente</td></tr>
+<tr><td><code>sp_modificar_jugador</code></td><td>Corrige el nombre de un jugador.</td><td>Modificación</td></tr>
+<tr><td><code>sp_registrar_partida</code></td><td>Crea la partida con su modo. Devuelve su id.</td><td>Alta de reserva</td></tr>
+<tr><td><code>sp_guardar_puntaje</code></td><td>Guarda el puntaje final de una variable.</td><td>Alta</td></tr>
+<tr><td><code>sp_finalizar_partida</code></td><td>Valida que estén todos los puntajes y asigna resultado y clase usando la función.</td><td>Operación principal</td></tr>
+<tr><td><code>sp_anular_partida</code></td><td>Baja lógica de una partida.</td><td>Cancelación de reserva</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Reglas de negocio con <code>SIGNAL SQLSTATE '45000'</code></h3>
+<ul>
+<li>Nombre de jugador vacío o con menos de 2 caracteres.</li>
+<li>Modificar un jugador con un nombre que ya usa otro.</li>
+<li>Guardar un puntaje negativo o para una partida inexistente.</li>
+<li>Finalizar una partida a la que le faltan puntajes.</li>
+<li>Anular una partida que ya está anulada.</li>
+</ul>
+
+<h3>Vistas</h3>
+<div class="grid2">
+<div class="card">
+<h3><code>vw_historial</code></h3>
+<p>Jugador, fecha, modo, resultado asignado, clase y estado de cada partida. Alimenta el historial y la exportación JSON.</p>
+</div>
+<div class="card">
+<h3><code>vw_estadisticas_resultados</code></h3>
+<p>Cantidad y porcentaje de partidas válidas por resultado y por raza principal.</p>
+</div>
+</div>
+
+<h3>Función definida por el usuario</h3>
+<p><code>fn_resultado_combinado(id_partida)</code>: obtiene las dos razas con más puntos de la partida y devuelve el id del resultado correspondiente en la tabla <code>resultados</code>. El cálculo del resultado vive <strong>solo en la base</strong>; la aplicación no lo duplica.</p>
+
+<h3>Trigger</h3>
+<p><code>trg_auditoria_partidas</code>: registra en <code>auditoria_partidas</code> cada partida finalizada y cada anulación, con fecha y detalle.</p>
+
+<div class="warn"><strong>Antes de pasar a C#:</strong> probar en Workbench todos los procedimientos, las vistas, la función, las restricciones y el trigger, con datos iniciales de prueba. Guardar el script completo de creación de la base.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="poo">
+<h2>5. Programación Orientada a Objetos</h2>
+
+<div class="tree">Pregunta (abstracta)
+ │   Texto, Respuestas : List&lt;Respuesta&gt;
+ │   abstract void Aplicar(Respuesta r, Perfil p)
+ ├── PreguntaRaza    → suma los puntos a las variables de raza
+ └── PreguntaClase   → suma los puntos a las variables de clase
+
+Test (abstracta)
+ │   Preguntas : List&lt;Pregunta&gt;, IndiceActual
+ │   abstract string TextoPrevio(int indice)
+ ├── TestClasico     → "Pregunta 3 de 12"
+ └── TestNarrativo   → fragmento de la historia antes de cada pregunta
+
+«interfaz» IPuntuable
+ │   void SumarA(Perfil perfil)
+ └── Respuesta       → Texto, Imagen, Puntos : Dictionary&lt;string,int&gt;
+
+Perfil       → PuntosRaza, PuntosClase : Dictionary&lt;string,int&gt;
+Jugador      → Id, Nombre
+Partida      → Id, Jugador, Fecha, Modo, Resultado, Clase, Estado
+
+GestorQuiz   → coordina la partida: arma el test, recibe respuestas, registra el resultado
+ConexionBD   → conexión centralizada a MySQL
+ExportadorJson → respaldo automático del historial</div>
+
+<h3>Uso de cada concepto</h3>
+<ul>
+<li><strong>Clases abstractas:</strong> <code>Pregunta</code> y <code>Test</code> definen lo común; cada derivada aporta comportamiento propio.</li>
+<li><strong>Polimorfismo:</strong> el test recorre una <code>List&lt;Pregunta&gt;</code> mezclada y llama a <code>Aplicar()</code> sin saber si es de raza o de clase. De la misma forma, el formulario llama a <code>TextoPrevio()</code> sin saber qué modo se eligió.</li>
+<li><strong>Interfaz:</strong> <code>IPuntuable</code> representa la capacidad de otorgar puntos a un perfil.</li>
+<li><strong>Colecciones genéricas:</strong> <code>List&lt;Pregunta&gt;</code>, <code>List&lt;Respuesta&gt;</code>, <code>Dictionary&lt;string,int&gt;</code> para los puntajes.</li>
+<li><strong>Responsabilidades:</strong> los formularios solo muestran y capturan datos; las reglas están en las clases del dominio y en <code>GestorQuiz</code>.</li>
+</ul>
+
+<div class="warn"><strong>Cuidado con la clase gestora:</strong> <code>GestorQuiz</code> no debe concentrar interfaz, reglas y SQL. Cuando se vea DAO, el acceso a datos se traslada a <code>JugadorDAO</code> y <code>PartidaDAO</code>.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="winforms">
+<h2>6. Aplicación Windows Forms</h2>
+
+<h3>Formularios</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Formulario</th><th>Función</th><th>Controles principales</th></tr></thead>
+<tbody>
+<tr><td><strong>FrmPrincipal</strong></td><td>Menú de navegación.</td><td><code>MenuStrip</code></td></tr>
+<tr><td><strong>FrmInicio</strong></td><td>Ingreso del nombre y elección de modo.</td><td><code>TextBox</code>, <code>PictureBox</code></td></tr>
+<tr><td><strong>FrmQuiz</strong></td><td>Muestra el texto previo, la pregunta y las respuestas.</td><td><code>PictureBox</code> ×6, <code>Label</code>, <code>Timer</code></td></tr>
+<tr><td><strong>FrmResultado</strong></td><td>Muestra el resultado asignado y el puntaje de cada variable.</td><td><code>Label</code>, <code>PictureBox</code>, <code>DataGridView</code></td></tr>
+<tr><td><strong>FrmHistorial</strong></td><td>Consulta de partidas con filtros.</td><td><code>DataGridView</code>, <code>DateTimePicker</code>, <code>ComboBox</code></td></tr>
+<tr><td><strong>FrmEstadisticas</strong></td><td>Distribución de resultados.</td><td><code>DataGridView</code></td></tr>
+<tr><td><strong>FrmJugadores</strong></td><td>Modificar nombre y anular partidas.</td><td><code>DataGridView</code>, <code>ComboBox</code>, <code>TextBox</code></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="tip"><strong>ComboBox:</strong> muestran descripciones (nombre del resultado o de la raza) y conservan internamente el id para operar con la base, mediante <code>DisplayMember</code> y <code>ValueMember</code>.</div>
+
+<h3>Respuestas como imágenes</h3>
+<p>Las respuestas se presentan con <code>PictureBox</code> en lugar de botones. Al hacer click, un <code>Timer</code> reduce la imagen unos píxeles y la restaura a los 100–150 ms, generando una pseudo-animación de "presionado". No se usa <code>Thread.Sleep</code>, ya que congela la interfaz.</p>
+
+<h3>Conexión</h3>
+<div class="tree">Formularios
+     ↓
+GestorQuiz / clases del dominio
+     ↓
+acceso a datos (luego JugadorDAO, PartidaDAO)
+     ↓
+ConexionBD
+     ↓
+MySQL</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="errores">
+<h2>7. Manejo de errores</h2>
+
+<div class="code"><code>try
+{
+    // registrar partida en MySQL
+}
+catch (MySqlException ex)
+{
+    if (ex.SqlState == "45000")
+        // regla de negocio: mostrar ex.Message al usuario
+    else
+        // error general de MySQL (conexión, integridad, etc.)
+}
+catch (Exception ex)
+{
+    // error de la aplicación
+}</code></div>
+
+<h3>Registro de partida + respaldo JSON</h3>
+<p>Son dos operaciones independientes y se tratan por separado:</p>
+<ul>
+<li><strong>Falla MySQL:</strong> la partida no se guardó. Se informa el error y no se exporta.</li>
+<li><strong>MySQL guarda pero falla el JSON</strong> (archivo abierto, sin permisos): la partida quedó registrada. Se muestra un aviso: <em>"Resultado guardado, pero no se pudo actualizar el respaldo"</em>.</li>
+</ul>
+
+<div class="danger"><strong>No se utilizan bloques <code>catch</code> vacíos.</strong> Todo error se informa al usuario.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="json">
+<h2>8. Requerimientos evolutivos</h2>
+
+<h3>JSON: respaldo automático <span class="future">Durante la cursada</span></h3>
+<div class="tree">sp_finalizar_partida OK
+      ↓
+lectura de vw_historial → List&lt;Partida&gt;
+      ↓
+serialización a JSON
+      ↓
+historial_partidas.json (se reescribe completo)</div>
+<p>Después de cada partida registrada correctamente, se exporta el historial completo leído desde la base. Al reescribir el archivo desde la vista, el JSON siempre coincide con MySQL, incluidas las anulaciones. La exportación está a cargo de <code>ExportadorJson</code>, no del formulario.</p>
+<p><strong>Finalidad:</strong> respaldo de los resultados y posibilidad de compartirlos fuera del sistema.</p>
+
+<h3>Acceso a datos / DAO <span class="future">Durante la cursada</span></h3>
+<p>Trasladar el código de MySQL desde <code>GestorQuiz</code> y los formularios a <code>JugadorDAO</code> y <code>PartidaDAO</code>.</p>
+
+<h3>Configuración externa <span class="future">Durante la cursada</span></h3>
+<p>Retirar los datos de conexión de <code>ConexionBD</code> y leerlos desde la configuración de la aplicación.</p>
+
+<div class="info">Estos puntos se implementarán una vez explicados en clase, según la regla de trabajo de la consigna.</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="matriz">
+<h2>9. Matriz de cumplimiento</h2>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Requisito de la consigna</th><th>Cómo se cubre</th><th>Cuándo</th></tr></thead>
+<tbody>
+<tr><td>Entidades mínimas (clientes, recursos, tipos, reservas)</td><td>jugadores, variables, resultados, partidas, partida_puntajes</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>PK, FK, tipos y restricciones</td><td>Claves en todas las relaciones, CHECK, UNIQUE, ENUM</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Datos iniciales de prueba</td><td>Variables, resultados y partidas de ejemplo</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Procedimientos de escritura</td><td>6 procedimientos: alta, modificación y anulación</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Al menos 2 vistas</td><td><code>vw_historial</code>, <code>vw_estadisticas_resultados</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Al menos 1 función</td><td><code>fn_resultado_combinado</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Al menos 1 trigger</td><td><code>trg_auditoria_partidas</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Clase abstracta</td><td><code>Pregunta</code>, <code>Test</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Herencia y polimorfismo</td><td><code>Aplicar()</code> y <code>TextoPrevio()</code> sobre referencias base</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Interfaz</td><td><code>IPuntuable</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Colecciones genéricas</td><td><code>List&lt;T&gt;</code>, <code>Dictionary&lt;K,V&gt;</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Módulos mínimos de la interfaz</td><td>Jugar, historial, estadísticas, jugadores</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Controles esperados</td><td>DataGridView, ComboBox, DateTimePicker, MenuStrip, PictureBox</td><td><span class="now">Ahora</span></td></tr>
+<tr><td>Conexión centralizada</td><td><code>ConexionBD</code></td><td><span class="now">Ahora</span></td></tr>
+<tr><td><code>MySqlException</code> + SIGNAL 45000</td><td>Reglas de negocio del apartado 4</td><td><span class="now">Clase 16/10</span></td></tr>
+<tr><td>Separación de acceso a datos</td><td><code>JugadorDAO</code>, <code>PartidaDAO</code></td><td><span class="future">Durante la cursada</span></td></tr>
+<tr><td>JSON</td><td>Respaldo automático del historial</td><td><span class="future">Durante la cursada</span></td></tr>
+<tr><td>Configuración externa</td><td>Cadena de conexión en App.config</td><td><span class="future">Durante la cursada</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<section id="etapas">
+<h2>10. Plan por etapas</h2>
+<ol>
+<li><strong>Análisis:</strong> definir razas, clases, combinaciones, preguntas y regla de desempate.</li>
+<li><strong>Base de datos:</strong> script completo, datos de prueba y pruebas en Workbench.</li>
+<li><strong>POO:</strong> clases del dominio, test clásico y narrativo funcionando sin base.</li>
+<li><strong>Windows Forms:</strong> formularios, imágenes y pseudo-animación.</li>
+<li><strong>Integración:</strong> <code>ConexionBD</code>, registro de partidas, historial y estadísticas.</li>
+<li><strong>Manejo de errores:</strong> captura de <code>MySqlException</code> y SQLSTATE 45000.</li>
+<li><strong>Evolución:</strong> DAO, JSON y configuración externa a medida que se vean en clase.</li>
+<li><strong>Cierre:</strong> pruebas, documentación técnica, diagramas y preparación de la defensa.</li>
+</ol>
+
+<h3>Entregables finales</h3>
+<ul>
+<li>Solución completa de Visual Studio.</li>
+<li>Script SQL que crea la base desde cero, con datos de prueba y todos los objetos.</li>
+<li>Archivo JSON de ejemplo.</li>
+<li>Documentación técnica, diagrama del modelo de datos y diagrama de clases simplificado.</li>
+<li>Instrucciones de ejecución.</li>
+<li>Documento en PDF según las pautas de presentación (A4, Arial 11, interlineado 1,5, APA 7).</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<section id="pendientes">
+<h2>11. Decisiones pendientes</h2>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Tema</th><th>Propuesta inicial</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td>Razas (6, una por respuesta)</td><td><div class="chips"><span>Humano</span><span>Elfo</span><span>Orco</span><span>Enano</span><span>Mediano</span><span>No-muerto</span></div></td><td><span class="tbd">A definir</span></td></tr>
+<tr><td>Clases</td><td><div class="chips"><span>Guerrero</span><span>Mago</span><span>Pícaro</span><span>Clérigo</span><span>Explorador</span><span>Bardo</span></div></td><td><span class="tbd">A definir</span></td></tr>
+<tr><td>Resultados combinados</td><td>Elfo + Orco → Elfo oscuro · Humano + Elfo → Semielfo · Humano + Orco → Semiorco · resto a definir</td><td><span class="tbd">A definir</span></td></tr>
+<tr><td>Regla de desempate</td><td>Gana la variable que sumó puntos en la última pregunta respondida, o un orden fijo</td><td><span class="tbd">A definir</span></td></tr>
+<tr><td>Cantidad de preguntas</td><td>Entre 10 y 12 en total, mezclando raza y clase</td><td><span class="tbd">A definir</span></td></tr>
+<tr><td>Historia del modo narrativo</td><td>Un fragmento breve por pregunta</td><td><span class="tbd">A definir</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<div class="footer">Grupo N.º ___ · Instituto Argentino de la Empresa · Algoritmos II · Trabajo Práctico Final 2026 · Documento de alcance v0.1</div>
+</main>
+
+
+</body></html>
