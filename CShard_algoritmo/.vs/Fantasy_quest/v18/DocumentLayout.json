@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|c:\\proyecto_letales\\facu\\final_de_algo\\proyecto-algoritmos\\cshard_algoritmo\\fantasy_quest\\enums\\combinacionraza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|solutionrelative:fantasy_quest\\enums\\combinacionraza.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|c:\\proyecto_letales\\facu\\final_de_algo\\proyecto-algoritmos\\cshard_algoritmo\\fantasy_quest\\enums\\clase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|solutionrelative:fantasy_quest\\enums\\clase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|c:\\proyecto_letales\\facu\\final_de_algo\\proyecto-algoritmos\\cshard_algoritmo\\fantasy_quest\\enums\\razas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|solutionrelative:fantasy_quest\\enums\\razas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|c:\\proyecto_letales\\facu\\final_de_algo\\proyecto-algoritmos\\cshard_algoritmo\\fantasy_quest\\fantasy_quest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{938722EE-DC2D-4DE2-AFBA-7298C53070D1}|Fantasy_quest\\Fantasy_quest.csproj|solutionrelative:fantasy_quest\\fantasy_quest.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CombinacionRaza.cs",
+              "DocumentMoniker": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\CombinacionRaza.cs",
+              "RelativeDocumentMoniker": "Fantasy_quest\\enums\\CombinacionRaza.cs",
+              "ToolTip": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\CombinacionRaza.cs",
+              "RelativeToolTip": "Fantasy_quest\\enums\\CombinacionRaza.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T01:36:59.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "clase.cs",
+              "DocumentMoniker": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\clase.cs",
+              "RelativeDocumentMoniker": "Fantasy_quest\\enums\\clase.cs",
+              "ToolTip": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\clase.cs",
+              "RelativeToolTip": "Fantasy_quest\\enums\\clase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T01:33:55.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "razas.cs",
+              "DocumentMoniker": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\razas.cs",
+              "RelativeDocumentMoniker": "Fantasy_quest\\enums\\razas.cs",
+              "ToolTip": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\enums\\razas.cs",
+              "RelativeToolTip": "Fantasy_quest\\enums\\razas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-20T01:31:36.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Fantasy_quest",
+              "DocumentMoniker": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\Fantasy_quest.csproj",
+              "RelativeDocumentMoniker": "Fantasy_quest\\Fantasy_quest.csproj",
+              "ToolTip": "C:\\proyecto_letales\\facu\\final_de_algo\\Proyecto-Algoritmos\\CShard_algoritmo\\Fantasy_quest\\Fantasy_quest.csproj",
+              "RelativeToolTip": "Fantasy_quest\\Fantasy_quest.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-20T01:17:43.631Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
