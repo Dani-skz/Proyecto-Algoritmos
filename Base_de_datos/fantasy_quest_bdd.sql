@@ -16,7 +16,7 @@ use fantasy_quest_bdd;
 -- La version 1 queda comentada al final del archivo.
 
 -- ============================ DROPS ======================================
--- procedimientos / funciones / vistas (v1 y v2)
+-- procedimientos / funciones / vistas 
 drop procedure if exists sp_registrar_jugador;
 drop procedure if exists sp_modificar_jugador;
 drop procedure if exists sp_registrar_partida;
@@ -58,7 +58,7 @@ create table partidas( -- main table
     estado enum('EN_CURSO', 'FINALIZADA', 'CANCELADA') not null default 'EN_CURSO',
     fecha_inicio datetime not null default current_timestamp,
     fecha_fin datetime null,
-    -- resultado: se asigna al terminar (lo calcula C#)
+    -- resultado: se asigna al terminar
     raza_principal varchar(30) null,  -- enum razas
     raza_secundaria varchar(30) null, -- enum razas
     combinacion varchar(50) null,     -- enum CombinacionRaza
@@ -515,7 +515,6 @@ select * from vw_historial;
 
 
 -- =========================================================================
--- ==================== VERSION 1 (COMENTADA, SIN USO) =====================
 -- razas, clases, modos, estados y combinaciones estaban como tablas.
 -- se reemplazo por la version 2 de arriba.
 -- =========================================================================
