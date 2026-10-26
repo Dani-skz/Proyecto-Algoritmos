@@ -16,6 +16,10 @@ namespace Fantasy_quest.enums
         granjero,
         esclavo,
         herrero,
-        explorador 
+        bufon,
+        explorador,
+        druida,
+        hechicero,
+        asesino
     }
 }
