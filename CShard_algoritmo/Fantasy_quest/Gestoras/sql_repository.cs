@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fantasy_quest.Dominio;
 using Fantasy_quest.enums;
 
 namespace Fantasy_quest.Gestoras
@@ -58,15 +59,41 @@ namespace Fantasy_quest.Gestoras
             return id == null ? null : Convert.ToInt32(id);
         }
 
+        // boton Registrarse: a diferencia de RegistrarJugador, falla si el nombre ya existe
+        public Jugador RegistrarJugadorNuevo(string nombre)
+        {
+            if (BuscarJugador(nombre) != null)
+            {
+                throw new InvalidOperationException("Ya existe un jugador con ese nombre. Usá Iniciar sesión.");
+            }
+            int id = RegistrarJugador(nombre);
+            return new Jugador(id, nombre.Trim());
+        }
+
+        // boton Iniciar sesion: devuelve null si el nombre no existe
+        public Jugador? IniciarSesion(string nombre)
+        {
+            DataTable tabla = dao.EjecutarConsulta(
+                "select id_jugador, nombre from jugadores where nombre = @nombre",
+                new Dictionary<string, object?> { { "@nombre", nombre.Trim() } });
+
+            if (tabla.Rows.Count == 0)
+            {
+                return null;
+            }
+            DataRow fila = tabla.Rows[0];
+            return new Jugador(Convert.ToInt32(fila["id_jugador"]), fila["nombre"].ToString()!);
+        }
+
         // ======================= PARTIDAS =======================
 
         // falla si el jugador ya tiene una partida EN_CURSO
-        public int RegistrarPartida(int idJugador, string modo)
+        public int RegistrarPartida(int idJugador, modo_juego modo)
         {
             Dictionary<string, object?> parametros = new Dictionary<string, object?>
             {
                 { "p_id_jugador", idJugador },
-                { "p_modo", modo }
+                { "p_modo", modo.ToString() }
             };
             return dao.EjecutarProcedimientoConSalida("sp_registrar_partida", parametros, "p_id_partida");
         }
@@ -188,7 +215,39 @@ namespace Fantasy_quest.Gestoras
             return puntajes;
         }
 
+        // resultado completo de una partida FINALIZADA (para ver desde el scoreboard)
+        public ResultadoPartida ObtenerResultado(int idPartida)
+        {
+            DataTable tabla = dao.EjecutarConsulta(
+                "select jugador, raza_principal, raza_secundaria, combinacion, clase from vw_historial " +
+                "where id_partida = @id_partida and estado = 'FINALIZADA'",
+                new Dictionary<string, object?> { { "@id_partida", idPartida } });
+
+            if (tabla.Rows.Count == 0)
+            {
+                throw new InvalidOperationException("La partida no existe o no está finalizada");
+            }
+            DataRow fila = tabla.Rows[0];
+
+            return new ResultadoPartida(
+                fila["jugador"].ToString(),
+                Enum.Parse<razas>(fila["raza_principal"].ToString()!),
+                Enum.Parse<razas>(fila["raza_secundaria"].ToString()!),
+                Enum.Parse<CombinacionRaza>(fila["combinacion"].ToString()!),
+                Enum.Parse<clase>(fila["clase"].ToString()!),
+                ObtenerPuntajesRaza(idPartida),
+                ObtenerPuntajesClase(idPartida));
+        }
+
         // ======================= VISTAS (para grillas) =======================
+
+        // partidas finalizadas; id_partida va oculto en la grilla
+        public DataTable ObtenerScoreboard()
+        {
+            return dao.EjecutarConsulta(
+                "select id_partida, jugador as Jugador, combinacion as Resultado, clase as Clase, " +
+                "fecha_fin as Fecha from vw_historial where estado = 'FINALIZADA' order by fecha_fin desc");
+        }
 
         // id_partida, id_jugador, jugador, modo, fecha_inicio, preguntas_respondidas
         public DataTable ObtenerPartidasPendientes()
