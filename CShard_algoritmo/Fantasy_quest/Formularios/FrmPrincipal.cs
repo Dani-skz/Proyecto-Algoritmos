@@ -58,8 +58,9 @@ namespace Fantasy_quest.Formularios
         private void Ingresar(ModoIngreso modo)
         {
             using FrmIngreso frmIngreso = new FrmIngreso(modo);
-            if (Navegador.Abrir(this, frmIngreso) != DialogResult.OK || frmIngreso.Jugador == null)
+            if (Navegador.Abrir(this, frmIngreso, volver: false) != DialogResult.OK || frmIngreso.Jugador == null)
             {
+                Navegador.Volver(this);
                 return;
             }
 

@@ -9,14 +9,13 @@
 [X] Documentacion basica    
 [X] Coneccion a la base de datos
 ### Sprint [ 2 ] DOS
-
+[X] Diseno de arte (obtener todas als combinaciones) disenas fondos para los menus
 
 ## Tareas pendientes
 
-[ ] Ir ocultando los formularios que quedan detras, solo el formulario que tiene el foco y esta siendo usado en ese momento es el visible, los otros deben ir ocultandose
+[ ] Funcion Ir ocultando los formularios que quedan detras, solo el formulario que tiene el foco y esta siendo usado en ese momento es el visible, los otros deben ir ocultandose
 [ ] Anadir mas preguntas 
 [ ] Avanzar algoritmo del juego, de forma mas sensilla posible
-[ ] Diseno de arte (obtener todas als combinaciones) disenas fondos para los menus
 [ ] Quitar barra de windows del cerrar minimizar etc y poner una barra custom nuestra
 [ ] Diseno de artistico de interfaz, disenar botones custom
 [ ] Nuevo DER
