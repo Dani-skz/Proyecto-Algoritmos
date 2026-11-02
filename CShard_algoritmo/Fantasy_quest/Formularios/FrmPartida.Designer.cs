@@ -43,7 +43,7 @@ namespace Fantasy_quest.Formularios
             // lblProgreso
             //
             lblProgreso.AutoSize = true;
-            lblProgreso.Location = new Point(12, 12);
+            lblProgreso.Location = new Point(70, 20);
             lblProgreso.Name = "lblProgreso";
             lblProgreso.Size = new Size(91, 15);
             lblProgreso.TabIndex = 0;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fantasy_quest.Dominio;
 using Fantasy_quest.Gestoras;
+using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
@@ -18,6 +19,7 @@ namespace Fantasy_quest.Formularios
         public FrmPartida(GestorPartida gestor)
         {
             InitializeComponent();
+            Tema.Aplicar(this);
             this.gestor = gestor;
             botonesRespuesta = new Button[]
             {

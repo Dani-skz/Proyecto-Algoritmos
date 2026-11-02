@@ -48,7 +48,7 @@ namespace Fantasy_quest.Formularios
             // lblNombre
             //
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(250, 180);
+            lblNombre.Location = new Point(250, 170);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(54, 15);
             lblNombre.TabIndex = 1;

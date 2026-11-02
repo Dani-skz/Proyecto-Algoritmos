@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fantasy_quest.Gestoras;
+using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
@@ -15,6 +16,7 @@ namespace Fantasy_quest.Formularios
         public FrmPrincipal()
         {
             InitializeComponent();
+            Tema.Aplicar(this);
         }
 
         private void FrmPrincipal_Shown(object sender, EventArgs e)

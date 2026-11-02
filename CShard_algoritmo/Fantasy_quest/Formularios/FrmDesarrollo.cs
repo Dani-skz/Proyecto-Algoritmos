@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Fantasy_quest.Dominio;
 using Fantasy_quest.Gestoras;
+using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
@@ -19,6 +20,7 @@ namespace Fantasy_quest.Formularios
         public FrmDesarrollo()
         {
             InitializeComponent();
+            Tema.Aplicar(this);
         }
 
         private void FrmDesarrollo_Load(object sender, EventArgs e)

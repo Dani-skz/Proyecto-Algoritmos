@@ -8,3 +8,5 @@
 *\obj/
 *\release/
 *\debug/
+#repo de referencia de la interfaz, lo que se usa se copia a Fantasy_quest/ui/
+referencia_warcraftcn/
