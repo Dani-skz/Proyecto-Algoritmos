@@ -10,3 +10,5 @@
 *\debug/
 #repo de referencia de la interfaz, lo que se usa se copia a Fantasy_quest/ui/
 referencia_warcraftcn/
+#worktree con version vieja del menu para capturas de documentacion
+old menu/
