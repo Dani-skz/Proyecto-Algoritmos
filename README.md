@@ -16,5 +16,6 @@
 
 
 
+\# pagina de referencia estilo UXUI https://www.warcraftcn.com/docs
 \# pagina usada para el diagrama https://sqltoerdiagram.com
 
