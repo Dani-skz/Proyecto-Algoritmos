@@ -1,4 +1,5 @@
 using Fantasy_quest.Formularios;
+using Fantasy_quest.ui;
 
 namespace Fantasy_quest
 {
@@ -13,6 +14,7 @@ namespace Fantasy_quest
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            Sonido.TocarMusicaFondo();
 #if DEBUG
             // desde el IDE (Debug): menu de desarrollo con acceso directo a cada ventana
             Application.Run(new FrmDesarrollo());

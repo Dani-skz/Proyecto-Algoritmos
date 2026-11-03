@@ -17,6 +17,20 @@ namespace Fantasy_quest.Formularios
         {
             InitializeComponent();
             Tema.Aplicar(this);
+            barraMusica.Valor = Sonido.Musica.Volumen;
+            barraNarracion.Valor = Sonido.Narracion.Volumen;
+        }
+
+        private void barraMusica_ValorCambiado(object? sender, EventArgs e)
+        {
+            Sonido.Musica.Volumen = barraMusica.Valor;
+            lblMusica.Text = $"Música: {barraMusica.Valor}%";
+        }
+
+        private void barraNarracion_ValorCambiado(object? sender, EventArgs e)
+        {
+            Sonido.Narracion.Volumen = barraNarracion.Valor;
+            lblNarracion.Text = $"Narración: {barraNarracion.Valor}%";
         }
 
         private void FrmPrincipal_Shown(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Fantasy_quest.Gestoras;
+using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
@@ -45,7 +46,8 @@ namespace Fantasy_quest.Formularios
             actual.Activate();
         }
 
-        // partida y, si se termino, su resultado. Atras en el resultado vuelve a "actual"
+        // partida y, si se termino, su resultado (con la cancion final).
+        // Atras en el resultado vuelve a "actual" y a la musica de fondo
         public static void Jugar(Form actual, GestorPartida gestor)
         {
             using (FrmPartida frmPartida = new FrmPartida(gestor))
@@ -56,7 +58,9 @@ namespace Fantasy_quest.Formularios
             if (gestor.Resultado != null)
             {
                 using FrmResultado frmResultado = new FrmResultado(gestor.Resultado);
+                Sonido.Musica.Reproducir(Sonido.CancionFinal);
                 Abrir(actual, frmResultado);
+                Sonido.TocarMusicaFondo();
             }
             else
             {

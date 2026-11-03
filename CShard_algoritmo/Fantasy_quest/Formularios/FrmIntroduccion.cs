@@ -9,18 +9,44 @@ using Fantasy_quest.ui;
 namespace Fantasy_quest.Formularios
 {
     // introduccion narrativa: FrmPartida la abre antes de cada pregunta.
-    // Continuar (o la X) la cierra y deja ver la pregunta
+    // Continuar (o la X) la cierra, corta la narracion y deja ver la pregunta
     internal partial class FrmIntroduccion : Form
     {
+        private readonly int numero;
+
         public FrmIntroduccion(Pregunta pregunta, int numero, int total)
         {
             InitializeComponent();
             Tema.Aplicar(this);
 
+            this.numero = numero;
             lblCapitulo.Text = $"Capítulo {numero} de {total}";
             lblTitulo.Text = pregunta.Titulo;
             lblHistoria.Text = pregunta.Historia;
+            MostrarSonido();
             PrepararDesplazamiento();
+        }
+
+        private void FrmIntroduccion_Shown(object? sender, EventArgs e)
+        {
+            Sonido.NarrarCapitulo(numero);
+        }
+
+        private void FrmIntroduccion_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            Sonido.Narracion.Detener();
+        }
+
+        // silencia solo la narracion (la musica de fondo sigue) y queda puesto para las siguientes
+        private void btnSonido_Click(object sender, EventArgs e)
+        {
+            Sonido.Narracion.Silenciado = !Sonido.Narracion.Silenciado;
+            MostrarSonido();
+        }
+
+        private void MostrarSonido()
+        {
+            btnSonido.Text = Sonido.Narracion.Silenciado ? "Activar sonido" : "Silenciar";
         }
 
         // pnlTexto recorta el texto; si no entra, la barra mueve lblHistoria hacia arriba

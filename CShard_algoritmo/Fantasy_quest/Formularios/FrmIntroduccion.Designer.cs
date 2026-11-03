@@ -35,6 +35,7 @@ namespace Fantasy_quest.Formularios
             lblHistoria = new Label();
             barraHistoria = new Fantasy_quest.ui.BarraDesplazamiento();
             btnContinuar = new Button();
+            btnSonido = new Button();
             pnlHistoria.SuspendLayout();
             pnlTexto.SuspendLayout();
             SuspendLayout();
@@ -101,6 +102,16 @@ namespace Fantasy_quest.Formularios
             btnContinuar.UseVisualStyleBackColor = true;
             btnContinuar.Click += btnContinuar_Click;
             //
+            // btnSonido
+            //
+            btnSonido.Location = new Point(40, 445);
+            btnSonido.Name = "btnSonido";
+            btnSonido.Size = new Size(150, 40);
+            btnSonido.TabIndex = 4;
+            btnSonido.Text = "Silenciar";
+            btnSonido.UseVisualStyleBackColor = true;
+            btnSonido.Click += btnSonido_Click;
+            //
             // FrmIntroduccion
             //
             AcceptButton = btnContinuar;
@@ -111,11 +122,14 @@ namespace Fantasy_quest.Formularios
             Controls.Add(lblTitulo);
             Controls.Add(pnlHistoria);
             Controls.Add(btnContinuar);
+            Controls.Add(btnSonido);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "FrmIntroduccion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fantasy Quest";
+            FormClosed += FrmIntroduccion_FormClosed;
+            Shown += FrmIntroduccion_Shown;
             pnlTexto.ResumeLayout(false);
             pnlHistoria.ResumeLayout(false);
             ResumeLayout(false);
@@ -130,5 +144,6 @@ namespace Fantasy_quest.Formularios
         private Label lblHistoria;
         private Fantasy_quest.ui.BarraDesplazamiento barraHistoria;
         private Button btnContinuar;
+        private Button btnSonido;
     }
 }

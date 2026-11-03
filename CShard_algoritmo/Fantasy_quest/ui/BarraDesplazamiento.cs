@@ -11,9 +11,10 @@ namespace Fantasy_quest.ui
         private const int AltoMinimoPieza = 30;
         private const int PasoRueda = 40;
 
-        private static readonly Color Riel = Color.FromArgb(90, 60, 30);
-        private static readonly Color Pieza = Color.FromArgb(240, 198, 90);
-        private static readonly Color BordePieza = Color.FromArgb(110, 70, 20);
+        // tambien los usa BarraVolumen
+        internal static readonly Color Riel = Color.FromArgb(90, 60, 30);
+        internal static readonly Color Pieza = Color.FromArgb(240, 198, 90);
+        internal static readonly Color BordePieza = Color.FromArgb(110, 70, 20);
 
         private int valor;
         private int? arrastreDesde; // distancia entre el clic y el borde superior de la pieza

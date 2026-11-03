@@ -35,6 +35,10 @@ namespace Fantasy_quest.Formularios
             btnAnonimo = new Button();
             btnScoreboard = new Button();
             btnSalir = new Button();
+            lblMusica = new Label();
+            barraMusica = new Fantasy_quest.ui.BarraVolumen();
+            lblNarracion = new Label();
+            barraNarracion = new Fantasy_quest.ui.BarraVolumen();
             SuspendLayout();
             //
             // lblTitulo
@@ -106,6 +110,40 @@ namespace Fantasy_quest.Formularios
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             //
+            // lblMusica
+            //
+            lblMusica.Location = new Point(180, 435);
+            lblMusica.Name = "lblMusica";
+            lblMusica.Size = new Size(200, 22);
+            lblMusica.TabIndex = 7;
+            lblMusica.Text = "Música: 100%";
+            lblMusica.TextAlign = ContentAlignment.MiddleCenter;
+            //
+            // barraMusica
+            //
+            barraMusica.Location = new Point(190, 460);
+            barraMusica.Name = "barraMusica";
+            barraMusica.Size = new Size(180, 18);
+            barraMusica.TabIndex = 8;
+            barraMusica.ValorCambiado += barraMusica_ValorCambiado;
+            //
+            // lblNarracion
+            //
+            lblNarracion.Location = new Point(420, 435);
+            lblNarracion.Name = "lblNarracion";
+            lblNarracion.Size = new Size(200, 22);
+            lblNarracion.TabIndex = 9;
+            lblNarracion.Text = "Narración: 100%";
+            lblNarracion.TextAlign = ContentAlignment.MiddleCenter;
+            //
+            // barraNarracion
+            //
+            barraNarracion.Location = new Point(430, 460);
+            barraNarracion.Name = "barraNarracion";
+            barraNarracion.Size = new Size(180, 18);
+            barraNarracion.TabIndex = 10;
+            barraNarracion.ValorCambiado += barraNarracion_ValorCambiado;
+            //
             // FrmPrincipal
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -118,6 +156,10 @@ namespace Fantasy_quest.Formularios
             Controls.Add(btnAnonimo);
             Controls.Add(btnScoreboard);
             Controls.Add(btnSalir);
+            Controls.Add(lblMusica);
+            Controls.Add(barraMusica);
+            Controls.Add(lblNarracion);
+            Controls.Add(barraNarracion);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "FrmPrincipal";
@@ -136,5 +178,9 @@ namespace Fantasy_quest.Formularios
         private Button btnAnonimo;
         private Button btnScoreboard;
         private Button btnSalir;
+        private Label lblMusica;
+        private Fantasy_quest.ui.BarraVolumen barraMusica;
+        private Label lblNarracion;
+        private Fantasy_quest.ui.BarraVolumen barraNarracion;
     }
 }

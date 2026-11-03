@@ -5,6 +5,8 @@
     <TargetFramework>net9.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
+    <!-- solo para System.Windows.Media.MediaPlayer (audio de las narraciones) -->
+    <UseWPF>true</UseWPF>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -12,8 +14,19 @@
     <PackageReference Include="MySql.Data" Version="26.10.0" />
   </ItemGroup>
 
+  <!-- UseWPF quita System.IO de los using implicitos; lo volvemos a poner (File, Path, Stream) -->
+  <ItemGroup>
+    <Using Include="System.IO" />
+  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="ui\*.png" />
+  </ItemGroup>
+
+  <!-- narraciones y banda sonora: se embeben desde Documentacion (recurso "Fantasy_quest.Audios.<archivo>") -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Documentacion\Audios\*.mp3" LogicalName="Fantasy_quest.Audios.%(Filename)%(Extension)" />
+    <EmbeddedResource Include="..\..\Documentacion\Banda Sonora\*.mp3;..\..\Documentacion\Banda Sonora\*.m4a" LogicalName="Fantasy_quest.Audios.%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
