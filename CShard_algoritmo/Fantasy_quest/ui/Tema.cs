@@ -16,19 +16,36 @@ namespace Fantasy_quest.ui
         private static readonly Color Madera = Color.FromArgb(24, 18, 13);
         private static readonly Color MaderaClara = Color.FromArgb(44, 34, 25);
         private static readonly Color Seleccion = Color.FromArgb(28, 58, 130);
+        private static readonly Color Tinta = Color.FromArgb(30, 16, 6); // texto sobre el contenedor de pergamino
 
         private static readonly Image Fondo = CargarImagen("fondo.png");
         private static readonly Image ImagenBoton = CargarImagen("boton.png");
         private static readonly Image ImagenEntrada = CargarImagen("entrada.png");
+        private static readonly Image ImagenContenedor = CargarImagen("contenedor.png");
+
+        // marco de madera vacio: el centro queda libre para la imagen de cada clase
+        public static readonly Image AvatarDefault = CargarImagen("avatar_default.png");
 
         public static void Aplicar(Form formulario)
         {
             formulario.BackColor = Madera;
             formulario.BackgroundImage = Fondo;
             formulario.BackgroundImageLayout = ImageLayout.Stretch;
+            AplicarControles(formulario);
+        }
 
-            foreach (Control control in formulario.Controls)
+        // recorre tambien lo que hay dentro de cada Panel
+        private static void AplicarControles(Control contenedor)
+        {
+            foreach (Control control in contenedor.Controls)
             {
+                if (control is Panel panel)
+                {
+                    AplicarPanel(panel);
+                    AplicarControles(panel);
+                    continue;
+                }
+
                 control.Font = new Font(Fuente, control.Font.Size + 1, control.Font.Style);
 
                 if (control is Button boton)
@@ -41,13 +58,30 @@ namespace Fantasy_quest.ui
                 }
                 else if (control is TextBox entrada)
                 {
-                    AplicarEntrada(entrada, formulario);
+                    AplicarEntrada(entrada);
                 }
                 else if (control is DataGridView grilla)
                 {
                     AplicarGrilla(grilla);
                 }
+                else if (control is PictureBox imagen)
+                {
+                    imagen.BackColor = Color.Transparent;
+                }
             }
+        }
+
+        // todo Panel es un contenedor de pergamino (como el contenido de los tabs de warcraftcn).
+        // Un Panel dentro de otro queda transparente: solo sirve para recortar (ej. texto con slider)
+        private static void AplicarPanel(Panel panel)
+        {
+            panel.BackColor = Color.Transparent;
+            if (panel.Parent is Panel)
+            {
+                return;
+            }
+            panel.BackgroundImage = ImagenContenedor;
+            panel.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private static void AplicarBoton(Button boton)
@@ -86,13 +120,21 @@ namespace Fantasy_quest.ui
         {
             bool esTitulo = etiqueta.Font.Size >= 18;
             etiqueta.BackColor = Color.Transparent;
-            etiqueta.ForeColor = esTitulo ? Dorado : Pergamino;
             etiqueta.BorderStyle = BorderStyle.None;
+
+            if (etiqueta.Parent is Panel)
+            {
+                etiqueta.ForeColor = Tinta;
+            }
+            else
+            {
+                etiqueta.ForeColor = esTitulo ? Dorado : Pergamino;
+            }
         }
 
-        // el marco se dibuja sobre el formulario, alrededor del TextBox.
+        // el marco se dibuja sobre el contenedor (formulario o panel), alrededor del TextBox.
         // El TextBox se achica a lo ancho para que el marco ocupe su ancho original
-        private static void AplicarEntrada(TextBox entrada, Form formulario)
+        private static void AplicarEntrada(TextBox entrada)
         {
             const int margen = 12;
             entrada.BorderStyle = BorderStyle.None;
@@ -100,7 +142,7 @@ namespace Fantasy_quest.ui
             entrada.ForeColor = Pergamino;
             entrada.Left += margen;
             entrada.Width -= margen * 2;
-            formulario.Paint += (sender, e) =>
+            entrada.Parent!.Paint += (sender, e) =>
                 DibujarMarco(e.Graphics, ImagenEntrada, Rectangle.Inflate(entrada.Bounds, margen, 8), 32, 8, 1f);
         }
 

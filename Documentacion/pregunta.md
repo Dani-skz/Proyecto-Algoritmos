@@ -4,6 +4,8 @@
 
 ## Pregunta 1 — El amanecer en Stoneland
 
+**introduccion narrativa**
+
 Es una mañana despejada en Stoneland, una aldea enclavada en las faldas de las
 Montañas Grises, en territorio de la Casa Puñohierro. El sonido de los martillos sobre
 los yunques lleva horas resonando: los herreros enanos de esta región nunca descansan
@@ -30,6 +32,8 @@ F- carne de goblin = Orco + asesino
 ---
 
 ## Pregunta 2 — La procesión de los Dorados
+
+**introduccion narrativa**
 
 Terminás de comer y salís a la calle principal justo cuando el pueblo cobra más vida.
 Una columna de jinetes avanza por el centro de Stoneland: son los Caballeros Dorados,
@@ -60,6 +64,8 @@ F- a ninguno, los dioses son una mentira = Enano + campesino
 
 ## Pregunta 3 — El encargo del viajero
 
+**introduccion narrativa**
+
 A la mañana siguiente, mientras te preparás para continuar el camino, un hombre
 se acerca a tu mesa. Es un cartógrafo de mediana edad, con la insignia desgastada
 de la Casa Hielofaro cosida al hombro: la orden que mantiene los faros boreales y
@@ -89,6 +95,8 @@ F- lo estudiaría obsesivamente hasta entenderlo = Elfo + druida
 
 ## Pregunta 4 — La armería de la Casa Puñohierro
 
+**introduccion narrativa**
+
 Aceptes o no el encargo, algo está claro: el camino al norte no es un paseo.
 Antes de salir de Stoneland, entrás a la armería del pueblo, operada por un maestro
 herrero con el escudo de la Casa Puñohierro colgado sobre la fragua.
@@ -115,6 +123,8 @@ F- un arado, las armas son para tontos = Humano + campesino
 ---
 
 ## Pregunta 5 — La encrucijada de las tres rutas
+
+**introduccion narrativa**
 
 Salís de Stoneland al amanecer. El camino principal se divide en una encrucijada
 marcada por un hito de piedra labrada, obra de la Casa Valdemonte, que administra
@@ -149,6 +159,8 @@ F- en el frente de batalla, donde empieza el peligro = Orco + guerrero
 
 ## Pregunta 6 — El encuentro en el camino
 
+**introduccion narrativa**
+
 Llevás dos días caminando cuando escuchás voces delante. En un tramo angosto del
 camino, rodeado de rocas, un grupo de viajeros está siendo detenido por tres hombres
 armados que exigen un "peaje no oficial". No son soldados de ninguna casa noble.
@@ -175,6 +187,8 @@ F- le ofrezco agua y escucho su historia = Elfo + druida
 ---
 
 ## Pregunta 7 — Los restos de la Era de la Magia
+
+**introduccion narrativa**
 
 El mercader agradecido te invita a caminar junto a su grupo por el tramo siguiente.
 Mientras avanzan, atraviesan una zona que el mercader llama "tierra vieja": un valle
@@ -203,6 +217,8 @@ F- es peligrosa, vi lo que hacen los Primigenios con ella = Enano + herrero
 ---
 
 ## Pregunta 8 — La misión más grande
+
+**introduccion narrativa**
 
 Llegás a la ciudad de paso de Puerta Norte, un nudo de rutas administrado por la
 Casa Puñopiedra. Tiene puentes sólidos, posadas limpias y un tablero de anuncios
@@ -233,6 +249,8 @@ F- mis armas y nada más, todo lo demás se consigue = Orco + guerrero
 
 ## Pregunta 9 — La despedida en el cruce
 
+**introduccion narrativa**
+
 Durante el camino hacia Fuegoalto, viajaste un buen tramo junto a alguien que
 apareció en la posada de Puerta Norte: un compañero de ruta con quien compartiste
 fogones, raciones y conversaciones nocturnas sobre Aeloria, sus casas, sus dioses
@@ -258,6 +276,8 @@ F- acepto que la muerte es parte del camino = Orco + mago
 ---
 
 ## Pregunta 10 — A la vista de Fuegoalto
+
+**introduccion narrativa**
 
 Después de semanas de camino, la ves por primera vez desde una loma:
 Fuegoalto, capital de la Provincia Central-Ceca, sede de la Casa Luceronocturno
@@ -286,6 +306,8 @@ F- la sangre y el caos, hay belleza en la destrucción = Orco + guerrero
 ---
 
 ## Pregunta 11 — El visitante del camposanto
+
+**introduccion narrativa**
 
 En las afueras de Fuegoalto hay un pequeño camposanto con lápidas que registran
 nombres de todas las razas: enanos, humanos, algún elfo que murió lejos de casa.
@@ -325,6 +347,8 @@ F- negociaría, todo tiene su precio en Aeloria = Orco + asesino
 
 ## Pregunta 12 — La primera noche en Fuegoalto
 
+**introduccion narrativa**
+
 Entrás a Fuegoalto al día siguiente, con el encuentro del camposanto todavía dando
 vueltas en la cabeza. La ciudad es grande y ruidosa: carretas del Banco de Fuego
 cruzan las calles principales, los talleres de la Casa Luceronocturno trabajan hasta
@@ -347,6 +371,8 @@ F- buscando el cuartel de la Guardia del Abismo para presentarme = Orco + guerre
 ---
 
 ## Pregunta 13 — La Biblioteca Real
+
+**introduccion narrativa**
 
 El Coloso Primigenio es la estructura más imponente que viste en tu vida: una torre
 de piedra negra que no parece haber sido construida sino encontrada, como si siempre
@@ -374,6 +400,8 @@ F- pasaría años estudiándolo hasta entender cada detalle = Elfo + druida
 
 ## Pregunta 14 — La oferta de la Guardia del Abismo
 
+**introduccion narrativa**
+
 Al salir de la Biblioteca Real, un capitán de la Guardia del Abismo te espera en la
 puerta. Lleva la capa gris con el borde negro que identifica a los veteranos del borde.
 La Guardia custodia el límite del continente desde la Era II, donde termina el mapa
@@ -400,6 +428,8 @@ F- volvería a buscar refuerzos antes de seguir = Humano + campesino
 ---
 
 ## Pregunta 15 — El final del camino
+
+**introduccion narrativa**
 
 Pasaron semanas desde que saliste de Stoneland. Estás sentado en una terraza
 de Fuegoalto con el pergamino ya entregado, la misión cumplida y una ciudad entera

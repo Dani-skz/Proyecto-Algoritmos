@@ -9,7 +9,8 @@ using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
-    // historia + pregunta + hasta 6 respuestas. Toda la logica esta en GestorPartida.
+    // pregunta + hasta 6 respuestas; antes de cada una se abre FrmIntroduccion con la historia.
+    // Toda la logica esta en GestorPartida.
     // Al terminar se cierra con DialogResult.OK y Navegador.Jugar muestra el resultado
     internal partial class FrmPartida : Form
     {
@@ -43,13 +44,24 @@ namespace Fantasy_quest.Formularios
             {
                 Terminar();
             }
+            else
+            {
+                // BeginInvoke: primero termina Shown (asi Navegador oculta la ventana de abajo)
+                BeginInvoke(MostrarIntroduccion);
+            }
+        }
+
+        private void MostrarIntroduccion()
+        {
+            using FrmIntroduccion frmIntroduccion = new FrmIntroduccion(gestor.PreguntaActual,
+                                                                        gestor.IndiceActual + 1, gestor.Preguntas.Count);
+            Navegador.Abrir(this, frmIntroduccion);
         }
 
         private void MostrarPregunta()
         {
             Pregunta pregunta = gestor.PreguntaActual;
             lblProgreso.Text = $"Pregunta {gestor.IndiceActual + 1} de {gestor.Preguntas.Count}";
-            lblHistoria.Text = pregunta.Historia;
             lblPregunta.Text = pregunta.Texto;
 
             for (int i = 0; i < botonesRespuesta.Length; i++)
@@ -84,6 +96,7 @@ namespace Fantasy_quest.Formularios
             else
             {
                 MostrarPregunta();
+                MostrarIntroduccion();
             }
         }
 

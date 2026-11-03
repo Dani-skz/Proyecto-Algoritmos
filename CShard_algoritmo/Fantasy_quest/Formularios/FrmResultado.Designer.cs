@@ -29,61 +29,68 @@ namespace Fantasy_quest.Formularios
         private void InitializeComponent()
         {
             lblTitulo = new Label();
+            pbAvatar = new PictureBox();
             lblCombinacion = new Label();
             lblDetalle = new Label();
-            dgvPuntajes = new DataGridView();
+            btnPuntajes = new Button();
             btnAtras = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvPuntajes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbAvatar).BeginInit();
             SuspendLayout();
             //
             // lblTitulo
             //
             lblTitulo.Font = new Font("Segoe UI", 14F);
-            lblTitulo.Location = new Point(0, 20);
+            lblTitulo.Location = new Point(0, 25);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(800, 30);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Tu resultado";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             //
+            // pbAvatar
+            //
+            pbAvatar.Location = new Point(70, 85);
+            pbAvatar.Name = "pbAvatar";
+            pbAvatar.Size = new Size(320, 320);
+            pbAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+            pbAvatar.TabIndex = 1;
+            pbAvatar.TabStop = false;
+            //
             // lblCombinacion
             //
             lblCombinacion.Font = new Font("Segoe UI", 26F, FontStyle.Bold);
-            lblCombinacion.Location = new Point(0, 55);
+            lblCombinacion.Location = new Point(410, 150);
             lblCombinacion.Name = "lblCombinacion";
-            lblCombinacion.Size = new Size(800, 50);
-            lblCombinacion.TabIndex = 1;
+            lblCombinacion.Size = new Size(360, 60);
+            lblCombinacion.TabIndex = 2;
             lblCombinacion.Text = "Combinacion";
-            lblCombinacion.TextAlign = ContentAlignment.MiddleCenter;
+            lblCombinacion.TextAlign = ContentAlignment.MiddleLeft;
             //
             // lblDetalle
             //
-            lblDetalle.Location = new Point(0, 110);
+            lblDetalle.Font = new Font("Segoe UI", 12F);
+            lblDetalle.Location = new Point(412, 215);
             lblDetalle.Name = "lblDetalle";
-            lblDetalle.Size = new Size(800, 25);
-            lblDetalle.TabIndex = 2;
-            lblDetalle.Text = "Raza principal · Raza secundaria · Clase";
-            lblDetalle.TextAlign = ContentAlignment.MiddleCenter;
+            lblDetalle.Size = new Size(358, 100);
+            lblDetalle.TabIndex = 3;
+            lblDetalle.Text = "Raza principal\nRaza secundaria\nClase";
             //
-            // dgvPuntajes
+            // btnPuntajes
             //
-            dgvPuntajes.AllowUserToAddRows = false;
-            dgvPuntajes.AllowUserToDeleteRows = false;
-            dgvPuntajes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPuntajes.Location = new Point(150, 145);
-            dgvPuntajes.Name = "dgvPuntajes";
-            dgvPuntajes.ReadOnly = true;
-            dgvPuntajes.RowHeadersVisible = false;
-            dgvPuntajes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPuntajes.Size = new Size(500, 295);
-            dgvPuntajes.TabIndex = 3;
+            btnPuntajes.Location = new Point(610, 445);
+            btnPuntajes.Name = "btnPuntajes";
+            btnPuntajes.Size = new Size(150, 40);
+            btnPuntajes.TabIndex = 4;
+            btnPuntajes.Text = "Ver puntajes";
+            btnPuntajes.UseVisualStyleBackColor = true;
+            btnPuntajes.Click += btnPuntajes_Click;
             //
             // btnAtras
             //
             btnAtras.Location = new Point(12, 453);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(110, 35);
-            btnAtras.TabIndex = 4;
+            btnAtras.TabIndex = 5;
             btnAtras.Text = "← Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -94,25 +101,27 @@ namespace Fantasy_quest.Formularios
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 500);
             Controls.Add(lblTitulo);
+            Controls.Add(pbAvatar);
             Controls.Add(lblCombinacion);
             Controls.Add(lblDetalle);
-            Controls.Add(dgvPuntajes);
+            Controls.Add(btnPuntajes);
             Controls.Add(btnAtras);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "FrmResultado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fantasy Quest";
-            ((System.ComponentModel.ISupportInitialize)dgvPuntajes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbAvatar).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Label lblTitulo;
+        private PictureBox pbAvatar;
         private Label lblCombinacion;
         private Label lblDetalle;
-        private DataGridView dgvPuntajes;
+        private Button btnPuntajes;
         private Button btnAtras;
     }
 }

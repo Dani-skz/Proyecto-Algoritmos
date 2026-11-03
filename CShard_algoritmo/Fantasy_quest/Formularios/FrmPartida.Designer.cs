@@ -29,7 +29,6 @@ namespace Fantasy_quest.Formularios
         private void InitializeComponent()
         {
             lblProgreso = new Label();
-            lblHistoria = new Label();
             lblPregunta = new Label();
             btnRespuesta1 = new Button();
             btnRespuesta2 = new Button();
@@ -49,23 +48,12 @@ namespace Fantasy_quest.Formularios
             lblProgreso.TabIndex = 0;
             lblProgreso.Text = "Pregunta 1 de 1";
             //
-            // lblHistoria
-            //
-            lblHistoria.BorderStyle = BorderStyle.FixedSingle;
-            lblHistoria.Font = new Font("Segoe UI", 11F, FontStyle.Italic);
-            lblHistoria.Location = new Point(40, 40);
-            lblHistoria.Name = "lblHistoria";
-            lblHistoria.Padding = new Padding(8);
-            lblHistoria.Size = new Size(720, 125);
-            lblHistoria.TabIndex = 1;
-            lblHistoria.Text = "Historia";
-            //
             // lblPregunta
             //
-            lblPregunta.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            lblPregunta.Location = new Point(40, 178);
+            lblPregunta.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblPregunta.Location = new Point(40, 70);
             lblPregunta.Name = "lblPregunta";
-            lblPregunta.Size = new Size(720, 32);
+            lblPregunta.Size = new Size(720, 130);
             lblPregunta.TabIndex = 2;
             lblPregunta.Text = "Pregunta";
             lblPregunta.TextAlign = ContentAlignment.MiddleCenter;
@@ -152,7 +140,6 @@ namespace Fantasy_quest.Formularios
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 500);
             Controls.Add(lblProgreso);
-            Controls.Add(lblHistoria);
             Controls.Add(lblPregunta);
             Controls.Add(btnRespuesta1);
             Controls.Add(btnRespuesta2);
@@ -176,7 +163,6 @@ namespace Fantasy_quest.Formularios
         #endregion
 
         private Label lblProgreso;
-        private Label lblHistoria;
         private Label lblPregunta;
         private Button btnRespuesta1;
         private Button btnRespuesta2;

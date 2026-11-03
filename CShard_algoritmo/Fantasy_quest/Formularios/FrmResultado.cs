@@ -8,30 +8,34 @@ using Fantasy_quest.ui;
 
 namespace Fantasy_quest.Formularios
 {
-    // sirve para el final de la partida y para "Ver resultado" del scoreboard
+    // sirve para el final de la partida y para "Ver resultado" del scoreboard.
+    // Solo muestra el resultado; los puntos de cada raza y clase estan en FrmPuntajes
     internal partial class FrmResultado : Form
     {
+        private readonly ResultadoPartida resultado;
+
         public FrmResultado(ResultadoPartida resultado)
         {
             InitializeComponent();
             Tema.Aplicar(this);
+            this.resultado = resultado;
 
             lblTitulo.Text = resultado.NombreJugador == null
                 ? "Tu resultado"
                 : "Resultado de " + resultado.NombreJugador;
             lblCombinacion.Text = resultado.Combinacion.ToString();
-            lblDetalle.Text = $"Raza principal: {resultado.RazaPrincipal}   ·   " +
-                              $"Raza secundaria: {resultado.RazaSecundaria}   ·   " +
+            lblDetalle.Text = $"Raza principal: {resultado.RazaPrincipal}\n" +
+                              $"Raza secundaria: {resultado.RazaSecundaria}\n" +
                               $"Clase: {resultado.Clase}";
 
-            // primero las razas y despues las clases, cada grupo de mayor a menor
-            var puntosRaza = resultado.PuntosRaza
-                .OrderByDescending(p => p.Value)
-                .Select(p => new { Tipo = "Raza", Nombre = p.Key.ToString(), Puntos = p.Value });
-            var puntosClase = resultado.PuntosClase
-                .OrderByDescending(p => p.Value)
-                .Select(p => new { Tipo = "Clase", Nombre = p.Key.ToString(), Puntos = p.Value });
-            dgvPuntajes.DataSource = puntosRaza.Concat(puntosClase).ToList();
+            // por ahora todas las clases usan el mismo avatar
+            pbAvatar.Image = Tema.AvatarDefault;
+        }
+
+        private void btnPuntajes_Click(object sender, EventArgs e)
+        {
+            using FrmPuntajes frmPuntajes = new FrmPuntajes(resultado);
+            Navegador.Abrir(this, frmPuntajes);
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
