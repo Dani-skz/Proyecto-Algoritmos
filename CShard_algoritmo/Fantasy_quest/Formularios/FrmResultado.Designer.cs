@@ -34,6 +34,7 @@ namespace Fantasy_quest.Formularios
             lblDetalle = new Label();
             btnPuntajes = new Button();
             btnAtras = new Button();
+            btnVolverAJugar = new Button();
             ((System.ComponentModel.ISupportInitialize)pbAvatar).BeginInit();
             SuspendLayout();
             //
@@ -95,6 +96,17 @@ namespace Fantasy_quest.Formularios
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
             //
+            // btnVolverAJugar
+            //
+            btnVolverAJugar.Location = new Point(440, 445);
+            btnVolverAJugar.Name = "btnVolverAJugar";
+            btnVolverAJugar.Size = new Size(160, 40);
+            btnVolverAJugar.TabIndex = 6;
+            btnVolverAJugar.Text = "Volver a jugar";
+            btnVolverAJugar.UseVisualStyleBackColor = true;
+            btnVolverAJugar.Visible = false;
+            btnVolverAJugar.Click += btnVolverAJugar_Click;
+            //
             // FrmResultado
             //
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -106,6 +118,7 @@ namespace Fantasy_quest.Formularios
             Controls.Add(lblDetalle);
             Controls.Add(btnPuntajes);
             Controls.Add(btnAtras);
+            Controls.Add(btnVolverAJugar);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "FrmResultado";
@@ -123,5 +136,6 @@ namespace Fantasy_quest.Formularios
         private Label lblDetalle;
         private Button btnPuntajes;
         private Button btnAtras;
+        private Button btnVolverAJugar;
     }
 }

@@ -9,16 +9,19 @@ using Fantasy_quest.ui;
 namespace Fantasy_quest.Formularios
 {
     // sirve para el final de la partida y para "Ver resultado" del scoreboard.
-    // Solo muestra el resultado; los puntos de cada raza y clase estan en FrmPuntajes
+    // Solo muestra el resultado; los puntos de cada raza y clase estan en FrmPuntajes.
+    // Al final de la partida tambien esta "Volver a jugar": cierra con DialogResult.Retry
+    // y Navegador.Jugar vuelve hasta el menu principal
     internal partial class FrmResultado : Form
     {
         private readonly ResultadoPartida resultado;
 
-        public FrmResultado(ResultadoPartida resultado)
+        public FrmResultado(ResultadoPartida resultado, bool finDePartida = false)
         {
             InitializeComponent();
             Tema.Aplicar(this);
             this.resultado = resultado;
+            btnVolverAJugar.Visible = finDePartida;
 
             lblTitulo.Text = resultado.NombreJugador == null
                 ? "Tu resultado"
@@ -41,6 +44,11 @@ namespace Fantasy_quest.Formularios
         private void btnAtras_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnVolverAJugar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Retry;
         }
     }
 }

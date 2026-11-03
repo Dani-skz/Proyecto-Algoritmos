@@ -47,7 +47,9 @@ namespace Fantasy_quest.Formularios
         }
 
         // partida y, si se termino, su resultado (con la cancion final).
-        // Atras en el resultado vuelve a "actual" y a la musica de fondo
+        // Atras en el resultado vuelve a "actual" y a la musica de fondo.
+        // Volver a jugar vuelve al menu principal: si "actual" es el menu del jugador
+        // tambien se cierra (cierra la sesion) y queda a la vista el menu principal de abajo
         public static void Jugar(Form actual, GestorPartida gestor)
         {
             using (FrmPartida frmPartida = new FrmPartida(gestor))
@@ -57,10 +59,19 @@ namespace Fantasy_quest.Formularios
 
             if (gestor.Resultado != null)
             {
-                using FrmResultado frmResultado = new FrmResultado(gestor.Resultado);
+                using FrmResultado frmResultado = new FrmResultado(gestor.Resultado, finDePartida: true);
                 Sonido.Musica.Reproducir(Sonido.CancionFinal);
-                Abrir(actual, frmResultado);
+                DialogResult respuesta = Abrir(actual, frmResultado, volver: false);
                 Sonido.TocarMusicaFondo();
+
+                if (respuesta == DialogResult.Retry && actual is FrmMenuJugador)
+                {
+                    actual.Close();
+                }
+                else
+                {
+                    Volver(actual);
+                }
             }
             else
             {
