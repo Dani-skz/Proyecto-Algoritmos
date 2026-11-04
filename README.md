@@ -65,6 +65,9 @@ Los formularios no hablan con la base directamente: delegan en las **gestoras**,
 ### Historial de diseno — V1
 ![UI V1](Documentacion/UI-Desing-History/V1/v1-captures.png)
 
+### Historial de diseno — V2
+![UI V2](Documentacion/UI-Desing-History/V2/UIV2.png)
+
 ### Recursos visuales actuales
 Fondo, botones y entrada de texto usados por el tema actual (ver [`CShard_algoritmo/Fantasy_quest/ui/`](CShard_algoritmo/Fantasy_quest/ui)):
 
