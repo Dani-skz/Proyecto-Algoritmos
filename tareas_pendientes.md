@@ -17,6 +17,10 @@
 [X] Diseno de artistico de interfaz, disenar botones custom
 [X] Ventana de introduccion antes de la pregunta con contexto narrativo
 [X] Importar elemtnos UI para la ventana narrativa
+### Sprint [ 4 ] CUATRO
+[X] Musica en el menu
+[X] Anadir audios de narracion
+[X] Avanzar historia generica
 
 ## Tareas pendientes
 
@@ -26,13 +30,11 @@
 [ ] Diccionario de datos BDD y Algoritmo
 [ ] Manual de Usuario
 [ ] Portear tareas pendientes a backlog
-[ ] Avanzar historia generica
+[ ] Acomodar/MEJORAR/Quitar fondos blancos imagenes de razas para el fin del juego
 
 
 ## nuevas
 
-[ ] Musica en el menu
-[ ] Anadir audios de narracion
 [ ] Validaciones del formulario de ingreso (nombre vacio, duplicado, etc.)
 [ ] Scoreboard funcional (ranking de jugadores por partidas / perfil)
 [ ] Persistir ResultadoPartida en la BDD al terminar la partida
