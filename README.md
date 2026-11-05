@@ -58,6 +58,11 @@ Los formularios no hablan con la base directamente: delegan en las **gestoras**,
 ### Diagrama de clases / algoritmos
 ![Diagrama algoritmos](Documentacion/diagrama%20algoritmos/DER%2019-10.jpg)
 
+### DER v2 del programa
+Entidades y relaciones de todo el programa C# (formularios, gestoras, dominio, enums y ui), hecho con [Mermaid](https://mermaid.js.org/). El código fuente del diagrama está en [`DER v2.md`](Documentacion/diagrama%20algoritmos/DER%20v2.md).
+
+![DER v2 del programa](Documentacion/diagrama%20algoritmos/DER%20v2.png)
+
 ---
 
 ## Interfaz
@@ -99,3 +104,4 @@ El script completo esta en [`Base_de_datos/fantasy_quest_bdd.sql`](Base_de_datos
 
 - Estilo UX/UI de referencia: https://www.warcraftcn.com/docs
 - Herramienta usada para los diagramas de BDD: https://sqltoerdiagram.com
+- Herramienta usada para el DER v2 del programa: https://mermaid.js.org
