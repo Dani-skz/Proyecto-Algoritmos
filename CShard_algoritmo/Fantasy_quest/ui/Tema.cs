@@ -32,6 +32,31 @@ namespace Fantasy_quest.ui
             formulario.BackgroundImage = Fondo;
             formulario.BackgroundImageLayout = ImageLayout.Stretch;
             AplicarControles(formulario);
+            AplicarBarraTitulo(formulario);
+        }
+
+        // sin la barra de Windows: la propia va arriba, la ventana crece su alto
+        // y todo el contenido baja para que nada quede tapado
+        private static void AplicarBarraTitulo(Form formulario)
+        {
+            formulario.FormBorderStyle = FormBorderStyle.None;
+            formulario.ClientSize = new Size(formulario.ClientSize.Width, formulario.ClientSize.Height + BarraTitulo.Alto);
+            foreach (Control control in formulario.Controls)
+            {
+                control.Top += BarraTitulo.Alto;
+            }
+
+            formulario.Controls.Add(new BarraTitulo(formulario)
+            {
+                Bounds = new Rectangle(0, 0, formulario.ClientSize.Width, BarraTitulo.Alto)
+            });
+
+            // sin borde de Windows: un marco fino separa la ventana del escritorio
+            formulario.Paint += (sender, e) =>
+            {
+                using Pen borde = new Pen(BarraDesplazamiento.BordePieza);
+                e.Graphics.DrawRectangle(borde, 0, 0, formulario.ClientSize.Width - 1, formulario.ClientSize.Height - 1);
+            };
         }
 
         // recorre tambien lo que hay dentro de cada Panel
