@@ -26,7 +26,7 @@
 
 [ ] Avanzar algoritmo del juego, de forma mas sensilla posible
 [X] Quitar barra de windows del cerrar minimizar etc y poner una barra custom nuestra
-[ ] Nuevo DER
+[X] Nuevo DER
 [ ] Diccionario de datos BDD y Algoritmo
 [X] Manual de Usuario
 [X] Portear tareas pendientes a backlog
