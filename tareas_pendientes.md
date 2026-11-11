@@ -29,7 +29,7 @@
 [ ] Nuevo DER
 [ ] Diccionario de datos BDD y Algoritmo
 [X] Manual de Usuario
-[ ] Portear tareas pendientes a backlog
+[X] Portear tareas pendientes a backlog
 [ ] Acomodar/MEJORAR/Quitar fondos blancos imagenes de razas para el fin del juego
 
 
