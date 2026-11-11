@@ -73,8 +73,8 @@ Para registrarte o iniciar sesión solo hace falta tu nombre de jugador, sin con
 **Registrarse**
 
 1. En el menú principal, hacé clic en **Registrarse**.
-2. Escribí un nombre en el campo **Nombre**.
-3. Hacé clic en **Registrarme**. Si el nombre ya está en uso, el juego te avisa y tenés que elegir otro.
+2. Escribí un nombre en el campo **Nombre**. El nombre debe tener entre 2 y 30 caracteres, con letras, números y espacios simples (no se admiten símbolos, emojis ni dos espacios seguidos).
+3. Hacé clic en **Registrarme**. Si el nombre ya está en uso, el juego te avisa y tenés que elegir otro. Si el nombre no cumple con el formato, aparece un cartel "Nombre inválido" con el motivo.
 
 **Iniciar sesión**
 
@@ -150,17 +150,26 @@ La pantalla **Puntajes** tiene dos tablas: a la izquierda los puntos de cada raz
 
 ## Scoreboard
 
-El scoreboard muestra las partidas terminadas de todos los jugadores registrados. Para verlo hace falta conexión con la base de datos.
+El scoreboard muestra las partidas terminadas de todos los jugadores registrados. Para verlo hace falta conexión con la base de datos. La pantalla está dividida en dos pestañas:
+
+| Pestaña | Qué muestra |
+| --- | --- |
+| **Partidas** | Lista cronológica de partidas finalizadas, con jugador, resultado, clase y fecha. Es la que se abre por defecto |
+| **Ranking** | Jugadores ordenados por cantidad de partidas finalizadas, de mayor a menor. Útil para ver quién jugó más veces |
+
+**Para ver el resultado de una partida:**
 
 1. En el menú principal, hacé clic en **Scoreboard**.
-2. Elegí una partida de la lista.
-3. Hacé clic en **Ver resultado**, o doble clic sobre la fila, para abrir el resultado de esa partida. Si no elegiste ninguna, aparece "Elegí una partida de la lista."
+2. En la pestaña **Partidas**, elegí una partida de la lista.
+3. Hacé clic en **Ver resultado**, o doble clic sobre la fila, para abrir el resultado de esa partida. Si no elegiste ninguna, aparece "Elegí una partida de la lista." Si estás en la pestaña Ranking, el juego te avisa que primero cambies a la de Partidas.
 
 Desde el resultado de una partida del scoreboard también podés abrir **Ver puntajes**. **← Atrás** te devuelve a la lista.
 
-> **\[Imagen 15 — Scoreboard\]** Captura del scoreboard con varias partidas cargadas y una fila seleccionada (resaltada en azul), junto con los botones "Ver resultado" y "← Atrás".
+> **\[Imagen 15 — Scoreboard (Partidas)\]** Captura del scoreboard en la pestaña Partidas con varias partidas cargadas y una fila seleccionada (resaltada en azul), junto con los botones "Ver resultado" y "← Atrás".
 
-> **\[Imagen 16 — Resultado de otro jugador\]** Captura del resultado abierto desde el scoreboard, con el título "Resultado de \<nombre\>". En esta pantalla no aparece el botón "Volver a jugar".
+> **\[Imagen 16 — Scoreboard (Ranking)\]** Captura del scoreboard en la pestaña Ranking, con la lista de jugadores y su cantidad de partidas finalizadas.
+
+> **\[Imagen 17 — Resultado de otro jugador\]** Captura del resultado abierto desde el scoreboard, con el título "Resultado de \<nombre\>". En esta pantalla no aparece el botón "Volver a jugar".
 
 ## Preguntas frecuentes y solución de problemas
 

@@ -25,10 +25,10 @@
 ## Tareas pendientes
 
 [ ] Avanzar algoritmo del juego, de forma mas sensilla posible
-[ ] Quitar barra de windows del cerrar minimizar etc y poner una barra custom nuestra
+[X] Quitar barra de windows del cerrar minimizar etc y poner una barra custom nuestra
 [ ] Nuevo DER
 [ ] Diccionario de datos BDD y Algoritmo
-[ ] Manual de Usuario
+[X] Manual de Usuario
 [ ] Portear tareas pendientes a backlog
 [ ] Acomodar/MEJORAR/Quitar fondos blancos imagenes de razas para el fin del juego
 
