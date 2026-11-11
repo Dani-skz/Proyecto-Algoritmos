@@ -29,10 +29,18 @@ namespace Fantasy_quest.Formularios
         private void InitializeComponent()
         {
             lblTitulo = new Label();
+            tabs = new TabControl();
+            tabPartidas = new TabPage();
             dgvPartidas = new DataGridView();
+            tabRanking = new TabPage();
+            dgvRanking = new DataGridView();
             btnVerResultado = new Button();
             btnAtras = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPartidas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRanking).BeginInit();
+            tabs.SuspendLayout();
+            tabPartidas.SuspendLayout();
+            tabRanking.SuspendLayout();
             SuspendLayout();
             //
             // lblTitulo
@@ -45,20 +53,64 @@ namespace Fantasy_quest.Formularios
             lblTitulo.Text = "Scoreboard";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             //
+            // tabs
+            //
+            tabs.Controls.Add(tabPartidas);
+            tabs.Controls.Add(tabRanking);
+            tabs.Location = new Point(40, 65);
+            tabs.Name = "tabs";
+            tabs.SelectedIndex = 0;
+            tabs.Size = new Size(720, 370);
+            tabs.TabIndex = 1;
+            //
+            // tabPartidas
+            //
+            tabPartidas.Controls.Add(dgvPartidas);
+            tabPartidas.Location = new Point(4, 24);
+            tabPartidas.Name = "tabPartidas";
+            tabPartidas.Padding = new Padding(3);
+            tabPartidas.Size = new Size(712, 342);
+            tabPartidas.TabIndex = 0;
+            tabPartidas.Text = "Partidas";
+            tabPartidas.UseVisualStyleBackColor = true;
+            //
             // dgvPartidas
             //
             dgvPartidas.AllowUserToAddRows = false;
             dgvPartidas.AllowUserToDeleteRows = false;
             dgvPartidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPartidas.Location = new Point(40, 65);
+            dgvPartidas.Dock = DockStyle.Fill;
             dgvPartidas.MultiSelect = false;
             dgvPartidas.Name = "dgvPartidas";
             dgvPartidas.ReadOnly = true;
             dgvPartidas.RowHeadersVisible = false;
             dgvPartidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPartidas.Size = new Size(720, 370);
-            dgvPartidas.TabIndex = 1;
+            dgvPartidas.TabIndex = 0;
             dgvPartidas.CellDoubleClick += dgvPartidas_CellDoubleClick;
+            //
+            // tabRanking
+            //
+            tabRanking.Controls.Add(dgvRanking);
+            tabRanking.Location = new Point(4, 24);
+            tabRanking.Name = "tabRanking";
+            tabRanking.Padding = new Padding(3);
+            tabRanking.Size = new Size(712, 342);
+            tabRanking.TabIndex = 1;
+            tabRanking.Text = "Ranking";
+            tabRanking.UseVisualStyleBackColor = true;
+            //
+            // dgvRanking
+            //
+            dgvRanking.AllowUserToAddRows = false;
+            dgvRanking.AllowUserToDeleteRows = false;
+            dgvRanking.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvRanking.Dock = DockStyle.Fill;
+            dgvRanking.MultiSelect = false;
+            dgvRanking.Name = "dgvRanking";
+            dgvRanking.ReadOnly = true;
+            dgvRanking.RowHeadersVisible = false;
+            dgvRanking.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRanking.TabIndex = 0;
             //
             // btnVerResultado
             //
@@ -86,7 +138,7 @@ namespace Fantasy_quest.Formularios
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 500);
             Controls.Add(lblTitulo);
-            Controls.Add(dgvPartidas);
+            Controls.Add(tabs);
             Controls.Add(btnVerResultado);
             Controls.Add(btnAtras);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -96,13 +148,21 @@ namespace Fantasy_quest.Formularios
             Text = "Fantasy Quest";
             Load += FrmScoreboard_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPartidas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvRanking).EndInit();
+            tabs.ResumeLayout(false);
+            tabPartidas.ResumeLayout(false);
+            tabRanking.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private Label lblTitulo;
+        private TabControl tabs;
+        private TabPage tabPartidas;
         private DataGridView dgvPartidas;
+        private TabPage tabRanking;
+        private DataGridView dgvRanking;
         private Button btnVerResultado;
         private Button btnAtras;
     }

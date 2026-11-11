@@ -36,7 +36,7 @@
 ## nuevas
 
 [X] Validaciones del formulario de ingreso (nombre vacio, duplicado, etc.)
-[ ] Scoreboard funcional (ranking de jugadores por partidas / perfil)
+[X] Scoreboard funcional (ranking de jugadores por partidas / perfil)
 [X] Persistir ResultadoPartida en la BDD al terminar la partida
 [ ] Pruebas / QA final antes de la entrega
 [ ] Build release / empaquetado final del exe para la entrega
