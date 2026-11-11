@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Fantasy_quest.Dominio;
@@ -31,16 +32,6 @@ namespace Fantasy_quest.Gestoras
 
         // ======================= JUGADORES =======================
 
-        // si el jugador ya existe devuelve su id (para reanudar su partida)
-        public int RegistrarJugador(string nombre)
-        {
-            Dictionary<string, object?> parametros = new Dictionary<string, object?>
-            {
-                { "p_nombre", nombre }
-            };
-            return dao.EjecutarProcedimientoConSalida("sp_registrar_jugador", parametros, "p_id_jugador");
-        }
-
         public void ModificarJugador(int idJugador, string nombre)
         {
             dao.EjecutarProcedimiento("sp_modificar_jugador", new Dictionary<string, object?>
@@ -50,31 +41,28 @@ namespace Fantasy_quest.Gestoras
             });
         }
 
-        // devuelve null si no existe
-        public int? BuscarJugador(string nombre)
+        // boton Registrarse: falla si el nombre ya existe.
+        // la contrasena se hashea con SHA-256 antes de enviarla; en la base
+        // solo se guarda el hash, nunca el valor en claro
+        public Jugador RegistrarJugadorNuevo(string nombre, string contrasena)
         {
-            object? id = dao.EjecutarEscalar(
-                "select id_jugador from jugadores where nombre = @nombre",
-                new Dictionary<string, object?> { { "@nombre", nombre.Trim() } });
-            return id == null ? null : Convert.ToInt32(id);
-        }
-
-        // boton Registrarse: a diferencia de RegistrarJugador, falla si el nombre ya existe
-        public Jugador RegistrarJugadorNuevo(string nombre)
-        {
-            if (BuscarJugador(nombre) != null)
+            Dictionary<string, object?> parametros = new Dictionary<string, object?>
             {
-                throw new InvalidOperationException("Ya existe un jugador con ese nombre. Usá Iniciar sesión.");
-            }
-            int id = RegistrarJugador(nombre);
+                { "p_nombre", nombre.Trim() },
+                { "p_contrasena_hash", HashearContrasena(contrasena) }
+            };
+            int id = dao.EjecutarProcedimientoConSalida("sp_registrar_jugador", parametros, "p_id_jugador");
             return new Jugador(id, nombre.Trim());
         }
 
-        // boton Iniciar sesion: devuelve null si el nombre no existe
-        public Jugador? IniciarSesion(string nombre)
+        // boton Iniciar sesion:
+        //   null = nombre no encontrado
+        //   InvalidOperationException = nombre ok pero contrasena incorrecta
+        // separar los dos casos permite dar mensajes claros al usuario
+        public Jugador? IniciarSesion(string nombre, string contrasena)
         {
             DataTable tabla = dao.EjecutarConsulta(
-                "select id_jugador, nombre from jugadores where nombre = @nombre",
+                "select id_jugador, nombre, contrasena_hash from jugadores where nombre = @nombre",
                 new Dictionary<string, object?> { { "@nombre", nombre.Trim() } });
 
             if (tabla.Rows.Count == 0)
@@ -82,7 +70,26 @@ namespace Fantasy_quest.Gestoras
                 return null;
             }
             DataRow fila = tabla.Rows[0];
+
+            string hashGuardado = fila["contrasena_hash"].ToString()!;
+            if (!string.Equals(hashGuardado, HashearContrasena(contrasena), StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException("Contraseña incorrecta.");
+            }
             return new Jugador(Convert.ToInt32(fila["id_jugador"]), fila["nombre"].ToString()!);
+        }
+
+        // SHA-256 en hexadecimal (64 caracteres). El mismo formato que espera la BDD.
+        // No es bcrypt pero para un juego academico alcanza: evita guardar contrasenas en claro
+        private static string HashearContrasena(string contrasena)
+        {
+            byte[] bytes = SHA256.HashData(Encoding.UTF8.GetBytes(contrasena));
+            StringBuilder sb = new StringBuilder(bytes.Length * 2);
+            foreach (byte b in bytes)
+            {
+                sb.Append(b.ToString("x2"));
+            }
+            return sb.ToString();
         }
 
         // ======================= PARTIDAS =======================

@@ -24,6 +24,11 @@ namespace Fantasy_quest.Formularios
         private const int LargoMinimo = 2;
         private const int LargoMaximo = 30;
 
+        // limites de la contrasena. Se guarda hasheada (SHA-256 = 64 chars fijos)
+        // asi que el maximo es el que aceptamos al tipear, no el de la BDD
+        private const int LargoMinimoContrasena = 4;
+        private const int LargoMaximoContrasena = 30;
+
         // letras (con acentos y ñ), numeros y espacios internos.
         // nada de simbolos ni emojis: los nombres se muestran en la UI y en el scoreboard
         private static readonly Regex CaracteresValidos =
@@ -55,6 +60,10 @@ namespace Fantasy_quest.Formularios
             // asi " Pepe " y "Pepe" son el mismo jugador (y la BDD guarda uno solo)
             string nombre = txtNombre.Text.Trim();
 
+            // la contrasena NO se trimea: los espacios al principio o al final
+            // son parte legitima si el usuario los eligio
+            string contrasena = txtContrasena.Text;
+
             // primero las validaciones locales para no golpear la base
             // con nombres obviamente invalidos
             string? error = ValidarNombre(nombre);
@@ -66,17 +75,27 @@ namespace Fantasy_quest.Formularios
                 return;
             }
 
+            error = ValidarContrasena(contrasena);
+            if (error != null)
+            {
+                MessageBox.Show(error, "Contraseña inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContrasena.Focus();
+                txtContrasena.SelectAll();
+                return;
+            }
+
             try
             {
                 if (modo == ModoIngreso.Registro)
                 {
-                    // RegistrarJugadorNuevo tira InvalidOperationException si ya existe,
-                    // lo captura el catch de abajo y muestra el mensaje con Mensajes.MostrarError
-                    Jugador = repositorio.RegistrarJugadorNuevo(nombre);
+                    // RegistrarJugadorNuevo tira si el nombre ya existe (lo levanta el SP)
+                    Jugador = repositorio.RegistrarJugadorNuevo(nombre, contrasena);
                 }
                 else
                 {
-                    Jugador = repositorio.IniciarSesion(nombre);
+                    // IniciarSesion devuelve null si el nombre no existe y tira si la
+                    // contrasena no coincide; cada caso tiene su mensaje
+                    Jugador = repositorio.IniciarSesion(nombre, contrasena);
                     if (Jugador == null)
                     {
                         MessageBox.Show("No existe un jugador con ese nombre. Registrate primero.", "Iniciar sesión",
@@ -123,6 +142,26 @@ namespace Fantasy_quest.Formularios
             if (nombre.Contains("  "))
             {
                 return "El nombre no puede tener espacios dobles.";
+            }
+
+            return null;
+        }
+
+        private static string? ValidarContrasena(string contrasena)
+        {
+            if (string.IsNullOrEmpty(contrasena))
+            {
+                return "Ingresá una contraseña.";
+            }
+
+            if (contrasena.Length < LargoMinimoContrasena)
+            {
+                return $"La contraseña tiene que tener al menos {LargoMinimoContrasena} caracteres.";
+            }
+
+            if (contrasena.Length > LargoMaximoContrasena)
+            {
+                return $"La contraseña no puede tener más de {LargoMaximoContrasena} caracteres.";
             }
 
             return null;

@@ -68,19 +68,21 @@ Para cambiarlos, hacé clic o arrastrá sobre la barra. También podés usar la 
 
 ## Registrarse e iniciar sesión
 
-Para registrarte o iniciar sesión solo hace falta tu nombre de jugador, sin contraseña. Las dos opciones usan la misma pantalla.
+Para registrarte o iniciar sesión hace falta tu nombre de jugador y una contraseña. Las dos opciones usan la misma pantalla.
 
 **Registrarse**
 
 1. En el menú principal, hacé clic en **Registrarse**.
 2. Escribí un nombre en el campo **Nombre**. El nombre debe tener entre 2 y 30 caracteres, con letras, números y espacios simples (no se admiten símbolos, emojis ni dos espacios seguidos).
-3. Hacé clic en **Registrarme**. Si el nombre ya está en uso, el juego te avisa y tenés que elegir otro. Si el nombre no cumple con el formato, aparece un cartel "Nombre inválido" con el motivo.
+3. Escribí una **Contraseña** de entre 4 y 30 caracteres. Los caracteres se muestran como puntos mientras tipeás. La contraseña nunca se guarda en claro: se guarda solo su hash SHA-256.
+4. Hacé clic en **Registrarme**. Si el nombre ya está en uso, el juego te avisa y tenés que elegir otro. Si el nombre o la contraseña no cumplen con el formato, aparece un cartel "Nombre inválido" o "Contraseña inválida" con el motivo.
 
 **Iniciar sesión**
 
 1. En el menú principal, hacé clic en **Iniciar sesión**.
 2. Escribí el nombre con el que te registraste.
-3. Hacé clic en **Entrar**. Si el nombre no existe, aparece "No existe un jugador con ese nombre. Registrate primero."
+3. Escribí tu contraseña en **Contraseña**.
+4. Hacé clic en **Entrar**. Si el nombre no existe, aparece "No existe un jugador con ese nombre. Registrate primero." Si el nombre existe pero la contraseña no coincide, aparece "Contraseña incorrecta."
 
 Si todo sale bien, se abre tu menú de jugador. Con **← Atrás** volvés al menú principal.
 
@@ -177,6 +179,7 @@ Desde el resultado de una partida del scoreboard también podés abrir **Ver pun
 | --- | --- |
 | Aparece "No hay conexión con la base de datos" | Verificá que MySQL esté encendido en `localhost:3306` y que exista la base `fantasy_quest_bdd`. Mientras tanto podés jugar anónimo |
 | "No existe un jugador con ese nombre" | Revisá cómo escribiste el nombre, o registrate primero |
+| "Contraseña incorrecta" | Revisá la contraseña. Las contraseñas distinguen mayúsculas y minúsculas. Si no la recordás, pedile a un administrador que borre tu jugador para volver a registrarte |
 | No puedo iniciar una partida nueva | Ya tenés una pendiente. Usá **Continuar** o **Abandonar partida pendiente** en tu menú de jugador |
 | No escucho la narración | Revisá que no esté en **Silenciar** dentro de la introducción y que la barra **Narración** del menú principal no esté en 0 % |
 | La música está muy fuerte | Bajá la barra **Música** en el menú principal |

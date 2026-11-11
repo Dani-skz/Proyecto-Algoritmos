@@ -31,6 +31,8 @@ namespace Fantasy_quest.Formularios
             lblTitulo = new Label();
             lblNombre = new Label();
             txtNombre = new TextBox();
+            lblContrasena = new Label();
+            txtContrasena = new TextBox();
             btnAceptar = new Button();
             btnAtras = new Button();
             SuspendLayout();
@@ -62,12 +64,31 @@ namespace Fantasy_quest.Formularios
             txtNombre.Size = new Size(300, 23);
             txtNombre.TabIndex = 2;
             //
+            // lblContrasena
+            //
+            lblContrasena.AutoSize = true;
+            lblContrasena.Location = new Point(250, 245);
+            lblContrasena.Name = "lblContrasena";
+            lblContrasena.Size = new Size(70, 15);
+            lblContrasena.TabIndex = 3;
+            lblContrasena.Text = "Contraseña:";
+            //
+            // txtContrasena
+            //
+            txtContrasena.Location = new Point(250, 278);
+            txtContrasena.MaxLength = 30;
+            txtContrasena.Name = "txtContrasena";
+            txtContrasena.PasswordChar = '•';
+            txtContrasena.Size = new Size(300, 23);
+            txtContrasena.TabIndex = 4;
+            txtContrasena.UseSystemPasswordChar = true;
+            //
             // btnAceptar
             //
-            btnAceptar.Location = new Point(250, 245);
+            btnAceptar.Location = new Point(250, 320);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(300, 40);
-            btnAceptar.TabIndex = 3;
+            btnAceptar.TabIndex = 5;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
@@ -77,7 +98,7 @@ namespace Fantasy_quest.Formularios
             btnAtras.Location = new Point(12, 453);
             btnAtras.Name = "btnAtras";
             btnAtras.Size = new Size(110, 35);
-            btnAtras.TabIndex = 4;
+            btnAtras.TabIndex = 6;
             btnAtras.Text = "← Atrás";
             btnAtras.UseVisualStyleBackColor = true;
             btnAtras.Click += btnAtras_Click;
@@ -92,6 +113,8 @@ namespace Fantasy_quest.Formularios
             Controls.Add(lblTitulo);
             Controls.Add(lblNombre);
             Controls.Add(txtNombre);
+            Controls.Add(lblContrasena);
+            Controls.Add(txtContrasena);
             Controls.Add(btnAceptar);
             Controls.Add(btnAtras);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -108,6 +131,8 @@ namespace Fantasy_quest.Formularios
         private Label lblTitulo;
         private Label lblNombre;
         private TextBox txtNombre;
+        private Label lblContrasena;
+        private TextBox txtContrasena;
         private Button btnAceptar;
         private Button btnAtras;
     }

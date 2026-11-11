@@ -14,6 +14,8 @@ namespace Fantasy_quest.Formularios
     internal partial class FrmDesarrollo : Form
     {
         private const string NombreJugadorPrueba = "Aragorn";
+        // misma contrasena que usa el script SQL para los jugadores de prueba
+        private const string ContrasenaPrueba = "test";
 
         private readonly sql_repository repositorio = new sql_repository();
 
@@ -48,13 +50,14 @@ namespace Fantasy_quest.Formularios
             Navegador.Abrir(this, frmIngreso);
         }
 
-        // si el jugador de prueba no existe lo crea (sp_registrar_jugador reutiliza el existente)
+        // intenta login con el jugador de prueba; si no existe lo registra
         private void btnMenuJugador_Click(object sender, EventArgs e)
         {
-            Jugador jugador;
+            Jugador? jugador;
             try
             {
-                jugador = new Jugador(repositorio.RegistrarJugador(NombreJugadorPrueba), NombreJugadorPrueba);
+                jugador = repositorio.IniciarSesion(NombreJugadorPrueba, ContrasenaPrueba)
+                       ?? repositorio.RegistrarJugadorNuevo(NombreJugadorPrueba, ContrasenaPrueba);
             }
             catch (Exception ex)
             {

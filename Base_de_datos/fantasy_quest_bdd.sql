@@ -43,11 +43,15 @@ drop table if exists estados_partida;     -- v1, ahora ENUM en partidas
 drop table if exists jugadores;
 
 -- =============== TABLAS JUGADORES ===================
+-- contrasena_hash: SHA-256 en hexadecimal (64 caracteres). El hasheo
+-- lo hace C# antes de llamar al SP, nunca se envia la contrasena en claro
 create table jugadores(
 	id_jugador int auto_increment primary key,
     nombre varchar(100) not null unique,
+    contrasena_hash char(64) not null,
     fecha_alta datetime not null default current_timestamp,
-    constraint chk_nombre_jugador check(char_length(trim(nombre))>= 2)
+    constraint chk_nombre_jugador check(char_length(trim(nombre))>= 2),
+    constraint chk_contrasena_hash check(char_length(contrasena_hash) = 64)
 );
 
 -- ============== partidas =====================
@@ -117,10 +121,13 @@ create table historial_partidas(
 -- sp_guardar_respuesta, sp_guardar_puntaje, sp_finalizar_partida, sp_cancelar_partida
 
 -- =================== // REGISTRAR JUGADOR \\ ========================
--- si el jugador ya existe devuelve su id (asi puede reanudar su partida)
+-- crea un jugador nuevo. Falla si el nombre ya existe: no hay
+-- "insert-or-return" por seguridad (si existe, requiere login con contrasena).
+-- p_contrasena_hash tiene que ser SHA-256 en hexadecimal (64 chars), hecho por C#
 DELIMITER //
 create procedure sp_registrar_jugador(
     in  p_nombre varchar(100),
+    in  p_contrasena_hash char(64),
     out p_id_jugador int
 )
 begin
@@ -134,14 +141,22 @@ begin
             set message_text = 'El nombre debe tener al menos 2 caracteres';
     end if;
 
-    select id_jugador into p_id_jugador
-    from jugadores where nombre = p_nombre;
-
-    if p_id_jugador is null then
-        insert into jugadores (nombre)
-        values (p_nombre);
-        set p_id_jugador = last_insert_id();
+    -- validar hash de contrasena (exactamente 64 chars hex)
+    if p_contrasena_hash is null or char_length(p_contrasena_hash) <> 64 then
+        signal sqlstate '45000'
+            set message_text = 'Falta la contrasena';
     end if;
+
+    -- nombre unico: la validacion fuerte vive en el UNIQUE de la tabla,
+    -- pero lo chequeamos aca para devolver un mensaje claro
+    if exists (select 1 from jugadores where nombre = p_nombre) then
+        signal sqlstate '45000'
+            set message_text = 'Ya existe un jugador con ese nombre';
+    end if;
+
+    insert into jugadores (nombre, contrasena_hash)
+    values (p_nombre, p_contrasena_hash);
+    set p_id_jugador = last_insert_id();
 end //
 DELIMITER ;
 
@@ -485,8 +500,12 @@ from partidas p
 join jugadores j on j.id_jugador = p.id_jugador;
 
 -- // TESTEOOSSSS ==================
+-- hash de prueba: SHA-256 de 'test' = 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
+-- (los tests usan este hash para no depender de hashear desde SQL)
+set @hash_test = '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08';
+
 -- partida completa
-call sp_registrar_jugador('Aragorn', @jug);
+call sp_registrar_jugador('Aragorn', @hash_test, @jug);
 call sp_registrar_partida(@jug, 'clasico', @par);
 
 call sp_guardar_respuesta(@par, 0, 0);
@@ -503,7 +522,7 @@ select * from partidas where id_partida = @par;
 select * from historial_partidas where id_partida = @par;
 
 -- partida que queda pendiente para reanudar
-call sp_registrar_jugador('Legolas', @jug2);
+call sp_registrar_jugador('Legolas', @hash_test, @jug2);
 call sp_registrar_partida(@jug2, 'narrativo', @par2);
 call sp_guardar_respuesta(@par2, 0, 3);
 

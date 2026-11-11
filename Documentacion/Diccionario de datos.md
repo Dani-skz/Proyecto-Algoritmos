@@ -20,10 +20,12 @@ Registra a cada jugador que se registra en el juego.
 | --- | --- | --- | --- | --- | --- |
 | id_jugador | int | No | PK, autoincremental | — | Identificador único del jugador |
 | nombre | varchar(100) | No | Único | — | Nombre visible del jugador, único en el sistema |
+| contrasena_hash | char(64) | No | — | — | Hash SHA-256 en hexadecimal de la contraseña. Nunca se guarda en claro: C# hashea antes de llamar al SP |
 | fecha_alta | datetime | No | — | current_timestamp | Fecha y hora en que el jugador se registró |
 
 **Restricciones:**
 - `chk_nombre_jugador`: el nombre (sin espacios) tiene que tener al menos 2 caracteres.
+- `chk_contrasena_hash`: el hash tiene que tener exactamente 64 caracteres (longitud fija de SHA-256 en hex).
 
 ### 1.2 Tabla `partidas`
 
@@ -111,7 +113,7 @@ Log de auditoría: deja rastro de cada acción importante sobre una partida
 
 | Nombre | Qué hace |
 | --- | --- |
-| sp_registrar_jugador | Registra un jugador nuevo o devuelve su id si ya existe. Parámetros IN: `p_nombre`. OUT: `p_id_jugador` |
+| sp_registrar_jugador | Registra un jugador nuevo con nombre y hash de contraseña. Falla si el nombre ya existe. Parámetros IN: `p_nombre`, `p_contrasena_hash`. OUT: `p_id_jugador` |
 | sp_modificar_jugador | Cambia el nombre de un jugador existente |
 | sp_registrar_partida | Crea una nueva partida EN_CURSO. Falla si el jugador ya tiene una partida sin terminar. OUT: `p_id_partida` |
 | sp_guardar_respuesta | Guarda una respuesta en orden. Falla si se saltea una pregunta |
