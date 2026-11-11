@@ -31,8 +31,13 @@ namespace Fantasy_quest.Formularios
                               $"Raza secundaria: {resultado.RazaSecundaria}\n" +
                               $"Clase: {resultado.Clase}";
 
-            // por ahora todas las clases usan el mismo avatar
-            pbAvatar.Image = Tema.AvatarDefault;
+            pbAvatar.Image = Tema.ComponerAvatar(resultado.Combinacion, resultado.RazaPrincipal);
+
+            // si la clase todavia no tiene icono (bufon, druida, hechicero, asesino)
+            // el PictureBox queda invisible para no mostrar un cuadro vacio
+            Image? iconoClase = Tema.ObtenerIconoClase(resultado.Clase);
+            pbClase.Image = iconoClase;
+            pbClase.Visible = iconoClase != null;
         }
 
         private void btnPuntajes_Click(object sender, EventArgs e)

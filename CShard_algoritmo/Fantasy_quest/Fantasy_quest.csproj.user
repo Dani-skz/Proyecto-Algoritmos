@@ -7,6 +7,9 @@
     <Compile Update="Formularios\FrmIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\FrmIntroduccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\FrmMenuJugador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -16,11 +19,23 @@
     <Compile Update="Formularios\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\FrmPuntajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\FrmResultado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\FrmScoreboard.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ui\BarraDesplazamiento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ui\BarraTitulo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="ui\BarraVolumen.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

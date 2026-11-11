@@ -32,10 +32,12 @@ namespace Fantasy_quest.Formularios
             pbAvatar = new PictureBox();
             lblCombinacion = new Label();
             lblDetalle = new Label();
+            pbClase = new PictureBox();
             btnPuntajes = new Button();
             btnAtras = new Button();
             btnVolverAJugar = new Button();
             ((System.ComponentModel.ISupportInitialize)pbAvatar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbClase).BeginInit();
             SuspendLayout();
             //
             // lblTitulo
@@ -75,6 +77,15 @@ namespace Fantasy_quest.Formularios
             lblDetalle.Size = new Size(358, 100);
             lblDetalle.TabIndex = 3;
             lblDetalle.Text = "Raza principal\nRaza secundaria\nClase";
+            //
+            // pbClase
+            //
+            pbClase.Location = new Point(570, 325);
+            pbClase.Name = "pbClase";
+            pbClase.Size = new Size(100, 100);
+            pbClase.SizeMode = PictureBoxSizeMode.Zoom;
+            pbClase.TabIndex = 7;
+            pbClase.TabStop = false;
             //
             // btnPuntajes
             //
@@ -116,6 +127,7 @@ namespace Fantasy_quest.Formularios
             Controls.Add(pbAvatar);
             Controls.Add(lblCombinacion);
             Controls.Add(lblDetalle);
+            Controls.Add(pbClase);
             Controls.Add(btnPuntajes);
             Controls.Add(btnAtras);
             Controls.Add(btnVolverAJugar);
@@ -125,6 +137,7 @@ namespace Fantasy_quest.Formularios
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fantasy Quest";
             ((System.ComponentModel.ISupportInitialize)pbAvatar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbClase).EndInit();
             ResumeLayout(false);
         }
 
@@ -134,6 +147,7 @@ namespace Fantasy_quest.Formularios
         private PictureBox pbAvatar;
         private Label lblCombinacion;
         private Label lblDetalle;
+        private PictureBox pbClase;
         private Button btnPuntajes;
         private Button btnAtras;
         private Button btnVolverAJugar;

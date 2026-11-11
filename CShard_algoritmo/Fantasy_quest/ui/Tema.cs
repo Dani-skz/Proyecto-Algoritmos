@@ -1,6 +1,7 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Reflection;
+using Fantasy_quest.enums;
 
 namespace Fantasy_quest.ui
 {
@@ -25,6 +26,74 @@ namespace Fantasy_quest.ui
 
         // marco de madera vacio: el centro queda libre para la imagen de cada clase
         public static readonly Image AvatarDefault = CargarImagen("avatar_default.png");
+
+        // una imagen por combinacion de razas (6 en total). El PictureBox usa Zoom
+        // asi que no importa que sean de tamaños distintos
+        private static readonly Dictionary<CombinacionRaza, Image> AvataresCombinacion = new Dictionary<CombinacionRaza, Image>
+        {
+            { CombinacionRaza.semiorco,        CargarImagen("raza_semiorco.png") },
+            { CombinacionRaza.semielfo,        CargarImagen("raza_semielfo.png") },
+            { CombinacionRaza.enanogigantismo, CargarImagen("raza_enanogigantismo.png") },
+            { CombinacionRaza.ElfoYunqu,       CargarImagen("raza_elfoyunqu.png") },
+            { CombinacionRaza.ElfoOscuro,      CargarImagen("raza_elfooscuro.png") },
+            { CombinacionRaza.RompeMontaña,    CargarImagen("raza_rompemontana.png") },
+        };
+
+        // marcos estilo warcraftcn-ui. El enano no tiene propio: usa el default
+        private static readonly Dictionary<razas, Image> MarcosRaza = new Dictionary<razas, Image>
+        {
+            { razas.humano, CargarImagen("marco_humano.png") },
+            { razas.elfo,   CargarImagen("marco_elfo.png") },
+            { razas.orco,   CargarImagen("marco_orco.png") },
+            { razas.enano,  CargarImagen("marco_default.png") },
+        };
+
+        // iconos de cada clase (las 13 del enum)
+        private static readonly Dictionary<clase, Image> IconosClase = new Dictionary<clase, Image>
+        {
+            { clase.arquero,    CargarImagen("clase_arquero.png") },
+            { clase.paladin,    CargarImagen("clase_paladin.png") },
+            { clase.picaro,     CargarImagen("clase_picaro.png") },
+            { clase.guerrero,   CargarImagen("clase_guerrero.png") },
+            { clase.mago,       CargarImagen("clase_mago.png") },
+            { clase.granjero,   CargarImagen("clase_granjero.png") },
+            { clase.esclavo,    CargarImagen("clase_esclavo.png") },
+            { clase.herrero,    CargarImagen("clase_herrero.png") },
+            { clase.bufon,      CargarImagen("clase_bufon.png") },
+            { clase.explorador, CargarImagen("clase_explorador.png") },
+            { clase.druida,     CargarImagen("clase_druida.png") },
+            { clase.hechicero,  CargarImagen("clase_hechicero.png") },
+            { clase.asesino,    CargarImagen("clase_asesino.png") },
+        };
+
+        public static Image? ObtenerIconoClase(clase claseJugador)
+        {
+            return IconosClase.TryGetValue(claseJugador, out Image? icono) ? icono : null;
+        }
+
+        // compone la imagen de la combinacion con el marco de la raza principal arriba.
+        // La imagen de raza se dibuja al 60% centrada (como el inset-[20%] del CSS original)
+        // y el marco ocupa todo el canvas
+        public static Image ComponerAvatar(CombinacionRaza combinacion, razas razaPrincipal)
+        {
+            Image fondo = AvataresCombinacion.TryGetValue(combinacion, out Image? img) ? img : AvatarDefault;
+            Image marco = MarcosRaza.TryGetValue(razaPrincipal, out Image? m) ? m : CargarImagen("marco_default.png");
+
+            Bitmap resultado = new Bitmap(marco.Width, marco.Height);
+            using (Graphics g = Graphics.FromImage(resultado))
+            {
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                int ancho = (int)(marco.Width * 0.60);
+                int alto = (int)(marco.Height * 0.60);
+                int x = (marco.Width - ancho) / 2;
+                int y = (marco.Height - alto) / 2;
+                g.DrawImage(fondo, new Rectangle(x, y, ancho, alto));
+                g.DrawImage(marco, new Rectangle(0, 0, marco.Width, marco.Height));
+            }
+            return resultado;
+        }
 
         public static void Aplicar(Form formulario)
         {

@@ -14,31 +14,23 @@ los siguientes. Orden sugerido por prioridad para la entrega final.
 
 ## Documentación
 
-[ ] Nuevo DER
-    - Actualizar el diagrama entidad-relación con el esquema final de la BDD
-      (tablas: jugadores, partidas, respuestas_partida, puntajes_partida,
-      historial_partidas).
+[X] Nuevo DER
+    - Entregado.
 
-[ ] Diccionario de datos BDD y Algoritmo
-    - Diccionario de datos de la BDD: cada tabla, columna, tipo, PK/FK y descripción.
-    - Diccionario del algoritmo: enums (razas, clase, CombinacionRaza, modo_juego),
-      clases del dominio y su rol.
+[X] Diccionario de datos BDD y Algoritmo
+    - Entregado en `Documentacion/Diccionario de datos.md`.
 
 ## Arte / Assets
 
-[ ] Acomodar / mejorar / quitar fondos blancos de las imágenes de razas
+[X] Acomodar / mejorar / quitar fondos blancos de las imágenes de razas
     para el fin del juego
-    - Afecta la pantalla de resultado (`FrmResultado`) donde se muestra el
-      avatar según la combinación de razas.
+    - Resuelto: los marcos warcraftcn-ui integrados en `FrmResultado` tapan
+      los bordes y dan un acabado prolijo sobre cualquier fondo.
 
 ## Release y QA
 
-[ ] Pruebas / QA final antes de la entrega
-    - Validar flujo completo: registro, login, partida registrada, partida
-      anónima, reanudar partida, scoreboard (ambas pestañas), audios.
-    - Probar con BDD caída (mensaje "sin conexión", jugar anónimo).
-    - Probar validaciones de formulario de ingreso (vacío, corto, largo,
-      caracteres inválidos, duplicado).
+[X] Pruebas / QA final antes de la entrega
+    - Validadas manualmente por el equipo.
 
 [ ] Build release / empaquetado final del `.exe` para la entrega
     - Compilar en modo Release.

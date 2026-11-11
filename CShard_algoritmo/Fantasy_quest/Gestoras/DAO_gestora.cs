@@ -16,8 +16,8 @@ namespace Fantasy_quest.Gestoras
         private readonly string cadenaConexion;
 
         public DAO_gestora()
-            : this("Server=localhost;Port=3306;Database=fantasy_quest_bdd;Uid=root;Pwd=root;") // -> diego
-           // : this("Server=localhost;Port=3306;Database=fantasy_quest_bdd;Uid=root;Pwd=root;") // -> agus
+           // : this("Server=localhost;Port=3306;Database=fantasy_quest_bdd;Uid=root;Pwd=root;") // -> diego
+            : this("Server=localhost;Port=3306;Database=fantasy_quest_bdd;Uid=root;Pwd=;") // -> agus (mariadb sin password)
            // : this("Server=localhost;Port=3306;Database=fantasy_quest_bdd;Uid=root;Pwd=root;") // -> dani
         {
         }
