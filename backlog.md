@@ -14,6 +14,7 @@ los siguientes. Orden sugerido por prioridad para la entrega final.
 
 ## Documentación
 
+<<<<<<< HEAD
 [X] Nuevo DER
     - Entregado.
 
@@ -31,6 +32,33 @@ los siguientes. Orden sugerido por prioridad para la entrega final.
 
 [X] Pruebas / QA final antes de la entrega
     - Validadas manualmente por el equipo.
+=======
+[ ] Nuevo DER
+    - Actualizar el diagrama entidad-relación con el esquema final de la BDD
+      (tablas: jugadores, partidas, respuestas_partida, puntajes_partida,
+      historial_partidas).
+
+[ ] Diccionario de datos BDD y Algoritmo
+    - Diccionario de datos de la BDD: cada tabla, columna, tipo, PK/FK y descripción.
+    - Diccionario del algoritmo: enums (razas, clase, CombinacionRaza, modo_juego),
+      clases del dominio y su rol.
+
+## Arte / Assets
+
+[ ] Acomodar / mejorar / quitar fondos blancos de las imágenes de razas
+    para el fin del juego
+    - Afecta la pantalla de resultado (`FrmResultado`) donde se muestra el
+      avatar según la combinación de razas.
+
+## Release y QA
+
+[ ] Pruebas / QA final antes de la entrega
+    - Validar flujo completo: registro, login, partida registrada, partida
+      anónima, reanudar partida, scoreboard (ambas pestañas), audios.
+    - Probar con BDD caída (mensaje "sin conexión", jugar anónimo).
+    - Probar validaciones de formulario de ingreso (vacío, corto, largo,
+      caracteres inválidos, duplicado).
+>>>>>>> 56e36d52c1e446e03d7e05d60fffc838a3c35d13
 
 [ ] Build release / empaquetado final del `.exe` para la entrega
     - Compilar en modo Release.

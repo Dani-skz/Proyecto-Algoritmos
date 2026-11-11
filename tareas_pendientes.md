@@ -27,10 +27,17 @@
 [ ] Avanzar algoritmo del juego, de forma mas sensilla posible
 [X] Quitar barra de windows del cerrar minimizar etc y poner una barra custom nuestra
 [X] Nuevo DER
+<<<<<<< HEAD
 [X] Diccionario de datos BDD y Algoritmo
 [X] Manual de Usuario
 [X] Portear tareas pendientes a backlog
 [X] Acomodar/MEJORAR/Quitar fondos blancos imagenes de razas para el fin del juego
+=======
+[ ] Diccionario de datos BDD y Algoritmo
+[X] Manual de Usuario
+[X] Portear tareas pendientes a backlog
+[ ] Acomodar/MEJORAR/Quitar fondos blancos imagenes de razas para el fin del juego
+>>>>>>> 56e36d52c1e446e03d7e05d60fffc838a3c35d13
 
 
 ## nuevas
@@ -38,7 +45,11 @@
 [X] Validaciones del formulario de ingreso (nombre vacio, duplicado, etc.)
 [X] Scoreboard funcional (ranking de jugadores por partidas / perfil)
 [X] Persistir ResultadoPartida en la BDD al terminar la partida
+<<<<<<< HEAD
 [X] Pruebas / QA final antes de la entrega
+=======
+[ ] Pruebas / QA final antes de la entrega
+>>>>>>> 56e36d52c1e446e03d7e05d60fffc838a3c35d13
 [ ] Build release / empaquetado final del exe para la entrega
 
 
