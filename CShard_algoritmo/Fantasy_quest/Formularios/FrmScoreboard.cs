@@ -31,6 +31,9 @@ namespace Fantasy_quest.Formularios
                 {
                     columnaId.Visible = false;
                 }
+
+                // ranking: jugador + cantidad de partidas finalizadas, orden desc
+                dgvRanking.DataSource = repositorio.ObtenerRanking();
             }
             catch (Exception ex)
             {
@@ -51,8 +54,17 @@ namespace Fantasy_quest.Formularios
             }
         }
 
+        // solo tiene sentido con una partida seleccionada (pestaña Partidas).
+        // en Ranking la fila es un jugador agregado, no una partida puntual
         private void VerResultado()
         {
+            if (tabs.SelectedTab != tabPartidas)
+            {
+                MessageBox.Show("Elegí una partida en la pestaña Partidas.", "Scoreboard",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             if (dgvPartidas.CurrentRow == null)
             {
                 MessageBox.Show("Elegí una partida de la lista.", "Scoreboard",
