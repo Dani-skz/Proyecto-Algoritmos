@@ -526,7 +526,6 @@ call sp_registrar_jugador('Legolas', @hash_test, @jug2);
 call sp_registrar_partida(@jug2, 'narrativo', @par2);
 call sp_guardar_respuesta(@par2, 0, 3);
 
-call sp_registrar_jugador('Legolas', @jug2); -- devuelve el mismo id
 select fn_partida_pendiente(@jug2) as partida_pendiente;
 select * from respuestas_partida where id_partida = fn_partida_pendiente(@jug2) order by nro_pregunta;
 select * from vw_partidas_pendientes;

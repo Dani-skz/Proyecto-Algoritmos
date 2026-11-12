@@ -105,3 +105,4 @@ El script completo esta en [`Base_de_datos/fantasy_quest_bdd.sql`](Base_de_datos
 - Estilo UX/UI de referencia: https://www.warcraftcn.com/docs
 - Herramienta usada para los diagramas de BDD: https://sqltoerdiagram.com
 - Herramienta usada para el DER v2 del programa: https://mermaid.js.org
+- Doblaje de voces: https://elevenlabs.io/text-to-speech
