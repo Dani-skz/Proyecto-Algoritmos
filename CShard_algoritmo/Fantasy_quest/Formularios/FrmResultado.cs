@@ -26,10 +26,10 @@ namespace Fantasy_quest.Formularios
             lblTitulo.Text = resultado.NombreJugador == null
                 ? "Tu resultado"
                 : "Resultado de " + resultado.NombreJugador;
-            lblCombinacion.Text = resultado.Combinacion.ToString();
-            lblDetalle.Text = $"Raza principal: {resultado.RazaPrincipal}\n" +
-                              $"Raza secundaria: {resultado.RazaSecundaria}\n" +
-                              $"Clase: {resultado.Clase}";
+            lblCombinacion.Text = Capitalizar(resultado.Combinacion);
+            lblDetalle.Text = $"Raza principal: {Capitalizar(resultado.RazaPrincipal)}\n" +
+                              $"Raza secundaria: {Capitalizar(resultado.RazaSecundaria)}\n" +
+                              $"Clase: {Capitalizar(resultado.Clase)}";
 
             pbAvatar.Image = Tema.ComponerAvatar(resultado.Combinacion, resultado.RazaPrincipal);
 
@@ -54,6 +54,14 @@ namespace Fantasy_quest.Formularios
         private void btnVolverAJugar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Retry;
+        }
+
+        // los enums estan en minuscula para que coincidan con lo que se guarda en la BDD
+        // (Enum.ToString / Enum.Parse), pero en pantalla queda mejor con la primera en mayuscula
+        private static string Capitalizar<T>(T valor) where T : Enum
+        {
+            string texto = valor.ToString();
+            return string.IsNullOrEmpty(texto) ? texto : char.ToUpper(texto[0]) + texto.Substring(1);
         }
     }
 }
