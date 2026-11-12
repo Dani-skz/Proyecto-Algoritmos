@@ -24,8 +24,7 @@ namespace Fantasy_quest.ui
         private static readonly Image ImagenEntrada = CargarImagen("entrada.png");
         private static readonly Image ImagenContenedor = CargarImagen("contenedor.png");
 
-        // una imagen por cada entrada de CombinacionRaza: 6 mestizas + 4 puras.
-        // El PictureBox usa Zoom asi que no importa que sean de tamaños distintos
+        // una imagen por entrada de CombinacionRaza (6 mestizas + 4 puras)
         private static readonly Dictionary<CombinacionRaza, Image> AvataresCombinacion = new Dictionary<CombinacionRaza, Image>
         {
             { CombinacionRaza.semiorco,        CargarImagen("raza_semiorco.png") },
@@ -72,10 +71,8 @@ namespace Fantasy_quest.ui
             return IconosClase.TryGetValue(claseJugador, out Image? icono) ? icono : null;
         }
 
-        // compone la imagen de la combinacion con el marco de la raza principal arriba.
-        // La imagen de raza se dibuja al 60% centrada (como el inset-[20%] del CSS original)
-        // y el marco ocupa todo el canvas. Vale tanto para mestizas como para puras:
-        // ambas tienen su propia entrada en AvataresCombinacion
+        // imagen de raza al 60% centrada (equivalente al inset-[20%] del CSS original)
+        // con el marco de la raza principal arriba
         public static Image ComponerAvatar(CombinacionRaza combinacion, razas razaPrincipal)
         {
             Image marco = MarcosRaza.TryGetValue(razaPrincipal, out Image? m) ? m : CargarImagen("marco_default.png");

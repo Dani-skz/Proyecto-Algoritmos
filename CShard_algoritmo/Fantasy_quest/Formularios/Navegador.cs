@@ -14,8 +14,8 @@ namespace Fantasy_quest.Formularios
     // es simplemente Close().
     internal static class Navegador
     {
-        // activo mientras se este propagando el "Volver al menu principal" del dropdown
-        // de Ajustes: cada capa de Abrir que termine se cierra tambien hasta llegar a FrmPrincipal
+        // propagacion del "Volver al menu principal": cada Abrir que vuelve cierra
+        // tambien su capa hasta llegar a FrmPrincipal
         private static bool regresandoAlMenu;
 
         // volver = false: quien llama abre otra ventana a continuacion (asi no se ve
@@ -38,8 +38,6 @@ namespace Fantasy_quest.Formularios
                 actual.Location = siguiente.Location;
             }
 
-            // propagacion del "Volver al menu principal": cierra cada capa hasta
-            // que la actual sea FrmPrincipal, momento en el que se corta el modo
             if (regresandoAlMenu)
             {
                 if (actual is FrmPrincipal)
@@ -70,17 +68,14 @@ namespace Fantasy_quest.Formularios
             actual.Activate();
         }
 
-        // llamado desde el dropdown de Ajustes: marca el modo y cierra la ventana actual.
-        // Cada Navegador.Abrir que vuelve en el camino cierra tambien su "actual" hasta
-        // que el stack queda nuevamente en FrmPrincipal
         public static void VolverAlMenuPrincipal(Form actual)
         {
             regresandoAlMenu = true;
             actual.Close();
         }
 
-        // si un FormClosing cancelo el cierre (ej. partida anonima con progreso donde el
-        // jugador dijo que no), tenemos que revertir el modo para no cerrar lo que queda
+        // para los FormClosing que cancelan el cierre (ej. partida anonima con progreso):
+        // sin esto, se cerrarian igual las capas de abajo
         public static void CancelarVueltaAlMenu()
         {
             regresandoAlMenu = false;
@@ -97,9 +92,7 @@ namespace Fantasy_quest.Formularios
                 Abrir(actual, frmPartida, volver: false);
             }
 
-            // Si el jugador eligio volver al menu principal desde el dropdown de Ajustes,
-            // Abrir ya pidio el cierre de actual (si no es FrmPrincipal): no mostramos
-            // resultado ni volvemos a actual, dejamos que la propagacion siga su curso
+            // Abrir ya arranco la propagacion: no mostramos resultado ni volvemos
             if (regresandoAlMenu)
             {
                 return;

@@ -2,11 +2,9 @@ using Fantasy_quest.Formularios;
 
 namespace Fantasy_quest.ui
 {
-    // Boton "Ajustes" arriba a la izquierda + dropdown con los controles de volumen
-    // (misma logica que FrmPrincipal) y un acceso directo para volver al menu principal.
-    // El Panel del dropdown recibe el fondo de pergamino de Tema.AplicarPanel igual que
-    // cualquier otro contenedor del juego, asi que Agregar() tiene que llamarse antes
-    // de Tema.Aplicar() para que entre en el barrido del tema y en el shift de la barra
+    // Boton "Ajustes" + dropdown de volumen y "Volver al menu principal".
+    // Agregar() tiene que llamarse antes de Tema.Aplicar() para que los controles
+    // entren en el barrido del tema y en el shift de BarraTitulo
     internal static class MenuSettings
     {
         private const int AltoBoton = 35;
@@ -31,9 +29,6 @@ namespace Fantasy_quest.ui
                 Visible = false
             };
 
-            // los dos renglones de volumen reproducen FrmPrincipal: slider +
-            // label con el porcentaje. Sonido es un singleton estatico, asi que
-            // cualquier cambio queda guardado para el resto del juego
             Label lblMusica = new Label
             {
                 Location = new Point(Margen, Margen),
@@ -96,7 +91,7 @@ namespace Fantasy_quest.ui
                 dropdown.Visible = !dropdown.Visible;
                 if (dropdown.Visible)
                 {
-                    // refresca los sliders por si el usuario cambio algo en otra ventana
+                    // sincroniza con cambios hechos desde otra ventana
                     barraMusica.Valor = Sonido.Musica.Volumen;
                     barraNarracion.Valor = Sonido.Narracion.Volumen;
                     dropdown.BringToFront();
@@ -105,9 +100,8 @@ namespace Fantasy_quest.ui
 
             formulario.Controls.Add(btnAjustes);
             formulario.Controls.Add(dropdown);
-            // Controls.Add deja los controles atras en el z-order: las labels transparentes
-            // encima (ej. lblProgreso de FrmPartida, lblCapitulo de FrmIntroduccion) pintan
-            // el fondo del form sobre el boton y lo ocultan. BringToFront los pone adelante
+            // sin esto, las labels transparentes del form (lblProgreso, lblCapitulo)
+            // quedan por delante y tapan el boton con el fondo del formulario
             btnAjustes.BringToFront();
             dropdown.BringToFront();
         }

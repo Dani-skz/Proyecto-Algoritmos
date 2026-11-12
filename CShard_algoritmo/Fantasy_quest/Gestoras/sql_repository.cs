@@ -41,9 +41,7 @@ namespace Fantasy_quest.Gestoras
             });
         }
 
-        // boton Registrarse: falla si el nombre ya existe.
-        // la contrasena se hashea con SHA-256 antes de enviarla; en la base
-        // solo se guarda el hash, nunca el valor en claro
+        // falla si el nombre ya existe (sin insert-or-return, hay que loguearse)
         public Jugador RegistrarJugadorNuevo(string nombre, string contrasena)
         {
             Dictionary<string, object?> parametros = new Dictionary<string, object?>
@@ -55,10 +53,7 @@ namespace Fantasy_quest.Gestoras
             return new Jugador(id, nombre.Trim());
         }
 
-        // boton Iniciar sesion:
-        //   null = nombre no encontrado
-        //   InvalidOperationException = nombre ok pero contrasena incorrecta
-        // separar los dos casos permite dar mensajes claros al usuario
+        // null = nombre no existe; InvalidOperationException = contrasena incorrecta
         public Jugador? IniciarSesion(string nombre, string contrasena)
         {
             DataTable tabla = dao.EjecutarConsulta(
@@ -79,8 +74,7 @@ namespace Fantasy_quest.Gestoras
             return new Jugador(Convert.ToInt32(fila["id_jugador"]), fila["nombre"].ToString()!);
         }
 
-        // SHA-256 en hexadecimal (64 caracteres). El mismo formato que espera la BDD.
-        // No es bcrypt pero para un juego academico alcanza: evita guardar contrasenas en claro
+        // SHA-256 en hex (64 chars), el formato que espera la BDD
         private static string HashearContrasena(string contrasena)
         {
             byte[] bytes = SHA256.HashData(Encoding.UTF8.GetBytes(contrasena));

@@ -45,9 +45,8 @@ namespace Fantasy_quest.Dominio
             razas principal = orden[0].Key;
             razas secundaria = orden[1].Key;
 
-            // regla de mestizaje: la secundaria tiene que llegar al 33% del total
-            // de puntos de raza. Chequeamos con enteros (sec * 3 >= total) para no
-            // arrastrar errores de redondeo del 1/3 en flotante
+            // mestiza si la secundaria llega al 33% del total (con enteros para no
+            // arrastrar el redondeo de 1/3)
             int total = PuntosRaza.Values.Sum();
             bool esMestiza = total > 0 && orden[1].Value * 3 >= total;
 

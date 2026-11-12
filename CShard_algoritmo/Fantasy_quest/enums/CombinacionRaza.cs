@@ -8,15 +8,15 @@ namespace Fantasy_quest.enums
 {
     public enum CombinacionRaza
     {
-        // mestizas: la raza secundaria llega al 33% del total de puntos de raza
+        // mestizas (secundaria >= 33% del total)
         semiorco, // humano + orco
         semielfo, // humano + elfo
-        enanogigantismo, //enano+humano
-        ElfoYunqu, //elfo + enano
+        enanogigantismo, // enano + humano
+        ElfoYunqu, // elfo + enano
         ElfoOscuro, // elfo + orco
         RompeMontaña, // enano + orco
 
-        // puras: la raza secundaria no llega al 33%, el resultado es la raza con mas puntos
+        // puras (secundaria < 33%)
         humano,
         elfo,
         orco,
