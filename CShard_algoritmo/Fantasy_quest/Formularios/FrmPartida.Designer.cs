@@ -41,12 +41,12 @@ namespace Fantasy_quest.Formularios
             //
             // lblProgreso
             //
-            lblProgreso.AutoSize = true;
-            lblProgreso.Location = new Point(70, 20);
+            lblProgreso.Location = new Point(0, 20);
             lblProgreso.Name = "lblProgreso";
-            lblProgreso.Size = new Size(91, 15);
+            lblProgreso.Size = new Size(800, 20);
             lblProgreso.TabIndex = 0;
             lblProgreso.Text = "Pregunta 1 de 1";
+            lblProgreso.TextAlign = ContentAlignment.MiddleCenter;
             //
             // lblPregunta
             //

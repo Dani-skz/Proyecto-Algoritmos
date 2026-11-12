@@ -17,6 +17,9 @@ namespace Fantasy_quest.Formularios
         public FrmIntroduccion(Pregunta pregunta, int numero, int total)
         {
             InitializeComponent();
+            // Agregar antes de Tema.Aplicar para que entre en el barrido del tema
+            // y en el shift de BarraTitulo
+            MenuSettings.Agregar(this);
             Tema.Aplicar(this);
 
             this.numero = numero;

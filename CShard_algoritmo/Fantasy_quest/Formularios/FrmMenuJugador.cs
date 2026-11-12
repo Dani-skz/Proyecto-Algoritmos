@@ -19,6 +19,9 @@ namespace Fantasy_quest.Formularios
         public FrmMenuJugador(Jugador jugador)
         {
             InitializeComponent();
+            // Agregar antes de Tema.Aplicar para que entren en el barrido del tema
+            // y en el shift de BarraTitulo
+            MenuSettings.Agregar(this);
             Tema.Aplicar(this);
             this.jugador = jugador;
             lblSaludo.Text = "Hola, " + jugador.Nombre;

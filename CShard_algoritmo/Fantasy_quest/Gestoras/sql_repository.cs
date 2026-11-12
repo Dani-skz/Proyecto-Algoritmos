@@ -256,16 +256,6 @@ namespace Fantasy_quest.Gestoras
                 "fecha_fin as Fecha from vw_historial where estado = 'FINALIZADA' order by fecha_fin desc");
         }
 
-        // ranking agregado: cantidad de partidas finalizadas por jugador.
-        // ignora anonimas (jugador null) y partidas no finalizadas
-        public DataTable ObtenerRanking()
-        {
-            return dao.EjecutarConsulta(
-                "select jugador as Jugador, count(*) as Partidas " +
-                "from vw_historial where estado = 'FINALIZADA' and jugador is not null " +
-                "group by jugador order by count(*) desc, jugador");
-        }
-
         // id_partida, id_jugador, jugador, modo, fecha_inicio, preguntas_respondidas
         public DataTable ObtenerPartidasPendientes()
         {

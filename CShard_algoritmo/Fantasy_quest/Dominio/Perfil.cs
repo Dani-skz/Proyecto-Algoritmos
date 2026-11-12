@@ -41,14 +41,27 @@ namespace Fantasy_quest.Dominio
         public ResultadoPartida CalcularResultado(string? nombreJugador)
         {
             // desempate (pendiente de definir): a igual puntaje gana la que esta primero en el enum
-            List<razas> orden = PuntosRaza.OrderByDescending(p => p.Value).Select(p => p.Key).ToList();
+            List<KeyValuePair<razas, int>> orden = PuntosRaza.OrderByDescending(p => p.Value).ToList();
+            razas principal = orden[0].Key;
+            razas secundaria = orden[1].Key;
+
+            // regla de mestizaje: la secundaria tiene que llegar al 33% del total
+            // de puntos de raza. Chequeamos con enteros (sec * 3 >= total) para no
+            // arrastrar errores de redondeo del 1/3 en flotante
+            int total = PuntosRaza.Values.Sum();
+            bool esMestiza = total > 0 && orden[1].Value * 3 >= total;
+
+            CombinacionRaza combinacion = esMestiza
+                ? ResultadoPartida.ObtenerCombinacion(principal, secundaria)
+                : ResultadoPartida.ObtenerPura(principal);
+
             clase claseGanadora = PuntosClase.OrderByDescending(p => p.Value).First().Key;
 
             return new ResultadoPartida(
                 nombreJugador,
-                orden[0],
-                orden[1],
-                ResultadoPartida.ObtenerCombinacion(orden[0], orden[1]),
+                principal,
+                secundaria,
+                combinacion,
                 claseGanadora,
                 new Dictionary<razas, int>(PuntosRaza),
                 new Dictionary<clase, int>(PuntosClase));

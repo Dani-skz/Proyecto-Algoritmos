@@ -20,6 +20,9 @@ namespace Fantasy_quest.Formularios
         public FrmPartida(GestorPartida gestor)
         {
             InitializeComponent();
+            // Agregar antes de Tema.Aplicar para que entren en el barrido del tema
+            // y en el shift de BarraTitulo
+            MenuSettings.Agregar(this);
             Tema.Aplicar(this);
             this.gestor = gestor;
             botonesRespuesta = new Button[]
@@ -172,6 +175,9 @@ namespace Fantasy_quest.Formularios
             if (respuesta != DialogResult.Yes)
             {
                 e.Cancel = true;
+                // si el cierre venia disparado por "Volver al menu principal", hay que
+                // frenar la propagacion para que no se cierren tambien las capas de abajo
+                Navegador.CancelarVueltaAlMenu();
             }
         }
     }

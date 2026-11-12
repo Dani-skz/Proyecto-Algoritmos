@@ -17,8 +17,14 @@ namespace Fantasy_quest.Formularios
         {
             InitializeComponent();
             Tema.Aplicar(this);
-            barraMusica.Valor = Sonido.Musica.Volumen;
-            barraNarracion.Valor = Sonido.Narracion.Volumen;
+            // Activated dispara cada vez que la ventana recupera el foco (al abrirse
+            // por primera vez y al cerrarse cualquier modal encima), asi las barras
+            // reflejan los cambios hechos desde el dropdown de Ajustes de otra ventana
+            Activated += (sender, e) =>
+            {
+                barraMusica.Valor = Sonido.Musica.Volumen;
+                barraNarracion.Valor = Sonido.Narracion.Volumen;
+            };
         }
 
         private void barraMusica_ValorCambiado(object? sender, EventArgs e)

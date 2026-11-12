@@ -24,11 +24,8 @@ namespace Fantasy_quest.ui
         private static readonly Image ImagenEntrada = CargarImagen("entrada.png");
         private static readonly Image ImagenContenedor = CargarImagen("contenedor.png");
 
-        // marco de madera vacio: el centro queda libre para la imagen de cada clase
-        public static readonly Image AvatarDefault = CargarImagen("avatar_default.png");
-
-        // una imagen por combinacion de razas (6 en total). El PictureBox usa Zoom
-        // asi que no importa que sean de tamaños distintos
+        // una imagen por cada entrada de CombinacionRaza: 6 mestizas + 4 puras.
+        // El PictureBox usa Zoom asi que no importa que sean de tamaños distintos
         private static readonly Dictionary<CombinacionRaza, Image> AvataresCombinacion = new Dictionary<CombinacionRaza, Image>
         {
             { CombinacionRaza.semiorco,        CargarImagen("raza_semiorco.png") },
@@ -37,6 +34,10 @@ namespace Fantasy_quest.ui
             { CombinacionRaza.ElfoYunqu,       CargarImagen("raza_elfoyunqu.png") },
             { CombinacionRaza.ElfoOscuro,      CargarImagen("raza_elfooscuro.png") },
             { CombinacionRaza.RompeMontaña,    CargarImagen("raza_rompemontana.png") },
+            { CombinacionRaza.humano,          CargarImagen("raza_humano.png") },
+            { CombinacionRaza.elfo,            CargarImagen("raza_elfo.png") },
+            { CombinacionRaza.orco,            CargarImagen("raza_orco.png") },
+            { CombinacionRaza.enano,           CargarImagen("raza_enano.png") },
         };
 
         // marcos estilo warcraftcn-ui. El enano no tiene propio: usa el default
@@ -73,11 +74,16 @@ namespace Fantasy_quest.ui
 
         // compone la imagen de la combinacion con el marco de la raza principal arriba.
         // La imagen de raza se dibuja al 60% centrada (como el inset-[20%] del CSS original)
-        // y el marco ocupa todo el canvas
+        // y el marco ocupa todo el canvas. Vale tanto para mestizas como para puras:
+        // ambas tienen su propia entrada en AvataresCombinacion
         public static Image ComponerAvatar(CombinacionRaza combinacion, razas razaPrincipal)
         {
-            Image fondo = AvataresCombinacion.TryGetValue(combinacion, out Image? img) ? img : AvatarDefault;
             Image marco = MarcosRaza.TryGetValue(razaPrincipal, out Image? m) ? m : CargarImagen("marco_default.png");
+
+            if (!AvataresCombinacion.TryGetValue(combinacion, out Image? fondo))
+            {
+                return marco;
+            }
 
             Bitmap resultado = new Bitmap(marco.Width, marco.Height);
             using (Graphics g = Graphics.FromImage(resultado))

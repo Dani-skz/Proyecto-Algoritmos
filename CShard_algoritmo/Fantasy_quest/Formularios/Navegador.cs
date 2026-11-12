@@ -14,6 +14,10 @@ namespace Fantasy_quest.Formularios
     // es simplemente Close().
     internal static class Navegador
     {
+        // activo mientras se este propagando el "Volver al menu principal" del dropdown
+        // de Ajustes: cada capa de Abrir que termine se cierra tambien hasta llegar a FrmPrincipal
+        private static bool regresandoAlMenu;
+
         // volver = false: quien llama abre otra ventana a continuacion (asi no se ve
         // "actual" entre las dos) o la muestra despues con Volver
         public static DialogResult Abrir(Form actual, Form siguiente, bool volver = true)
@@ -33,6 +37,26 @@ namespace Fantasy_quest.Formularios
             {
                 actual.Location = siguiente.Location;
             }
+
+            // propagacion del "Volver al menu principal": cierra cada capa hasta
+            // que la actual sea FrmPrincipal, momento en el que se corta el modo
+            if (regresandoAlMenu)
+            {
+                if (actual is FrmPrincipal)
+                {
+                    regresandoAlMenu = false;
+                    if (volver)
+                    {
+                        Volver(actual);
+                    }
+                }
+                else
+                {
+                    actual.Close();
+                }
+                return resultado;
+            }
+
             if (volver)
             {
                 Volver(actual);
@@ -46,6 +70,22 @@ namespace Fantasy_quest.Formularios
             actual.Activate();
         }
 
+        // llamado desde el dropdown de Ajustes: marca el modo y cierra la ventana actual.
+        // Cada Navegador.Abrir que vuelve en el camino cierra tambien su "actual" hasta
+        // que el stack queda nuevamente en FrmPrincipal
+        public static void VolverAlMenuPrincipal(Form actual)
+        {
+            regresandoAlMenu = true;
+            actual.Close();
+        }
+
+        // si un FormClosing cancelo el cierre (ej. partida anonima con progreso donde el
+        // jugador dijo que no), tenemos que revertir el modo para no cerrar lo que queda
+        public static void CancelarVueltaAlMenu()
+        {
+            regresandoAlMenu = false;
+        }
+
         // partida y, si se termino, su resultado (con la cancion final).
         // Atras en el resultado vuelve a "actual" y a la musica de fondo.
         // Volver a jugar vuelve al menu principal: si "actual" es el menu del jugador
@@ -55,6 +95,14 @@ namespace Fantasy_quest.Formularios
             using (FrmPartida frmPartida = new FrmPartida(gestor))
             {
                 Abrir(actual, frmPartida, volver: false);
+            }
+
+            // Si el jugador eligio volver al menu principal desde el dropdown de Ajustes,
+            // Abrir ya pidio el cierre de actual (si no es FrmPrincipal): no mostramos
+            // resultado ni volvemos a actual, dejamos que la propagacion siga su curso
+            if (regresandoAlMenu)
+            {
+                return;
             }
 
             if (gestor.Resultado != null)

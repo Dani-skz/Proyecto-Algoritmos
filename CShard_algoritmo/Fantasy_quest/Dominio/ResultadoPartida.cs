@@ -44,5 +44,17 @@ namespace Fantasy_quest.Dominio
 
             throw new ArgumentException($"No hay combinacion para {a} + {b}");
         }
+
+        // raza pura: cuando la raza secundaria no llega al umbral de mezcla, el resultado
+        // es la raza con mas puntos sin mestizaje. Cada raza tiene su propia entrada en
+        // CombinacionRaza con el mismo nombre que la raza
+        public static CombinacionRaza ObtenerPura(razas raza) => raza switch
+        {
+            razas.humano => CombinacionRaza.humano,
+            razas.elfo => CombinacionRaza.elfo,
+            razas.orco => CombinacionRaza.orco,
+            razas.enano => CombinacionRaza.enano,
+            _ => throw new ArgumentException($"No hay pura para {raza}")
+        };
     }
 }
