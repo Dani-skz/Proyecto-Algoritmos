@@ -1,15 +1,9 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-01-portada.png
-    Imagen 1 — Portada. Captura del menú principal recién abierto, con el título "Fantasy Quest" y el subtítulo "¿Qué serías en un mundo medieval de fantasía?" visibles.
-02-aviso-sin-conexion.png
-    Imagen 2 — Aviso sin conexión. Cartel "No hay conexión con la base de datos. Podés jugar anónimo, pero no se va a poder guardar la partida." sobre el menú principal. Se obtiene abriendo el juego con MySQL detenido.
 03-barra-titulo.png
     Imagen 3 — Barra de título. Recorte de la parte superior de la ventana con el mouse sobre el botón ✕ (resaltado en rojo). Marcar con flechas o números la zona para arrastrar, el botón minimizar y el botón cerrar.
 04-confirmar-cierre.png
     Imagen 4 — Confirmación al cerrar. Cartel "Estás en medio de una partida. ¿Salir del juego?" con los botones Sí y No, sobre la pantalla de una pregunta.
-05-menu-principal.png
-    Imagen 5 — Menú principal. Captura completa con los cinco botones y las dos barras de volumen. Conviene que las barras no estén al 100 % (por ejemplo, Música 60 % y Narración 80 %) para que se note que se pueden mover.
 06-registrarse.png
     Imagen 6 — Registrarse. Pantalla con el título "Registrarse", un nombre de ejemplo en el campo Nombre, la contraseña con puntos y el botón "Registrarme".
 07-login-error.png
@@ -28,10 +22,6 @@ Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exac
     Imagen 13 — Guardar partida anónima. Cartel "¡Terminaste la partida! ¿Querés registrarte para guardarla?" al terminar una partida anónima.
 14-resultado-mestizo.png
     Imagen 14 — Resultado mestizo. Pantalla de resultado al final de una partida con una raza mestiza (por ejemplo Semielfo): avatar con marco a la izquierda, ícono de clase, la raza en grande, el detalle de raza principal, secundaria y clase, y los botones "Volver a jugar", "Ver puntajes" y "← Atrás".
-15-resultado-puro.png
-    Imagen 15 — Resultado puro. Misma pantalla con una raza pura (por ejemplo Orco), para comparar el avatar con el de la imagen anterior.
-16-puntajes.png
-    Imagen 16 — Puntajes. Pantalla Puntajes con las dos tablas (Razas y Clases) completas, ordenadas de mayor a menor.
 17-scoreboard.png
     Imagen 17 — Scoreboard. Lista con varias partidas cargadas y una fila seleccionada (resaltada en azul), con los botones "Ver resultado" y "← Atrás".
 18-resultado-otro-jugador.png

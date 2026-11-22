@@ -264,7 +264,7 @@ Solo en Debug: FrmDesarrollo ──► acceso directo a cada pantalla
 </tr>
 </tbody>
 </table>
-<figure><div class="pendiente"><strong>Imagen pendiente — Escena 4 — Menú principal</strong>Guardar la captura como <code>UI-Desing-History/V3/04-principal.png</code></div><figcaption>Escena 4 — Menú principal completo con las barras de volumen en valores distintos de 100 %.</figcaption></figure>
+<figure><img src="UI-Desing-History/V3/04-principal.png" alt="Escena 4 — Menú principal"><figcaption>Escena 4 — Menú principal completo con las barras de volumen en valores distintos de 100 %.</figcaption></figure>
 
 <h3>5. Registro — <code>FrmIngreso</code> (modo Registro)</h3>
 <p>Título "Registrarse", botón "Registrarme". Valida en C# antes de ir a la base: nombre de 2 a 30 caracteres (letras con acentos y ñ, números y espacios simples, con trim) y contraseña de 4 a 30 caracteres con <code>PasswordChar</code>. La contraseña se manda como SHA-256 a <code>sp_registrar_jugador</code>.</p>
@@ -464,7 +464,7 @@ Solo en Debug: FrmDesarrollo ──► acceso directo a cada pantalla
 </tr>
 </tbody>
 </table>
-<figure><div class="pendiente"><strong>Imagen pendiente — Escena 10 — Resultado</strong>Guardar la captura como <code>UI-Desing-History/V3/10-resultado.png</code></div><figcaption>Escena 10 — Resultado al terminar una partida (avatar, ícono de clase, detalle y tres botones).</figcaption></figure>
+<figure><img src="_miniaturas/V3_10-resultado.webp" alt="Escena 10 — Resultado"><figcaption>Escena 10 — Resultado al terminar una partida (avatar, ícono de clase, detalle y tres botones).</figcaption></figure>
 
 <h3>11. Resultado desde el scoreboard — <code>FrmResultado</code></h3>
 <p>Misma ventana con <code>finDePartida = false</code>: sin "Volver a jugar" y sin canción final. Los datos salen de <code>vw_historial</code> y <code>puntajes_partida</code>.</p>
@@ -472,7 +472,7 @@ Solo en Debug: FrmDesarrollo ──► acceso directo a cada pantalla
 
 <h3>12. Puntajes — <code>FrmPuntajes</code></h3>
 <p>Título "Tus puntajes" o "Puntajes de \&lt;nombre&gt;". Dos grillas, <code>dgvRazas</code> (4 filas) y <code>dgvClases</code> (13 filas), ordenadas por puntos de mayor a menor.</p>
-<figure><div class="pendiente"><strong>Imagen pendiente — Escena 12 — Puntajes</strong>Guardar la captura como <code>UI-Desing-History/V3/12-puntajes.png</code></div><figcaption>Escena 12 — Puntajes con las dos tablas completas.</figcaption></figure>
+<figure><img src="UI-Desing-History/V3/12-puntajes.png" alt="Escena 12 — Puntajes"><figcaption>Escena 12 — Puntajes con las dos tablas completas.</figcaption></figure>
 
 <h3>13. Scoreboard — <code>FrmScoreboard</code></h3>
 <p>Grilla <code>dgvPartidas</code> con las partidas <code>FINALIZADA</code> de <code>vw_historial</code>: Jugador, Resultado, Clase y Fecha, la más reciente primero (la columna <code>id_partida</code> queda oculta). <strong>Ver resultado</strong> o doble clic abre la escena 11.</p>
