@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-09-menu-jugador-pendiente.png
-    Imagen 9 — Menú del jugador con partida pendiente. Saludo, mensaje "Tenés una partida sin terminar." y los botones "Continuar" y "Abandonar partida pendiente". Se obtiene empezando una partida, respondiendo un par de preguntas y volviendo con Atrás.
 10-ajustes.png
     Imagen 10 — Menú Ajustes. Panel desplegado sobre una pregunta, con las barras Música y Narración y el botón "Volver al menú principal".
 11-introduccion.png
