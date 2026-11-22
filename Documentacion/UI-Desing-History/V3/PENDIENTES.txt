@@ -1,7 +1,5 @@
 Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto (PNG):
 
-02-ajustes.png
-    Escena 2 — Menú Ajustes desplegado sobre una pregunta.
 03-dialogos.png
     Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
 06-login.png

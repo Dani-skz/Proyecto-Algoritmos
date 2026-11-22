@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-10-ajustes.png
-    Imagen 10 — Menú Ajustes. Panel desplegado sobre una pregunta, con las barras Música y Narración y el botón "Volver al menú principal".
 11-introduccion.png
     Imagen 11 — Introducción de un capítulo. "Capítulo 1 de 15", el título, el texto en el pergamino, la barra de desplazamiento dorada (si el texto es largo) y los botones "Ajustes", "Silenciar" y "Continuar →".
 12-pregunta.png
