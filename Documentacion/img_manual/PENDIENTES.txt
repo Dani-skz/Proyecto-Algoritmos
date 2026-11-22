@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-04-confirmar-cierre.png
-    Imagen 4 — Confirmación al cerrar. Cartel "Estás en medio de una partida. ¿Salir del juego?" con los botones Sí y No, sobre la pantalla de una pregunta.
 06-registrarse.png
     Imagen 6 — Registrarse. Pantalla con el título "Registrarse", un nombre de ejemplo en el campo Nombre, la contraseña con puntos y el botón "Registrarme".
 07-login-error.png
