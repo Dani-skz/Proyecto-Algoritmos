@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-03-barra-titulo.png
-    Imagen 3 — Barra de título. Recorte de la parte superior de la ventana con el mouse sobre el botón ✕ (resaltado en rojo). Marcar con flechas o números la zona para arrastrar, el botón minimizar y el botón cerrar.
 04-confirmar-cierre.png
     Imagen 4 — Confirmación al cerrar. Cartel "Estás en medio de una partida. ¿Salir del juego?" con los botones Sí y No, sobre la pantalla de una pregunta.
 06-registrarse.png

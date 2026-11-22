@@ -1,7 +1,5 @@
 Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto (PNG):
 
-01-barra-titulo.png
-    Escena 1 — Barra de título. Recorte de la barra con el hover rojo sobre ✕.
 02-ajustes.png
     Escena 2 — Menú Ajustes desplegado sobre una pregunta.
 03-dialogos.png
