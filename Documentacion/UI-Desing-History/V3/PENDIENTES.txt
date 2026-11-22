@@ -1,4 +1,0 @@
-Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto (PNG):
-
-14-desarrollo.png
-    Escena 14 — Menú de desarrollo con el estado "Base de datos: conectada".
