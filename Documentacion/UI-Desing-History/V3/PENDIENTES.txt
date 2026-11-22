@@ -4,10 +4,6 @@ Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto 
     Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
 06-login.png
     Escena 6 — Iniciar sesión con datos cargados.
-08-introduccion.png
-    Escena 8 — Introducción del capítulo 1 con el pergamino, la barra dorada y los botones.
-09-partida.png
-    Escena 9 — Pregunta con los 6 botones de respuesta, uno con hover.
 11-resultado-scoreboard.png
     Escena 11 — "Resultado de <nombre>" abierto desde el scoreboard.
 13-scoreboard.png
