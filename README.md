@@ -172,6 +172,10 @@ DER v2 en Mermaid con fuente en [`DER v2.md`](Documentacion/diagrama%20base%20de
 
 ### Algoritmos / clases
 
+Diagrama actualizado (22-11):
+
+![Diagrama algoritmos actualizado](Documentacion/diagrama%20algoritmos/diagramafantasyquest-actualizado.jpg)
+
 Diagrama inicial (19-10):
 
 ![Diagrama algoritmos](Documentacion/diagrama%20algoritmos/DER%2019-10.jpg)
