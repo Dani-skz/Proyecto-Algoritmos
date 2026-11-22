@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fantasy Quest — Manual de usuario</title><style>
+:root { --tinta:#2a1d10; --dorado:#9a6b16; --pergamino:#fbf6ea; --borde:#d9c9a3; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--pergamino); color:var(--tinta);
+       font: 15px/1.55 "Palatino Linotype", Palatino, Georgia, serif; }
+main { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+h1 { font-size: 2.1em; color: var(--dorado); border-bottom: 3px double var(--borde); padding-bottom: .3em; margin-top: 0; }
+h1 + p { color:#6b5a44; margin-top:-.4em; }
+h2 { color: var(--dorado); border-bottom: 1px solid var(--borde); padding-bottom: .2em; margin-top: 2em; }
+h3 { margin-top: 1.6em; }
+nav.indice { background:#f3ead3; border:1px solid var(--borde); padding: 12px 20px; border-radius: 6px; }
+nav.indice ol { margin: .3em 0; padding-left: 1.3em; columns: 2; }
+nav.indice a { color: var(--tinta); text-decoration: none; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: .93em; }
+th, td { border: 1px solid var(--borde); padding: 6px 9px; vertical-align: top; text-align: left; }
+th { background: #efe2c2; }
+tr:nth-child(even) td { background: #fffaf0; }
+td img { max-width: 100%; max-height: 130px; display:block; margin:auto; }
+code { background:#efe6cf; padding: 1px 5px; border-radius: 3px; font-size: .9em; }
+pre { background:#efe6cf; padding: 12px 14px; border-radius: 6px; overflow-x: auto; line-height: 1.35; }
+pre code { background:none; padding:0; }
+blockquote { border-left: 4px solid var(--borde); margin-left: 0; padding-left: 14px; color:#5b4a35; }
+figure { margin: 1.4em 0; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; border: 1px solid var(--borde); border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+figcaption { font-size: .88em; color:#6b5a44; margin-top: .5em; font-style: italic; }
+.pendiente { border: 2px dashed #b8955a; background: repeating-linear-gradient(45deg,#f7efdc,#f7efdc 12px,#f2e7cd 12px,#f2e7cd 24px);
+             border-radius: 6px; padding: 34px 20px; color: #7a5a24; }
+.pendiente strong { display:block; font-size: 1.05em; margin-bottom: .3em; }
+.pendiente code { background: #fff8e6; }
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  main { max-width: none; padding: 0; }
+  h2 { page-break-after: avoid; }
+  table, figure { page-break-inside: avoid; }
+  nav.indice ol { columns: 2; }
+}
+@page { size: A4; margin: 18mm 16mm; }
+</style></head><body><main><h1>Fantasy Quest — Manual de usuario</h1>
+<p>Versión final 1.0 · 22 de noviembre de 2026</p><nav class="indice"><strong>Contenido</strong><ol><li><a href="#introducci-n">Introducción</a></li><li><a href="#requisitos-e-instalaci-n">Requisitos e instalación</a></li><li><a href="#la-ventana-del-juego">La ventana del juego</a></li><li><a href="#men-principal">Menú principal</a></li><li><a href="#registrarse-e-iniciar-sesi-n">Registrarse e iniciar sesión</a></li><li><a href="#men-del-jugador">Menú del jugador</a></li><li><a href="#men-ajustes">Menú Ajustes</a></li><li><a href="#jugar-una-partida">Jugar una partida</a></li><li><a href="#resultado-y-puntajes">Resultado y puntajes</a></li><li><a href="#scoreboard">Scoreboard</a></li><li><a href="#preguntas-frecuentes-y-soluci-n-de-problemas">Preguntas frecuentes y solución de problemas</a></li></ol></nav>
+<h2 id="introducci-n">Introducción</h2>
+<p>Fantasy Quest es un juego de preguntas narrativo: respondés 15 preguntas ambientadas en el mundo de Aeloria y el juego te dice qué serías en un mundo medieval de fantasía. El resultado es una raza (pura o mestiza) y una clase, por ejemplo un <em>Elfo mago</em>, un <em>Semiorco guerrero</em> o un <em>Rompemontaña herrero</em>.</p>
+<ul>
+<li><strong>Razas base:</strong> orco, elfo, humano y enano.</li>
+<li><strong>Razas mestizas:</strong> semiorco, semielfo, enano con gigantismo, elfo del yunque, elfo oscuro y rompemontaña.</li>
+<li><strong>Clases:</strong> arquero, paladín, pícaro, guerrero, mago, granjero, esclavo, herrero, bufón, explorador, druida, hechicero y asesino.</li>
+</ul>
+<p>Podés jugar con un jugador registrado, y así la partida se guarda y aparece en el scoreboard, o jugar anónimo sin registrarte.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 1 — Portada</strong>Guardar la captura como <code>img_manual/01-portada.png</code></div><figcaption>Imagen 1 — Portada. Captura del menú principal recién abierto, con el título "Fantasy Quest" y el subtítulo "¿Qué serías en un mundo medieval de fantasía?" visibles.</figcaption></figure>
+
+<h2 id="requisitos-e-instalaci-n">Requisitos e instalación</h2>
+<p>Para jugar necesitás Windows 10 u 11 y el archivo <code>Fantasy_quest.exe</code>. Si querés guardar partidas y ver el scoreboard, también necesitás la base de datos MySQL del juego.</p>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th>Para qué sirve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows 10 u 11</td>
+<td>Ejecutar el juego</td>
+</tr>
+<tr>
+<td>.NET 9 Desktop Runtime</td>
+<td>Lo necesita el ejecutable si no viene incluido</td>
+</tr>
+<tr>
+<td>MySQL Server (o MariaDB) en <code>localhost:3306</code> con la base <code>fantasy_quest_bdd</code></td>
+<td>Registrarse, iniciar sesión, guardar partidas y ver el scoreboard</td>
+</tr>
+<tr>
+<td>Parlantes o auriculares</td>
+<td>Música de fondo, narración de cada capítulo y canción final</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Creá la base de datos ejecutando el script <code>Base_de_datos/fantasy_quest_bdd.sql</code> en MySQL.</li>
+<li>Abrí <code>Fantasy_quest.exe</code>.</li>
+<li>Si aparece el aviso "No hay conexión con la base de datos", podés seguir y jugar anónimo, pero la partida no se guarda.</li>
+</ol>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 2 — Aviso sin conexión</strong>Guardar la captura como <code>img_manual/02-aviso-sin-conexion.png</code></div><figcaption>Imagen 2 — Aviso sin conexión. Cartel "No hay conexión con la base de datos. Podés jugar anónimo, pero no se va a poder guardar la partida." sobre el menú principal. Se obtiene abriendo el juego con MySQL detenido.</figcaption></figure>
+
+<h2 id="la-ventana-del-juego">La ventana del juego</h2>
+<p>El juego usa su propia barra de título en lugar de la de Windows. Todas las pantallas se abren en la misma ventana: cada pantalla nueva reemplaza a la anterior en el mismo lugar, y si movés la ventana, la siguiente aparece donde la dejaste.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Barra superior</td>
+<td>Muestra el nombre de la ventana. Mantenela apretada con el clic izquierdo y arrastrá para mover la ventana</td>
+</tr>
+<tr>
+<td>Botón — (minimizar)</td>
+<td>Oculta la ventana en la barra de tareas. Para volver, hacé clic en el ícono del juego en la barra de tareas</td>
+</tr>
+<tr>
+<td>Botón ✕ (cerrar)</td>
+<td>Cierra el juego completo, estés en la pantalla que estés. Si estás en medio de una partida, primero te pregunta "¿Salir del juego?"</td>
+</tr>
+<tr>
+<td>Botón ← Atrás</td>
+<td>Vuelve a la pantalla anterior sin cerrar el juego</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 3 — Barra de título</strong>Guardar la captura como <code>img_manual/03-barra-titulo.png</code></div><figcaption>Imagen 3 — Barra de título. Recorte de la parte superior de la ventana con el mouse sobre el botón ✕ (resaltado en rojo). Marcar con flechas o números la zona para arrastrar, el botón minimizar y el botón cerrar.</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 4 — Confirmación al cerrar</strong>Guardar la captura como <code>img_manual/04-confirmar-cierre.png</code></div><figcaption>Imagen 4 — Confirmación al cerrar. Cartel "Estás en medio de una partida. ¿Salir del juego?" con los botones Sí y No, sobre la pantalla de una pregunta.</figcaption></figure>
+
+<h2 id="men-principal">Menú principal</h2>
+<p>El menú principal es la primera pantalla del juego y desde ahí se llega a todo lo demás.</p>
+<table>
+<thead>
+<tr>
+<th>Botón</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registrarse</td>
+<td>Crea un jugador nuevo y abre tu menú de jugador</td>
+</tr>
+<tr>
+<td>Iniciar sesión</td>
+<td>Entra con un jugador que ya registraste</td>
+</tr>
+<tr>
+<td>Jugar anónimo</td>
+<td>Empieza una partida sin jugador. No se guarda, salvo que te registres al terminar</td>
+</tr>
+<tr>
+<td>Scoreboard</td>
+<td>Muestra las partidas terminadas de todos los jugadores</td>
+</tr>
+<tr>
+<td>Salir</td>
+<td>Cierra el juego</td>
+</tr>
+</tbody>
+</table>
+<p>Abajo hay dos controles de volumen, de 0 a 100 %:</p>
+<ul>
+<li><strong>Música:</strong> el volumen de la música de fondo y de la canción final.</li>
+<li><strong>Narración:</strong> el volumen de la voz que lee cada capítulo.</li>
+</ul>
+<p>Para cambiarlos, hacé clic o arrastrá sobre la barra. También podés usar la rueda del mouse, que mueve el volumen de a 5 %. Los mismos controles están en el menú <strong>Ajustes</strong> de las otras pantallas y siempre muestran el mismo valor.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 5 — Menú principal</strong>Guardar la captura como <code>img_manual/05-menu-principal.png</code></div><figcaption>Imagen 5 — Menú principal. Captura completa con los cinco botones y las dos barras de volumen. Conviene que las barras no estén al 100 % (por ejemplo, Música 60 % y Narración 80 %) para que se note que se pueden mover.</figcaption></figure>
+
+<h2 id="registrarse-e-iniciar-sesi-n">Registrarse e iniciar sesión</h2>
+<p>Para registrarte o iniciar sesión hace falta tu nombre de jugador y una contraseña. Las dos opciones usan la misma pantalla.</p>
+<p><strong>Registrarse</strong></p>
+<ol>
+<li>En el menú principal, hacé clic en <strong>Registrarse</strong>.</li>
+<li>Escribí un nombre en el campo <strong>Nombre</strong>. Debe tener entre 2 y 30 caracteres, con letras (se aceptan acentos y ñ), números y espacios simples. No se admiten símbolos, emojis ni dos espacios seguidos. Los espacios al principio y al final se ignoran.</li>
+<li>Escribí una <strong>Contraseña</strong> de entre 4 y 30 caracteres. Se muestra con puntos mientras tipeás y distingue mayúsculas de minúsculas. La contraseña nunca se guarda en claro: la base guarda solo su hash SHA-256.</li>
+<li>Hacé clic en <strong>Registrarme</strong>. Si el nombre ya está en uso, el juego te avisa y tenés que elegir otro. Si el nombre o la contraseña no cumplen el formato, aparece un cartel "Nombre inválido" o "Contraseña inválida" con el motivo.</li>
+</ol>
+<p><strong>Iniciar sesión</strong></p>
+<ol>
+<li>En el menú principal, hacé clic en <strong>Iniciar sesión</strong>.</li>
+<li>Escribí el nombre con el que te registraste y tu contraseña.</li>
+<li>Hacé clic en <strong>Entrar</strong>. Si el nombre no existe, aparece "No existe un jugador con ese nombre. Registrate primero." Si la contraseña no coincide, aparece "Contraseña incorrecta."</li>
+</ol>
+<p>Si todo sale bien, se abre tu menú de jugador. Con <strong>← Atrás</strong> volvés al menú principal.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 6 — Registrarse</strong>Guardar la captura como <code>img_manual/06-registrarse.png</code></div><figcaption>Imagen 6 — Registrarse. Pantalla con el título "Registrarse", un nombre de ejemplo en el campo Nombre, la contraseña con puntos y el botón "Registrarme".</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 7 — Iniciar sesión con error</strong>Guardar la captura como <code>img_manual/07-login-error.png</code></div><figcaption>Imagen 7 — Iniciar sesión con error. Pantalla "Iniciar sesión" con el cartel "No existe un jugador con ese nombre. Registrate primero." a la vista.</figcaption></figure>
+
+<h2 id="men-del-jugador">Menú del jugador</h2>
+<p>El menú del jugador te saluda por tu nombre y te deja empezar una partida nueva o seguir la que dejaste sin terminar. Podés tener una sola partida pendiente a la vez.</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Qué se ve</th>
+<th>Qué podés hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No tenés partidas pendientes</td>
+<td>Botón <strong>Iniciar</strong></td>
+<td>Empezar una partida nueva</td>
+</tr>
+<tr>
+<td>Tenés una partida sin terminar</td>
+<td>Mensaje "Tenés una partida sin terminar.", botón <strong>Continuar</strong> y botón <strong>Abandonar partida pendiente</strong></td>
+<td>Seguir desde la pregunta donde quedaste, o abandonarla</td>
+</tr>
+</tbody>
+</table>
+<p>Cuando abandonás una partida, el juego te pide confirmación porque se pierde el progreso. Después vuelve a aparecer el botón <strong>Iniciar</strong>.</p>
+<p><strong>← Atrás</strong> cierra tu sesión y te devuelve al menú principal. Tus respuestas quedan guardadas al instante, así que podés salir en cualquier momento y seguir otro día.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 8 — Menú del jugador sin partida</strong>Guardar la captura como <code>img_manual/08-menu-jugador.png</code></div><figcaption>Imagen 8 — Menú del jugador sin partida. Saludo "Hola, \&lt;nombre&gt;", el botón "Ajustes" arriba a la izquierda y solo el botón "Iniciar".</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 9 — Menú del jugador con partida pendiente</strong>Guardar la captura como <code>img_manual/09-menu-jugador-pendiente.png</code></div><figcaption>Imagen 9 — Menú del jugador con partida pendiente. Saludo, mensaje "Tenés una partida sin terminar." y los botones "Continuar" y "Abandonar partida pendiente". Se obtiene empezando una partida, respondiendo un par de preguntas y volviendo con Atrás.</figcaption></figure>
+
+<h2 id="men-ajustes">Menú Ajustes</h2>
+<p>En el menú del jugador, en la introducción de cada capítulo y en cada pregunta hay un botón <strong>Ajustes</strong> arriba a la izquierda. Al hacer clic se despliega un panel; otro clic en <strong>Ajustes</strong> lo cierra.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Música</td>
+<td>Volumen de la música de fondo (igual que en el menú principal)</td>
+</tr>
+<tr>
+<td>Narración</td>
+<td>Volumen de la voz del narrador</td>
+</tr>
+<tr>
+<td>Volver al menú principal</td>
+<td>Cierra todas las pantallas abiertas y vuelve al menú principal. Si estabas logueado, se cierra la sesión</td>
+</tr>
+</tbody>
+</table>
+<p>Si usás <strong>Volver al menú principal</strong> en medio de una partida registrada, lo respondido queda guardado y la podés continuar después. En una partida anónima, el juego te pide confirmación porque el progreso se pierde.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 10 — Menú Ajustes</strong>Guardar la captura como <code>img_manual/10-ajustes.png</code></div><figcaption>Imagen 10 — Menú Ajustes. Panel desplegado sobre una pregunta, con las barras Música y Narración y el botón "Volver al menú principal".</figcaption></figure>
+
+<h2 id="jugar-una-partida">Jugar una partida</h2>
+<p>Una partida tiene 15 capítulos. Cada capítulo empieza con una introducción narrada y termina con una pregunta que respondés eligiendo una opción.</p>
+<ol>
+<li><strong>Introducción del capítulo.</strong> Arriba aparecen "Capítulo N de 15" y el título, y debajo la historia en un pergamino mientras una voz la lee.
+   - Si el texto no entra, usá la barra dorada de la derecha o la rueda del mouse para leer el resto.
+   - <strong>Silenciar</strong> apaga solo la narración (la música sigue) y queda así para los próximos capítulos. <strong>Activar sonido</strong> la vuelve a prender por donde iba.
+   - <strong>Continuar →</strong> corta la narración y pasa a la pregunta.</li>
+<li><strong>Pregunta.</strong> Arriba dice "Pregunta N de 15" y debajo aparecen 6 respuestas como botones. Hacé clic en la que elijas. No hay respuestas correctas ni incorrectas: cada una suma puntos a ciertas razas y clases. Una vez elegida, la respuesta no se puede cambiar.</li>
+<li>Después de responder se abre la introducción del capítulo siguiente. Esto se repite hasta la pregunta 15.</li>
+<li>Al responder la última, el juego muestra "Calculando resultado..." y después abre la pantalla de resultado con la canción final.</li>
+</ol>
+<p><strong>Si jugás anónimo:</strong> al terminar, el juego te pregunta "¿Querés registrarte para guardarla?". Si respondés Sí, se abre la pantalla de registro y, al registrarte, aparece "Partida guardada a nombre de \&lt;nombre&gt;".</p>
+<p><strong>Salir a mitad de partida:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tipo de partida</th>
+<th>← Atrás o Ajustes → Volver al menú</th>
+<th>✕ (cerrar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Con jugador registrado</td>
+<td>Sale sin preguntar. La partida queda pendiente y la podés <strong>Continuar</strong> después</td>
+<td>Pregunta si querés salir. Lo respondido queda guardado</td>
+</tr>
+<tr>
+<td>Anónima</td>
+<td>Avisa "si salís se pierde el progreso" y pide confirmación (salvo que todavía no hayas respondido ninguna)</td>
+<td>Pregunta si querés salir. El progreso se pierde</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 11 — Introducción de un capítulo</strong>Guardar la captura como <code>img_manual/11-introduccion.png</code></div><figcaption>Imagen 11 — Introducción de un capítulo. "Capítulo 1 de 15", el título, el texto en el pergamino, la barra de desplazamiento dorada (si el texto es largo) y los botones "Ajustes", "Silenciar" y "Continuar →".</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 12 — Pregunta</strong>Guardar la captura como <code>img_manual/12-pregunta.png</code></div><figcaption>Imagen 12 — Pregunta. "Pregunta 1 de 15", el texto de la pregunta y la grilla de 6 botones de respuesta, con el mouse sobre uno para que se vea resaltado.</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 13 — Guardar partida anónima</strong>Guardar la captura como <code>img_manual/13-guardar-anonima.png</code></div><figcaption>Imagen 13 — Guardar partida anónima. Cartel "¡Terminaste la partida! ¿Querés registrarte para guardarla?" al terminar una partida anónima.</figcaption></figure>
+
+<h2 id="resultado-y-puntajes">Resultado y puntajes</h2>
+<p>Al terminar la partida, la pantalla de resultado muestra qué serías en el mundo de Aeloria: tu raza (en grande), tu raza principal, tu raza secundaria y tu clase, junto a un avatar con el marco de tu raza principal y el ícono de tu clase.</p>
+<p><strong>¿Pura o mestiza?</strong> La raza con más puntos es la principal y la segunda es la secundaria. Si la secundaria llega al menos a un tercio (33 %) del total de puntos de raza, el resultado es una raza <strong>mestiza</strong>; si no, sos de raza <strong>pura</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Mezcla</th>
+<th>Raza mestiza</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Humano + orco</td>
+<td>Semiorco</td>
+</tr>
+<tr>
+<td>Humano + elfo</td>
+<td>Semielfo</td>
+</tr>
+<tr>
+<td>Humano + enano</td>
+<td>Enano con gigantismo</td>
+</tr>
+<tr>
+<td>Elfo + enano</td>
+<td>Elfo del yunque</td>
+</tr>
+<tr>
+<td>Elfo + orco</td>
+<td>Elfo oscuro</td>
+</tr>
+<tr>
+<td>Enano + orco</td>
+<td>Rompemontaña</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Botón</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ver puntajes</td>
+<td>Abre el detalle de puntos de cada raza y cada clase</td>
+</tr>
+<tr>
+<td>Volver a jugar</td>
+<td>Vuelve al menú principal. Si habías iniciado sesión, la sesión se cierra</td>
+</tr>
+<tr>
+<td>← Atrás</td>
+<td>Vuelve a la pantalla desde donde empezaste la partida (el menú del jugador o el menú principal)</td>
+</tr>
+</tbody>
+</table>
+<p>La pantalla <strong>Puntajes</strong> tiene dos tablas: a la izquierda los puntos de cada raza y a la derecha los de cada clase, ordenados de mayor a menor. Sirven para ver por qué te tocó ese resultado.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 14 — Resultado mestizo</strong>Guardar la captura como <code>img_manual/14-resultado-mestizo.png</code></div><figcaption>Imagen 14 — Resultado mestizo. Pantalla de resultado al final de una partida con una raza mestiza (por ejemplo Semielfo): avatar con marco a la izquierda, ícono de clase, la raza en grande, el detalle de raza principal, secundaria y clase, y los botones "Volver a jugar", "Ver puntajes" y "← Atrás".</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 15 — Resultado puro</strong>Guardar la captura como <code>img_manual/15-resultado-puro.png</code></div><figcaption>Imagen 15 — Resultado puro. Misma pantalla con una raza pura (por ejemplo Orco), para comparar el avatar con el de la imagen anterior.</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 16 — Puntajes</strong>Guardar la captura como <code>img_manual/16-puntajes.png</code></div><figcaption>Imagen 16 — Puntajes. Pantalla Puntajes con las dos tablas (Razas y Clases) completas, ordenadas de mayor a menor.</figcaption></figure>
+
+<h2 id="scoreboard">Scoreboard</h2>
+<p>El scoreboard muestra las partidas terminadas de todos los jugadores registrados, de la más reciente a la más antigua, con jugador, resultado, clase y fecha. Para verlo hace falta conexión con la base de datos.</p>
+<p><strong>Para ver el resultado de una partida:</strong></p>
+<ol>
+<li>En el menú principal, hacé clic en <strong>Scoreboard</strong>.</li>
+<li>Elegí una partida de la lista.</li>
+<li>Hacé clic en <strong>Ver resultado</strong>, o doble clic sobre la fila. Si no elegiste ninguna, aparece "Elegí una partida de la lista."</li>
+</ol>
+<p>Desde el resultado de una partida del scoreboard también podés abrir <strong>Ver puntajes</strong>. <strong>← Atrás</strong> te devuelve a la lista.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 17 — Scoreboard</strong>Guardar la captura como <code>img_manual/17-scoreboard.png</code></div><figcaption>Imagen 17 — Scoreboard. Lista con varias partidas cargadas y una fila seleccionada (resaltada en azul), con los botones "Ver resultado" y "← Atrás".</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Imagen 18 — Resultado de otro jugador</strong>Guardar la captura como <code>img_manual/18-resultado-otro-jugador.png</code></div><figcaption>Imagen 18 — Resultado de otro jugador. Resultado abierto desde el scoreboard, con el título "Resultado de \&lt;nombre&gt;". En esta pantalla no aparece el botón "Volver a jugar".</figcaption></figure>
+
+<h2 id="preguntas-frecuentes-y-soluci-n-de-problemas">Preguntas frecuentes y solución de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Problema o pregunta</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aparece "No hay conexión con la base de datos"</td>
+<td>Verificá que MySQL esté encendido en <code>localhost:3306</code> y que exista la base <code>fantasy_quest_bdd</code>. Mientras tanto podés jugar anónimo</td>
+</tr>
+<tr>
+<td>"No existe un jugador con ese nombre"</td>
+<td>Revisá cómo escribiste el nombre, o registrate primero</td>
+</tr>
+<tr>
+<td>"Contraseña incorrecta"</td>
+<td>Revisá la contraseña: distingue mayúsculas y minúsculas. Si no la recordás, pedile a un administrador que borre tu jugador para volver a registrarte</td>
+</tr>
+<tr>
+<td>No puedo iniciar una partida nueva</td>
+<td>Ya tenés una pendiente. Usá <strong>Continuar</strong> o <strong>Abandonar partida pendiente</strong> en tu menú de jugador</td>
+</tr>
+<tr>
+<td>"La partida pendiente no coincide con las preguntas actuales"</td>
+<td>La partida se guardó con una versión anterior del juego. Abandonala y empezá una nueva</td>
+</tr>
+<tr>
+<td>Me equivoqué de respuesta</td>
+<td>En esta versión no se puede volver atrás una respuesta. Si es una partida registrada, podés abandonarla y empezar de nuevo</td>
+</tr>
+<tr>
+<td>¿Puedo pausar la música o la narración?</td>
+<td>No hay pausa: podés bajar el volumen a 0 % desde el menú principal o <strong>Ajustes</strong>, o usar <strong>Silenciar</strong> en la introducción</td>
+</tr>
+<tr>
+<td>No escucho la narración</td>
+<td>Revisá que no esté en <strong>Silenciar</strong> dentro de la introducción y que la barra <strong>Narración</strong> no esté en 0 %</td>
+</tr>
+<tr>
+<td>La música está muy fuerte</td>
+<td>Bajá la barra <strong>Música</strong> en el menú principal o en <strong>Ajustes</strong></td>
+</tr>
+<tr>
+<td>¿Se pierde mi partida si cierro el juego?</td>
+<td>Si iniciaste sesión, no: las respuestas se guardan al instante y la podés continuar después. Si jugás anónimo, sí</td>
+</tr>
+<tr>
+<td>Minimicé el juego y no lo encuentro</td>
+<td>Hacé clic en el ícono de Fantasy Quest en la barra de tareas de Windows</td>
+</tr>
+<tr>
+<td>¿Cómo muevo la ventana?</td>
+<td>Arrastrala desde la barra superior oscura, donde está el título</td>
+</tr>
+</tbody>
+</table></main></body></html>

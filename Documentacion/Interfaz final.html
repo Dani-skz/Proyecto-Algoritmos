@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fantasy Quest — Interfaz final</title><style>
+:root { --tinta:#2a1d10; --dorado:#9a6b16; --pergamino:#fbf6ea; --borde:#d9c9a3; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--pergamino); color:var(--tinta);
+       font: 15px/1.55 "Palatino Linotype", Palatino, Georgia, serif; }
+main { max-width: 900px; margin: 0 auto; padding: 40px 24px 60px; }
+h1 { font-size: 2.1em; color: var(--dorado); border-bottom: 3px double var(--borde); padding-bottom: .3em; margin-top: 0; }
+h1 + p { color:#6b5a44; margin-top:-.4em; }
+h2 { color: var(--dorado); border-bottom: 1px solid var(--borde); padding-bottom: .2em; margin-top: 2em; }
+h3 { margin-top: 1.6em; }
+nav.indice { background:#f3ead3; border:1px solid var(--borde); padding: 12px 20px; border-radius: 6px; }
+nav.indice ol { margin: .3em 0; padding-left: 1.3em; columns: 2; }
+nav.indice a { color: var(--tinta); text-decoration: none; }
+table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: .93em; }
+th, td { border: 1px solid var(--borde); padding: 6px 9px; vertical-align: top; text-align: left; }
+th { background: #efe2c2; }
+tr:nth-child(even) td { background: #fffaf0; }
+td img { max-width: 100%; max-height: 130px; display:block; margin:auto; }
+code { background:#efe6cf; padding: 1px 5px; border-radius: 3px; font-size: .9em; }
+pre { background:#efe6cf; padding: 12px 14px; border-radius: 6px; overflow-x: auto; line-height: 1.35; }
+pre code { background:none; padding:0; }
+blockquote { border-left: 4px solid var(--borde); margin-left: 0; padding-left: 14px; color:#5b4a35; }
+figure { margin: 1.4em 0; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 100%; border: 1px solid var(--borde); border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+figcaption { font-size: .88em; color:#6b5a44; margin-top: .5em; font-style: italic; }
+.pendiente { border: 2px dashed #b8955a; background: repeating-linear-gradient(45deg,#f7efdc,#f7efdc 12px,#f2e7cd 12px,#f2e7cd 24px);
+             border-radius: 6px; padding: 34px 20px; color: #7a5a24; }
+.pendiente strong { display:block; font-size: 1.05em; margin-bottom: .3em; }
+.pendiente code { background: #fff8e6; }
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  main { max-width: none; padding: 0; }
+  h2 { page-break-after: avoid; }
+  table, figure { page-break-inside: avoid; }
+  nav.indice ol { columns: 2; }
+}
+@page { size: A4; margin: 18mm 16mm; }
+</style></head><body><main><h1>Fantasy Quest — Interfaz final</h1>
+<p>Versión final (V3) · 22 de noviembre de 2026</p><nav class="indice"><strong>Contenido</strong><ol><li><a href="#lineamientos-visuales">Lineamientos visuales</a></li><li><a href="#mapa-de-navegaci-n">Mapa de navegación</a></li><li><a href="#componentes-comunes">Componentes comunes</a></li><li><a href="#escenas">Escenas</a></li><li><a href="#recursos-del-resultado">Recursos del resultado</a></li><li><a href="#audio">Audio</a></li></ol></nav>
+<p>Documenta todas las escenas de la versión entregada: qué muestra cada una, sus controles, a dónde lleva y qué recursos visuales usa. El historial de diseño anterior está en <code>UI-Desing-History/V1</code> y <code>UI-Desing-History/V2</code>.</p>
+<h2 id="lineamientos-visuales">Lineamientos visuales</h2>
+<p>Estilo inspirado en <a href="https://www.warcraftcn.com/docs">warcraftcn-ui</a> (licencia en <code>ui/LICENCIA_warcraftcn.md</code>). Todo lo aplica <code>Tema.Aplicar(form)</code> en el constructor de cada formulario, así que ningún formulario define colores propios.</p>
+<table>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tamaño de ventana</td>
+<td>800 × 500 px de contenido + 32 px de barra de título propia</td>
+</tr>
+<tr>
+<td>Fuente</td>
+<td>Palatino Linotype (1 pt más que en el diseñador)</td>
+</tr>
+<tr>
+<td>Fondo</td>
+<td><code>fondo.png</code> estirado, color base madera <code>#18120D</code></td>
+</tr>
+<tr>
+<td>Títulos (labels ≥ 18 pt)</td>
+<td>Dorado <code>#F0C65A</code></td>
+</tr>
+<tr>
+<td>Texto general</td>
+<td>Pergamino <code>#E8D8B0</code></td>
+</tr>
+<tr>
+<td>Texto sobre pergamino</td>
+<td>Tinta <code>#1E1006</code></td>
+</tr>
+<tr>
+<td>Botones</td>
+<td><code>boton.png</code> con corte de 9 partes (border-image); brillo 125 % con el mouse encima y 75 % al presionar; foco con marco dorado</td>
+</tr>
+<tr>
+<td>Entradas de texto</td>
+<td><code>entrada.png</code> como marco, fondo <code>#2C2219</code></td>
+</tr>
+<tr>
+<td>Paneles</td>
+<td><code>contenedor.png</code> (pergamino); un panel dentro de otro queda transparente y solo recorta</td>
+</tr>
+<tr>
+<td>Grillas</td>
+<td>Fondo madera, encabezado dorado, selección azul <code>#1C3A82</code></td>
+</tr>
+<tr>
+<td>Sliders</td>
+<td>Riel <code>#5A3C1E</code>, pieza dorada <code>#F0C65A</code>, borde <code>#6E4614</code> (BarraDesplazamiento y BarraVolumen)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Fondo</th>
+<th>Botón</th>
+<th>Entrada</th>
+<th>Contenedor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="fondo" src="../CShard_algoritmo/Fantasy_quest/ui/fondo.png" /></td>
+<td><img alt="boton" src="../CShard_algoritmo/Fantasy_quest/ui/boton.png" /></td>
+<td><img alt="entrada" src="../CShard_algoritmo/Fantasy_quest/ui/entrada.png" /></td>
+<td><img alt="contenedor" src="_miniaturas/ui_contenedor.webp" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapa-de-navegaci-n">Mapa de navegación</h2>
+<p>La navegación es por capas (<code>Navegador</code>): cada pantalla se abre modal en la misma posición y tamaño que la anterior, que queda oculta. <strong>← Atrás</strong> siempre es <code>Close()</code> y vuelve a mostrar la capa de abajo. <strong>Ajustes → Volver al menú principal</strong> cierra capa por capa hasta <code>FrmPrincipal</code>. La ✕ de la barra sale de toda la app.</p>
+<pre><code>FrmPrincipal (menú principal)
+├── Registrarse / Iniciar sesión ──► FrmIngreso ──► FrmMenuJugador
+│                                                    └── Iniciar / Continuar ──► partida
+├── Jugar anónimo ─────────────────────────────────────────────────────────────► partida
+├── Scoreboard ──► FrmScoreboard ──► FrmResultado ──► FrmPuntajes
+└── Salir
+
+partida:
+FrmPartida ──► FrmIntroduccion (capítulo N) ──► pregunta N ──► … ×15
+           └── al terminar ──► [anónima: ¿registrarse? ──► FrmIngreso]
+                           └──► FrmResultado (canción final) ──► FrmPuntajes
+
+Solo en Debug: FrmDesarrollo ──► acceso directo a cada pantalla
+</code></pre>
+<h2 id="componentes-comunes">Componentes comunes</h2>
+<h3>Barra de título (<code>BarraTitulo</code>)</h3>
+<p>Reemplaza la barra de Windows (el formulario queda sin borde y crece 32 px; todo el contenido baja). Muestra el <code>Text</code> del formulario a la izquierda y los botones minimizar y cerrar a la derecha. Arrastrar en cualquier punto libre mueve la ventana (<code>WM_NCLBUTTONDOWN</code> + <code>HTCAPTION</code>). Un marco fino de 1 px rodea la ventana.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Comportamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zona de título</td>
+<td>Arrastrar mueve la ventana</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Minimiza. Fondo <code>#3C2E20</code> con hover</td>
+</tr>
+<tr>
+<td>✕</td>
+<td>Sale del juego (<code>Environment.Exit</code>). Con una <code>FrmPartida</code> abierta pide confirmación. Fondo rojo <code>#961E14</code> con hover</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 1 — Barra de título</strong>Guardar la captura como <code>UI-Desing-History/V3/01-barra-titulo.png</code></div><figcaption>Escena 1 — Barra de título. Recorte de la barra con el hover rojo sobre ✕.</figcaption></figure>
+
+<h3>Menú Ajustes (<code>MenuSettings</code>)</h3>
+<p>Botón <strong>Ajustes</strong> de 110 × 35 px arriba a la izquierda, que despliega un panel de 300 × 210 px con las barras <strong>Música</strong> y <strong>Narración</strong> y el botón <strong>Volver al menú principal</strong>. Está en <code>FrmMenuJugador</code>, <code>FrmIntroduccion</code> y <code>FrmPartida</code>. Al abrirse resincroniza los valores con los del menú principal. <code>FrmPrincipal</code> no lo tiene porque sus sliders están fijos en pantalla.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 2 — Menú Ajustes</strong>Guardar la captura como <code>UI-Desing-History/V3/02-ajustes.png</code></div><figcaption>Escena 2 — Menú Ajustes desplegado sobre una pregunta.</figcaption></figure>
+
+<h3>Cuadros de diálogo</h3>
+<p>Se usan los <code>MessageBox</code> estándar de Windows (sin tema) para avisos y confirmaciones. Los errores pasan siempre por <code>Mensajes.MostrarError</code>, que distingue regla de negocio de un SP (aviso), error de MySQL, regla de C# y error inesperado.</p>
+<table>
+<thead>
+<tr>
+<th>Mensaje</th>
+<th>Dónde aparece</th>
+<th>Botones</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No hay conexión con la base de datos…</td>
+<td>Al abrir el menú principal sin BDD</td>
+<td>Aceptar</td>
+</tr>
+<tr>
+<td>Estás en medio de una partida. ¿Salir del juego?</td>
+<td>✕ con una partida abierta</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>Es una partida anónima: si salís se pierde el progreso…</td>
+<td>Atrás o Volver al menú en partida anónima</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>¿Abandonar la partida pendiente? Se pierde el progreso.</td>
+<td>Menú del jugador</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>¡Terminaste la partida! ¿Querés registrarte para guardarla?</td>
+<td>Fin de partida anónima</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>Partida guardada a nombre de \&lt;nombre&gt;</td>
+<td>Después de registrarse desde el fin de partida</td>
+<td>Aceptar</td>
+</tr>
+<tr>
+<td>Nombre inválido / Contraseña inválida / Contraseña incorrecta</td>
+<td>FrmIngreso</td>
+<td>Aceptar</td>
+</tr>
+<tr>
+<td>Elegí una partida de la lista.</td>
+<td>Scoreboard sin selección</td>
+<td>Aceptar</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 3 — Cuadros de diálogo</strong>Guardar la captura como <code>UI-Desing-History/V3/03-dialogos.png</code></div><figcaption>Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).</figcaption></figure>
+
+<h2 id="escenas">Escenas</h2>
+<h3>4. Menú principal — <code>FrmPrincipal</code></h3>
+<p>Primera pantalla de la versión Release. Al mostrarse prueba la conexión con la BDD y avisa si falla.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Tipo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lblTitulo / lblSubtitulo</td>
+<td>Label</td>
+<td>"Fantasy Quest" / "¿Qué serías en un mundo medieval de fantasía?"</td>
+</tr>
+<tr>
+<td>btnRegistrarse</td>
+<td>Button</td>
+<td>FrmIngreso (Registro) → FrmMenuJugador</td>
+</tr>
+<tr>
+<td>btnLogin</td>
+<td>Button</td>
+<td>FrmIngreso (Login) → FrmMenuJugador</td>
+</tr>
+<tr>
+<td>btnAnonimo</td>
+<td>Button</td>
+<td>Partida anónima</td>
+</tr>
+<tr>
+<td>btnScoreboard</td>
+<td>Button</td>
+<td>FrmScoreboard</td>
+</tr>
+<tr>
+<td>btnSalir</td>
+<td>Button</td>
+<td>Cierra la app</td>
+</tr>
+<tr>
+<td>barraMusica / barraNarracion</td>
+<td>BarraVolumen</td>
+<td>Volumen 0–100 % de cada canal, con su label "Música: N%" / "Narración: N%"</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 4 — Menú principal</strong>Guardar la captura como <code>UI-Desing-History/V3/04-principal.png</code></div><figcaption>Escena 4 — Menú principal completo con las barras de volumen en valores distintos de 100 %.</figcaption></figure>
+
+<h3>5. Registro — <code>FrmIngreso</code> (modo Registro)</h3>
+<p>Título "Registrarse", botón "Registrarme". Valida en C# antes de ir a la base: nombre de 2 a 30 caracteres (letras con acentos y ñ, números y espacios simples, con trim) y contraseña de 4 a 30 caracteres con <code>PasswordChar</code>. La contraseña se manda como SHA-256 a <code>sp_registrar_jugador</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Tipo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>txtNombre</td>
+<td>TextBox</td>
+<td>Nombre del jugador</td>
+</tr>
+<tr>
+<td>txtContrasena</td>
+<td>TextBox</td>
+<td>Contraseña (enmascarada)</td>
+</tr>
+<tr>
+<td>btnAceptar</td>
+<td>Button</td>
+<td>Valida y registra; cierra con <code>DialogResult.OK</code></td>
+</tr>
+<tr>
+<td>btnAtras</td>
+<td>Button</td>
+<td>Vuelve sin registrar</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 5 — Registro</strong>Guardar la captura como <code>UI-Desing-History/V3/05-registro.png</code></div><figcaption>Escena 5 — Registro con un nombre de ejemplo y la contraseña enmascarada.</figcaption></figure>
+
+<h3>6. Iniciar sesión — <code>FrmIngreso</code> (modo Login)</h3>
+<p>Misma ventana con título "Iniciar sesión" y botón "Entrar". Compara el hash en C#: nombre inexistente → aviso informativo; hash distinto → "Contraseña incorrecta.".</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 6 — Iniciar sesión</strong>Guardar la captura como <code>UI-Desing-History/V3/06-login.png</code></div><figcaption>Escena 6 — Iniciar sesión con datos cargados.</figcaption></figure>
+
+<h3>7. Menú del jugador — <code>FrmMenuJugador</code></h3>
+<p>Saludo "Hola, \&lt;nombre&gt;". Al cargar consulta <code>fn_partida_pendiente</code> y cambia según el estado. Incluye Ajustes.</p>
+<table>
+<thead>
+<tr>
+<th>Estado</th>
+<th>lblEstado</th>
+<th>btnJugar</th>
+<th>btnAbandonar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sin partida pendiente</td>
+<td>(vacío)</td>
+<td>"Iniciar"</td>
+<td>Oculto</td>
+</tr>
+<tr>
+<td>Con partida pendiente</td>
+<td>"Tenés una partida sin terminar."</td>
+<td>"Continuar"</td>
+<td>Visible → <code>sp_cancelar_partida</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>← Atrás</strong> cierra la sesión y vuelve al menú principal.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 7a — Menú del jugador sin partida</strong>Guardar la captura como <code>UI-Desing-History/V3/07a-menu-jugador.png</code></div><figcaption>Escena 7a — Menú del jugador sin partida pendiente.</figcaption></figure>
+
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 7b — Menú del jugador con partida pendiente</strong>Guardar la captura como <code>UI-Desing-History/V3/07b-menu-jugador-pendiente.png</code></div><figcaption>Escena 7b — Menú del jugador con partida pendiente (Continuar + Abandonar).</figcaption></figure>
+
+<h3>8. Introducción del capítulo — <code>FrmIntroduccion</code></h3>
+<p>Se abre antes de cada pregunta. Reproduce <code>Narracion-N.mp3</code> al mostrarse y la corta al cerrarse. Incluye Ajustes.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Tipo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lblCapitulo</td>
+<td>Label</td>
+<td>"Capítulo N de 15"</td>
+</tr>
+<tr>
+<td>lblTitulo</td>
+<td>Label</td>
+<td>Título del capítulo (<code>Pregunta.Titulo</code>)</td>
+</tr>
+<tr>
+<td>pnlHistoria → pnlTexto → lblHistoria</td>
+<td>Panel / Label</td>
+<td>Pergamino con la historia; pnlTexto recorta el texto</td>
+</tr>
+<tr>
+<td>barraHistoria</td>
+<td>BarraDesplazamiento</td>
+<td>Visible solo si el texto no entra; también responde a la rueda del mouse</td>
+</tr>
+<tr>
+<td>btnSonido</td>
+<td>Button</td>
+<td>"Silenciar" / "Activar sonido" (solo narración, persiste entre capítulos)</td>
+</tr>
+<tr>
+<td>btnContinuar</td>
+<td>Button</td>
+<td>"Continuar →": cierra y deja ver la pregunta</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 8 — Introducción</strong>Guardar la captura como <code>UI-Desing-History/V3/08-introduccion.png</code></div><figcaption>Escena 8 — Introducción del capítulo 1 con el pergamino, la barra dorada y los botones.</figcaption></figure>
+
+<h3>9. Pregunta — <code>FrmPartida</code></h3>
+<p>Muestra "Pregunta N de 15", el texto de la pregunta y una grilla de 6 botones de respuesta (se ocultan los que sobran). Toda la lógica está en <code>GestorPartida</code>. Al responder la última muestra "Calculando resultado..." y finaliza. Incluye Ajustes.</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Tipo</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lblProgreso</td>
+<td>Label</td>
+<td>"Pregunta N de 15"</td>
+</tr>
+<tr>
+<td>lblPregunta</td>
+<td>Label</td>
+<td>Texto de la pregunta</td>
+</tr>
+<tr>
+<td>btnRespuesta1…6</td>
+<td>Button</td>
+<td>Mismo handler; guarda la respuesta y abre la siguiente introducción</td>
+</tr>
+<tr>
+<td>btnAtras</td>
+<td>Button</td>
+<td>Registrada: sale sin preguntar. Anónima con progreso: pide confirmación</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 9 — Pregunta</strong>Guardar la captura como <code>UI-Desing-History/V3/09-partida.png</code></div><figcaption>Escena 9 — Pregunta con los 6 botones de respuesta, uno con hover.</figcaption></figure>
+
+<h3>10. Resultado (fin de partida) — <code>FrmResultado</code></h3>
+<p>Suena <code>ending song.mp3</code> mientras está abierta. Título "Tu resultado" (anónima) o "Resultado de \&lt;nombre&gt;".</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>Tipo</th>
+<th>Contenido / acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pbAvatar</td>
+<td>PictureBox</td>
+<td><code>Tema.ComponerAvatar</code>: imagen de la raza (pura o mestiza) al 60 % centrada + marco de la raza principal</td>
+</tr>
+<tr>
+<td>pbClase</td>
+<td>PictureBox</td>
+<td>Ícono de la clase</td>
+</tr>
+<tr>
+<td>lblCombinacion</td>
+<td>Label</td>
+<td>Raza resultante con mayúscula inicial</td>
+</tr>
+<tr>
+<td>lblDetalle</td>
+<td>Label</td>
+<td>Raza principal, raza secundaria y clase</td>
+</tr>
+<tr>
+<td>btnPuntajes</td>
+<td>Button</td>
+<td>FrmPuntajes</td>
+</tr>
+<tr>
+<td>btnVolverAJugar</td>
+<td>Button</td>
+<td><code>DialogResult.Retry</code>: vuelve al menú principal (cierra sesión)</td>
+</tr>
+<tr>
+<td>btnAtras</td>
+<td>Button</td>
+<td>Vuelve a donde empezó la partida</td>
+</tr>
+</tbody>
+</table>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 10 — Resultado</strong>Guardar la captura como <code>UI-Desing-History/V3/10-resultado.png</code></div><figcaption>Escena 10 — Resultado al terminar una partida (avatar, ícono de clase, detalle y tres botones).</figcaption></figure>
+
+<h3>11. Resultado desde el scoreboard — <code>FrmResultado</code></h3>
+<p>Misma ventana con <code>finDePartida = false</code>: sin "Volver a jugar" y sin canción final. Los datos salen de <code>vw_historial</code> y <code>puntajes_partida</code>.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 11 — Resultado desde el scoreboard</strong>Guardar la captura como <code>UI-Desing-History/V3/11-resultado-scoreboard.png</code></div><figcaption>Escena 11 — "Resultado de \&lt;nombre&gt;" abierto desde el scoreboard.</figcaption></figure>
+
+<h3>12. Puntajes — <code>FrmPuntajes</code></h3>
+<p>Título "Tus puntajes" o "Puntajes de \&lt;nombre&gt;". Dos grillas, <code>dgvRazas</code> (4 filas) y <code>dgvClases</code> (13 filas), ordenadas por puntos de mayor a menor.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 12 — Puntajes</strong>Guardar la captura como <code>UI-Desing-History/V3/12-puntajes.png</code></div><figcaption>Escena 12 — Puntajes con las dos tablas completas.</figcaption></figure>
+
+<h3>13. Scoreboard — <code>FrmScoreboard</code></h3>
+<p>Grilla <code>dgvPartidas</code> con las partidas <code>FINALIZADA</code> de <code>vw_historial</code>: Jugador, Resultado, Clase y Fecha, la más reciente primero (la columna <code>id_partida</code> queda oculta). <strong>Ver resultado</strong> o doble clic abre la escena 11.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 13 — Scoreboard</strong>Guardar la captura como <code>UI-Desing-History/V3/13-scoreboard.png</code></div><figcaption>Escena 13 — Scoreboard con varias partidas y una fila seleccionada en azul.</figcaption></figure>
+
+<h3>14. Menú de desarrollo — <code>FrmDesarrollo</code> (solo Debug)</h3>
+<p>Arranca en lugar de <code>FrmPrincipal</code> cuando se compila en Debug. Muestra el estado de conexión y accesos directos: flujo completo, registro, login, menú del jugador con el usuario de prueba "Aragorn", partida anónima, resultado de ejemplo sin base y scoreboard. No forma parte del juego entregado.</p>
+<figure><div class="pendiente"><strong>Imagen pendiente — Escena 14 — Menú de desarrollo</strong>Guardar la captura como <code>UI-Desing-History/V3/14-desarrollo.png</code></div><figcaption>Escena 14 — Menú de desarrollo con el estado "Base de datos: conectada".</figcaption></figure>
+
+<h2 id="recursos-del-resultado">Recursos del resultado</h2>
+<p>Los avatares se componen en tiempo de ejecución: imagen de la raza resultante + marco de la raza principal (el enano usa <code>marco_default.png</code>).</p>
+<p><strong>Razas puras</strong></p>
+<table>
+<thead>
+<tr>
+<th>Humano</th>
+<th>Elfo</th>
+<th>Orco</th>
+<th>Enano</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="humano" src="_miniaturas/ui_raza_humano.webp" /></td>
+<td><img alt="elfo" src="_miniaturas/ui_raza_elfo.webp" /></td>
+<td><img alt="orco" src="_miniaturas/ui_raza_orco.webp" /></td>
+<td><img alt="enano" src="_miniaturas/ui_raza_enano.webp" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Razas mestizas</strong></p>
+<table>
+<thead>
+<tr>
+<th>Semiorco</th>
+<th>Semielfo</th>
+<th>Enano con gigantismo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="semiorco" src="_miniaturas/ui_raza_semiorco.webp" /></td>
+<td><img alt="semielfo" src="_miniaturas/ui_raza_semielfo.webp" /></td>
+<td><img alt="enanogigantismo" src="_miniaturas/ui_raza_enanogigantismo.webp" /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Elfo del yunque</th>
+<th>Elfo oscuro</th>
+<th>Rompemontaña</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="elfoyunqu" src="_miniaturas/ui_raza_elfoyunqu.webp" /></td>
+<td><img alt="elfooscuro" src="_miniaturas/ui_raza_elfooscuro.webp" /></td>
+<td><img alt="rompemontana" src="_miniaturas/ui_raza_rompemontana.webp" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Marcos</strong></p>
+<table>
+<thead>
+<tr>
+<th>Humano</th>
+<th>Elfo</th>
+<th>Orco</th>
+<th>Default (enano)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="marco humano" src="_miniaturas/ui_marco_humano.webp" /></td>
+<td><img alt="marco elfo" src="_miniaturas/ui_marco_elfo.webp" /></td>
+<td><img alt="marco orco" src="_miniaturas/ui_marco_orco.webp" /></td>
+<td><img alt="marco default" src="_miniaturas/ui_marco_default.webp" /></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Íconos de clase</strong></p>
+<table>
+<thead>
+<tr>
+<th>Arquero</th>
+<th>Paladín</th>
+<th>Pícaro</th>
+<th>Guerrero</th>
+<th>Mago</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="_miniaturas/ui_clase_arquero.webp" /></td>
+<td><img alt="" src="_miniaturas/ui_clase_paladin.webp" /></td>
+<td><img alt="" src="_miniaturas/ui_clase_picaro.webp" /></td>
+<td><img alt="" src="_miniaturas/ui_clase_guerrero.webp" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_mago.png" /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Granjero</th>
+<th>Esclavo</th>
+<th>Herrero</th>
+<th>Bufón</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="_miniaturas/ui_clase_granjero.webp" /></td>
+<td><img alt="" src="_miniaturas/ui_clase_esclavo.webp" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_herrero.png" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_bufon.png" /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Explorador</th>
+<th>Druida</th>
+<th>Hechicero</th>
+<th>Asesino</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="" src="_miniaturas/ui_clase_explorador.webp" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_druida.png" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_hechicero.png" /></td>
+<td><img alt="" src="../CShard_algoritmo/Fantasy_quest/ui/clase_asesino.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="audio">Audio</h2>
+<table>
+<thead>
+<tr>
+<th>Canal (<code>Sonido</code>)</th>
+<th>Archivo</th>
+<th>Cuándo suena</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Musica</td>
+<td><code>standard sound.m4a</code> (en bucle)</td>
+<td>Desde que abre el juego, en todas las pantallas</td>
+</tr>
+<tr>
+<td>Musica</td>
+<td><code>ending song.mp3</code></td>
+<td>Mientras está abierto el resultado de fin de partida</td>
+</tr>
+<tr>
+<td>Narracion</td>
+<td><code>Narracion-1.mp3</code> … <code>Narracion-15.mp3</code></td>
+<td>En la introducción de cada capítulo</td>
+</tr>
+</tbody>
+</table>
+<p>Los audios van embebidos en el exe y se copian a <code>%TEMP%\Fantasy_quest</code> la primera vez, porque el <code>MediaPlayer</code> de WPF solo abre archivos. No hay pausa: solo volumen, silencio de la narración y corte al cerrar la introducción (la pausa está en la lista de features pendientes).</p></main></body></html>

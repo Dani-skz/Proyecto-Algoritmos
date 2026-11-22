@@ -1,0 +1,32 @@
+Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto (PNG):
+
+01-barra-titulo.png
+    Escena 1 — Barra de título. Recorte de la barra con el hover rojo sobre ✕.
+02-ajustes.png
+    Escena 2 — Menú Ajustes desplegado sobre una pregunta.
+03-dialogos.png
+    Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
+04-principal.png
+    Escena 4 — Menú principal completo con las barras de volumen en valores distintos de 100 %.
+05-registro.png
+    Escena 5 — Registro con un nombre de ejemplo y la contraseña enmascarada.
+06-login.png
+    Escena 6 — Iniciar sesión con datos cargados.
+07a-menu-jugador.png
+    Escena 7a — Menú del jugador sin partida pendiente.
+07b-menu-jugador-pendiente.png
+    Escena 7b — Menú del jugador con partida pendiente (Continuar + Abandonar).
+08-introduccion.png
+    Escena 8 — Introducción del capítulo 1 con el pergamino, la barra dorada y los botones.
+09-partida.png
+    Escena 9 — Pregunta con los 6 botones de respuesta, uno con hover.
+10-resultado.png
+    Escena 10 — Resultado al terminar una partida (avatar, ícono de clase, detalle y tres botones).
+11-resultado-scoreboard.png
+    Escena 11 — "Resultado de <nombre>" abierto desde el scoreboard.
+12-puntajes.png
+    Escena 12 — Puntajes con las dos tablas completas.
+13-scoreboard.png
+    Escena 13 — Scoreboard con varias partidas y una fila seleccionada en azul.
+14-desarrollo.png
+    Escena 14 — Menú de desarrollo con el estado "Base de datos: conectada".
