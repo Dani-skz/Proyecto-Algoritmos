@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-07-login-error.png
-    Imagen 7 — Iniciar sesión con error. Pantalla "Iniciar sesión" con el cartel "No existe un jugador con ese nombre. Registrate primero." a la vista.
 08-menu-jugador.png
     Imagen 8 — Menú del jugador sin partida. Saludo "Hola, <nombre>", el botón "Ajustes" arriba a la izquierda y solo el botón "Iniciar".
 09-menu-jugador-pendiente.png
