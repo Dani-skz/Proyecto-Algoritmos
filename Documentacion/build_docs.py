@@ -102,6 +102,9 @@ def usar_miniaturas(cuerpo, carpeta_doc):
 
     def reemplazo(m):
         src = html.unescape(m[1])
+        # las capturas de pantalla del manual y del historial van a tamano completo
+        if "img_manual/" in src or "UI-Desing-History/" in src:
+            return m[0]
         original = (carpeta_doc / src).resolve()
         if not original.exists() or original.stat().st_size < PESO_MINIATURA:
             return m[0]
