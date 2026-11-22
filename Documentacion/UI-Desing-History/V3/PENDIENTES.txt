@@ -6,8 +6,6 @@ Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto 
     Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
 06-login.png
     Escena 6 — Iniciar sesión con datos cargados.
-07a-menu-jugador.png
-    Escena 7a — Menú del jugador sin partida pendiente.
 07b-menu-jugador-pendiente.png
     Escena 7b — Menú del jugador con partida pendiente (Continuar + Abandonar).
 08-introduccion.png
