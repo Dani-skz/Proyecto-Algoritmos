@@ -1,7 +1,5 @@
 Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
 
-14-resultado-mestizo.png
-    Imagen 14 — Resultado mestizo. Pantalla de resultado al final de una partida con una raza mestiza (por ejemplo Semielfo): avatar con marco a la izquierda, ícono de clase, la raza en grande, el detalle de raza principal, secundaria y clase, y los botones "Volver a jugar", "Ver puntajes" y "← Atrás".
 17-scoreboard.png
     Imagen 17 — Scoreboard. Lista con varias partidas cargadas y una fila seleccionada (resaltada en azul), con los botones "Ver resultado" y "← Atrás".
 18-resultado-otro-jugador.png
