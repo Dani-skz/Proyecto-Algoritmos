@@ -4,8 +4,6 @@ Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto 
     Escena 2 — Menú Ajustes desplegado sobre una pregunta.
 03-dialogos.png
     Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
-05-registro.png
-    Escena 5 — Registro con un nombre de ejemplo y la contraseña enmascarada.
 06-login.png
     Escena 6 — Iniciar sesión con datos cargados.
 07a-menu-jugador.png
