@@ -4,9 +4,5 @@ Capturas que faltan para 'Interfaz final.md'. Guardarlas con este nombre exacto 
     Escena 3 — Collage de los cuadros de diálogo principales (sin conexión, salir en partida, guardar partida anónima).
 06-login.png
     Escena 6 — Iniciar sesión con datos cargados.
-11-resultado-scoreboard.png
-    Escena 11 — "Resultado de <nombre>" abierto desde el scoreboard.
-13-scoreboard.png
-    Escena 13 — Scoreboard con varias partidas y una fila seleccionada en azul.
 14-desarrollo.png
     Escena 14 — Menú de desarrollo con el estado "Base de datos: conectada".

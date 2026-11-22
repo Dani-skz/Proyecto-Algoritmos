@@ -1,6 +1,0 @@
-Capturas que faltan para 'Manual de usuario.md'. Guardarlas con este nombre exacto (PNG):
-
-17-scoreboard.png
-    Imagen 17 — Scoreboard. Lista con varias partidas cargadas y una fila seleccionada (resaltada en azul), con los botones "Ver resultado" y "← Atrás".
-18-resultado-otro-jugador.png
-    Imagen 18 — Resultado de otro jugador. Resultado abierto desde el scoreboard, con el título "Resultado de <nombre>". En esta pantalla no aparece el botón "Volver a jugar".
